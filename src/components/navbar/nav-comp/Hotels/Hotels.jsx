@@ -20,15 +20,13 @@ export function Hotels() {
   const [clickCount, setClickCount] = useState(0);
   const [isToggled, setIsToggled] = useState([false, false]);
   const [currentColor, setCurrentColor] = useState(['', '']);
-  const [vals, setVals] = useState('')
+  const [guestRoomInfo, setGuestRoomInfo] = useState('')
 
 
 
   const allVals = ( selectedValues ) => {
-    setVals(selectedValues)
+    setGuestRoomInfo(selectedValues)
   }
-
-
   
   const handleTravelPrefBtn = (activate, num) => {
     setIsToggled((prevToggled) => {
@@ -56,10 +54,8 @@ export function Hotels() {
               projectID: 'zvc3foel7gfi',
             },
             params: {
-              //search: `{"location":"${location}"}&day="${clickDay}"`,
               search: `{"location":"${location}","day":"${clickDay}"}`,
             },
-            //datea: { day: 'Fri' }, // Include the body here
           }
         );
 
@@ -117,15 +113,11 @@ export function Hotels() {
 
 
   const handleDayClick = (date) => {
-    //console.log("DAY  ",day);
-    //return <DateComponent dateVal = { day } type="shortDay" setterFnc={setClickDay} />
-    const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'short' });
-    setClickDay(dayOfWeek);
-    
-    
+
+    DateComponent({ dateVal : date, type : "shortDay", setterFnc : setClickDay })
+  
   };
 
-  console.log("CLICK DAY     ",clickDay);
 
   const handleCalculateNights = () => {
     const newstartDate = startDate.getDate();
@@ -201,7 +193,7 @@ export function Hotels() {
         )
         : null }
         <SelectGuestRoom passedVals={ allVals }/>
-        <label htmlFor="travelPref">Traeller Preference</label>
+        <label htmlFor="travelPref">Traveller Preference</label>
         <button
         style={{ backgroundColor: isToggled[0] ? currentColor[0] : 'initial', color: isToggled[0] ? 'white' : 'black' }}
         onClick={() => { handleTravelPrefBtn(true, 0) }} id="travelPrefBtn"

@@ -24,7 +24,6 @@ export const DateComponent = ({ dateVal, type, setterFnc }) => {
     else if(type=='shortDay'){
       console.log('activated')
       return setterFnc(dayOfWeek);
-      
     }
     else{
       return (<div>{formattedDate}</div>);

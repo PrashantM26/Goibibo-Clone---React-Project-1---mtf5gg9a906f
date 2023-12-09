@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const SelectPassenger = ({ passedVals }) => {
+export const SelectPassenger = ({ valSetter }) => {
 
   const [showPassenger, setPassenger] = useState(false);
   const [selVal, setSelVal] = useState({ adults : 1, children : 0, infants : 0, ticketType : "" });
@@ -27,7 +27,17 @@ export const SelectPassenger = ({ passedVals }) => {
 
 
   const handleDoneClick = () => {
-    passedVals(selVal);
+    const { adults, children, infants, ticketType } = selVal;
+    valSetter((prev) => {
+      return {
+        ...prev,
+        adults : adults,
+        children : children,
+        infants : infants,
+        ticketType : ticketType
+      }
+
+    });
     setPassenger(false);
   };
 
