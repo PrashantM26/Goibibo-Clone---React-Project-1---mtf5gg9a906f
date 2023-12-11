@@ -21,7 +21,7 @@ export function Flights()
     const [displayDepart, setDisplayDepart] = useState("");
     const [displayReturn, setDisplayReturn] = useState("");
     const [searchOn, setSearchOn] = useState([false, false]);
-    const [clickDay, setClickDay] = useState('');
+    const [clickDay, setClickDay] = useState('Wed');
     const [isToggled, setIsToggled] = useState({depart : false, stop : false});
 
 
@@ -63,7 +63,7 @@ export function Flights()
           let filData = response.data.data.flights;
           setData(filData);
 
-          console.log(filData);
+          //console.log(filData);
 
           const durations = filData.map(flight => flight.duration);
           const minDuration = Math.min(...durations);
@@ -77,7 +77,7 @@ export function Flights()
           const maxPrice = Math.max(...prices);
           setPriceRange([minPrice, maxPrice]);
           setMaxSelPrice(maxPrice);
-          console.log("rendered API Called")
+
         //})
         
     //}, [searchOn[1]])
@@ -139,7 +139,7 @@ export function Flights()
             //if(searchOn[1]){
                 setFilteredData(filData)
             //}
-            console.log("Filters Applied")
+            //console.log("Filters Applied")
     })
     },[searchOn[1]])
 
@@ -210,19 +210,23 @@ export function Flights()
     //Ask doubt here
     const handleDayClick = (date) => {
         DateComponent({ dateVal : date, type : "shortDay", setterFnc : setClickDay })
-        /*setCurrdata((prev) => ({
+        console.log("CLICK DAY %%", clickDay);
+        setCurrdata((prev) => {
+            //console.log(clickDay);
+            return {
             ...prev,
             day: clickDay
-        }));*/
+            }
+        });
     }
     //Using useEffect made it work
-    useEffect(() => {
+    /*useEffect(() => {
         setCurrdata((prev) => ({
             ...prev,
             day: clickDay
         }));
-    }, [clickDay]);
-    console.log("DAY             ",currData.day)
+    }, [clickDay]);*/
+        console.log("DAY    CURR         ",currData.day)
 
 
     const handlebook=async (e)=>{
@@ -258,7 +262,7 @@ export function Flights()
             </div>
                 
             
-           {console.log(filteredData)}
+           
            
             
     <form onSubmit={handleForm}>
