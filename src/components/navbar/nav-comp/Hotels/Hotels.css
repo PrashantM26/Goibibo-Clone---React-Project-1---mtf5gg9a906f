@@ -1,0 +1,19 @@
+.mainDisplay{
+    display: flex;
+}
+
+.topFilter{
+    display: flex;
+    height: 20px;
+}
+
+.topFilter label{
+    margin-left: 30px;
+    margin-right: 10px;
+    font-size: small;
+}
+
+.displayCards{
+    display: flex;
+    height: 50px;
+}

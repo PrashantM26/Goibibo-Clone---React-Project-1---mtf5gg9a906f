@@ -4,6 +4,7 @@ import axios from 'axios';
 import Calendar from 'react-calendar';
 import { SelectGuestRoom } from './../Hotels/SelectGuestRoom';
 import { DateComponent } from '../../../Date/Date';
+import "./Hotels.css";
 
 export function Hotels() {
 
@@ -11,6 +12,7 @@ export function Hotels() {
   const [location, setLocation] = useState('');
   const [hotels, setHotels] = useState([]);
   const [sortedHotels, setSortedHotels] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [sortBy, setSortBy] = useState('priceLowToHigh');
   const [ratingFilter, setRatingFilter] = useState(0);
   const [startDate, setStartDate] = useState(new Date());
@@ -34,7 +36,44 @@ export function Hotels() {
     { label: '3.5+', value: '3.5' },
     { label: '3+', value: '3' },
   ];
-  const [isChecked, setChecked] = useState({forPrice: Array(priceRanges.length).fill(false), forRating: Array(ratingRanges.length).fill(false)});
+
+  const amenities = [
+    {label: 'Air Conditioning'},
+    {label: 'Airport Transfers'},
+    {label: 'Balcony/Terrace'},
+    {label: 'Bar'},
+    {label: 'Barbeque'},
+    {label: 'Beach'},
+    {label: 'Bonfire'},
+    {label: 'Bus Station Transfers'},
+    {label: 'Business Centre'},
+    {label: 'Cafe'},
+    {label: 'Caretaker'},
+    {label: 'Elevator/Lift'},
+    {label: 'Facilities for Guests with Disabilities'},
+    {label: 'Fireplace'},
+    {label: 'Gym'},
+    {label: 'Indoor Games'},
+    {label: 'Kids Play Area'},
+    {label: 'Kitchenette'},
+    {label: 'Living Room'},
+    {label: 'Outdoor Sports'},
+    {label: 'Parking'},
+    {label: 'Railway Station Transfers'},
+    {label: 'Restaurant'},
+    {label: 'Room Service'},
+    {label: 'Spa'},
+    {label: 'Swimming Pool'},
+    {label: 'TV'},
+    {label: 'Vehicle Rentals'},
+    {label: 'Free WiFi'},
+    {label: 'Yoga'}
+  ]
+  const [isChecked, setChecked] = useState(
+    {forPrice: Array(priceRanges.length).fill(false), 
+    forRating: Array(ratingRanges.length).fill(false),
+    forAmenities: Array(amenities.length).fill(false)
+  });
   //const [priceRange, setPriceRange] = useState([]);
   const [ratings, setRatings] = useState([]);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
@@ -92,7 +131,7 @@ export function Hotels() {
             return (check == true)
           })
         }
-
+        setFilteredData(filData)
         //console.log(filData);
 
       } catch (error) {
@@ -129,11 +168,11 @@ export function Hotels() {
   };
 
 
-let filData = hotels;
+//let filData = hotels;
 
 //console.log(filData)
 
-  const handleRangeChange = (index, valueMin, valueMax) => {
+  const handlePriceChange = (index, valueMin, valueMax) => {
     const nChecked = {...isChecked};
     nChecked.forPrice[index] = !nChecked.forPrice[index];
     setChecked((prev) => ({
@@ -176,7 +215,8 @@ let filData = hotels;
 
   //console.log("HUHUHUSHUASHUSUSHUGY     ",filData)
   
-  const handleRatingChange = (index, value) => {
+  /*const handleRatingChange = (index, value) => {
+    let filData = filteredData;
     const nChecked = {...isChecked};
     nChecked.forRating[index] = !nChecked.forRating[index];
     //nChecked.forRating = nChecked.forRating.map((_, i) => (i === index ? nChecked.forRating[index] : false));      //Also works
@@ -185,19 +225,173 @@ let filData = hotels;
       forRating: [...nChecked.forRating].map((_, i) => (i === index ? nChecked.forRating[index] : false))//.map((_, i) => i === index)//.slice()//map((checked, i) => (i === index ? !checked : checked)),
     }))
     if(nChecked.forRating[index]){
-      filData = filData.filter((hotel) => {
+      let filRatingData = filData.filter((hotel) => {
         const rating = hotel.rating
         return rating >= value
       })
-      console.log(filData)
+      //console.log(filRatingData)
+      setFilteredData(filRatingData)
+    }
+    else{
+      setFilteredData(filData)
+      console.log("TRIGGERED")
     }
   }
 
-console.log(isChecked)
+  //console.log(filData)
+  const handleAmenitiesChange = (index, label) => {
+    let filData = filteredData;
+    //console.log("FILDATA AMENITIES       ",filData)
+    const nChecked = {...isChecked};
+    nChecked.forAmenities[index] = !nChecked.forAmenities[index];
+    setChecked((prev) => ({
+      ...prev,
+      forAmenities: [...nChecked.forAmenities]
+    }))
+    if(nChecked.forAmenities[index]){
+      let filAmenitiesData = filData.filter((hotel) => {
+        const amenities = hotel.amenities || []
+        let found = false;
+
+      for (let i = 0; i < amenities.length; i++) {
+        if (amenities[i] == label) {
+          found = true;
+          break;
+        }
+      }
+      return found;
+      /*amenities.map((obj) => {
+        return amenities.includes(label);
+      })*                                             //UNCOMMENT THIS
+      //return amenities.includes(label);
+      //return amenities.some((amenity) => amenity === label);
+        //return amenity === label
+      })
+      //console.log("FILTERED AMENITIES    ",filAmenitiesData)
+      setFilteredData(filAmenitiesData)
+      //console.log(filData)
+    }
+    else{
+      setFilteredData(filData)
+      console.log("HIIT")
+    }
+  }
+console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING BOTH FUNCTIONS
+//console.log(isChecked)
 
   /*const handleCheckboxChange = (e) => {
     setChecked(e.target.checked);
   };*/
+
+
+
+
+  const applyCheckAndFilters = (index, typeObj, type) => {
+    console.log("HIIIITTTTTTTTTTTTTTTTTTTT")
+    let filData = [...hotels];
+    if(type === 'rating'){
+      console.log("INSIDE")
+      const nChecked = {...isChecked};
+      nChecked.forRating[index] = !nChecked.forRating[index];
+      //nChecked.forRating = nChecked.forRating.map((_, i) => (i === index ? nChecked.forRating[index] : false));      //Also works
+      setChecked((prev) => ({
+        ...prev,
+        forRating: [...nChecked.forRating].map((_, i) => (i === index ? nChecked.forRating[index] : false))//.map((_, i) => i === index)//.slice()//map((checked, i) => (i === index ? !checked : checked)),
+      }))
+      /*if(nChecked.forRating[index]){                      //1st
+        console.log("INSIde")
+        filData = filData.filter((hotel) => {
+          const rating = hotel.rating
+          return rating >= typeObj.value
+        })
+        //console.log(filRatingData)
+      }*/
+      /*const checkedRatings = ratingRanges                                 //2nd
+        .filter((rating, i) => nChecked.forRating[i])
+        .map((checkedRating) => parseFloat(checkedRating.value));
+
+      if (checkedRatings.length > 0) {                       
+        filData = filData.filter((hotel) => {
+          const rating = parseFloat(hotel.rating);
+
+          let ifTrue = false;
+          for (let i = 0; i < checkedRatings.length; i++) {
+            if (rating >= checkedRatings[i]) {
+              ifTrue = true;
+              break;
+            }
+          }
+
+          return ifTrue;
+        });
+      }*/
+    }
+
+    if(type === 'amenity'){
+      const nChecked = {...isChecked};
+      nChecked.forAmenities[index] = !nChecked.forAmenities[index];
+      setChecked((prev) => ({
+        ...prev,
+        forAmenities: [...nChecked.forAmenities]
+      }))
+      /*if(nChecked.forAmenities[index]){                             //1st way
+        filData = filData.filter((hotel) => {
+          const amenities = hotel.amenities || []
+          let found = false;
+
+        for (let i = 0; i < amenities.length; i++) {
+          if (amenities[i] == typeObj.label) {
+            found = true;
+            break;
+          }
+        }
+        return found;
+        })
+      }*/
+      /*const checkedAmenities = amenities                               //2nd way
+      .filter((amenity, i) => nChecked.forAmenities[i])
+      .map((checkedAmenity) => checkedAmenity.label);
+
+      if (checkedAmenities.length > 0) {
+        filData = filData.filter((hotel) => {
+          const hotelAmenities = hotel.amenities || [];
+          
+          for (let i = 0; i < checkedAmenities.length; i++) {
+            if (!hotelAmenities.includes(checkedAmenities[i])) {
+              return false;
+            }
+          }
+          
+          return true;
+        });
+      }*/
+    }
+
+    const checkedRatings = ratingRanges
+    .filter((rating, i) => isChecked.forRating[i])
+    .map((checkedRating) => parseFloat(checkedRating.value));
+
+    const checkedAmenities = amenities
+      .filter((amenity, i) => isChecked.forAmenities[i])
+      .map((checkedAmenity) => checkedAmenity.label);
+
+    // Combining filters for 'rating' and 'amenity'
+    filData = filData.filter((hotel) => {
+      const rating = parseFloat(hotel.rating);
+      const hotelAmenities = hotel.amenities || [];
+
+      const ratingCondition = checkedRatings.length === 0 || checkedRatings.some((checkedRating) => rating >= checkedRating);
+      const amenityCondition = checkedAmenities.length === 0 || checkedAmenities.every((checkedAmenity) => hotelAmenities.includes(checkedAmenity));
+
+      return ratingCondition && amenityCondition;
+    });
+
+
+    setFilteredData(filData);
+  }
+    //console.log(isChecked)
+    console.log(filteredData)
+
 
 
 
@@ -335,89 +529,110 @@ console.log(isChecked)
       {/*Filter section*/}
 
 
-      <div>
+      <div className='topFilter'>
         <label>Sort By:</label>
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="priceLowToHigh">Price: Low to High</option>
           <option value="priceHighToLow">Price: High to Low</option>
         </select>
+        <label>Minimum Rating:</label>
+        <select value={ratingFilter} onChange={(e) => setRatingFilter(parseInt(e.target.value))}>
+          <option value={0}>All Ratings</option>
+          <option value={3}>3+</option>
+          <option value={4}>4+</option>
+          <option value={5}>5</option>
+        </select>
       </div>
 
-      <div className="filteredHotels">
-        <div>
-              <label>Minimum Rating:</label>
-              <select value={ratingFilter} onChange={(e) => setRatingFilter(parseInt(e.target.value))}>
-                <option value={0}>All Ratings</option>
-                <option value={3}>3+</option>
-                <option value={4}>4+</option>
-                <option value={5}>5</option>
-              </select>
+      <div className='mainDisplay'>
 
-              <h3>Price Range</h3>
-              {priceRanges.map((range, index) => (
-                  <div key={range.label}>
-                    <input
-                      type="checkbox"
-                      id={range.label}
-                      /*checked={selectedRanges.some(
-                        (selectedRange) =>
-                          selectedRange.valueMin === range.valueMin &&
-                          selectedRange.valueMax === range.valueMax
-                      )}*/
-                      checked={isChecked.forPrice[index]}
-                      onChange={() => handleRangeChange(index, range.valueMin, range.valueMax)}
-                    />
-                    <label htmlFor={range.label}>{range.label}</label>
-                  </div>
+          <div className="filteredHotels">
+            <div>
+                  <h3>Price Range</h3>
+                  {priceRanges.map((range, index) => (
+                      <div key={range.label}>
+                        <input
+                          type="checkbox"
+                          id={range.label}
+                          /*checked={selectedRanges.some(
+                            (selectedRange) =>
+                              selectedRange.valueMin === range.valueMin &&
+                              selectedRange.valueMax === range.valueMax
+                          )}*/
+                          checked={isChecked.forPrice[index]}
+                          onChange={() => handlePriceChange(index, range.valueMin, range.valueMax)}
+                        />
+                        <label htmlFor={range.label}>{range.label}</label>
+                      </div>
+                  ))}
+            </div>
+
+            <div>
+            <h3>Ratings</h3>
+                    {ratingRanges.map((rating, index) => (
+                        <div key={rating.label}>
+                          <input
+                            type="checkbox"
+                            id={rating.label}
+                            /*checked={selectedRanges.some(
+                              (selectedRange) =>
+                                selectedRange.valueMin === range.valueMin &&
+                                selectedRange.valueMax === range.valueMax
+                            )}*/
+                            checked={isChecked.forRating[index]}
+                            //onChange={() => handleRatingChange(index, rating.value)}
+                            onChange={() => applyCheckAndFilters(index, rating, 'rating')}
+                          />
+                          <label htmlFor={rating.label}>{rating.label}</label>
+                        </div>
+                    ))}
+            </div>
+
+            <div>
+            <h3>Amenities</h3>
+                    {amenities.map((amenity, index) => (
+                        <div key={amenity.label}>
+                          <input
+                            type="checkbox"
+                            id={amenity.label}
+                            checked={isChecked.forAmenities[index]}
+                            //onChange={() => handleAmenitiesChange(index, amenity.label)}
+                            onChange={() => applyCheckAndFilters(index, amenity, 'amenity')}
+                          />
+                          <label htmlFor={amenity.label}>{amenity.label}</label>
+                        </div>
+                    ))}
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+        {/*Filter Render*/}
+        <div className='displayFilteredCards'>
+          {filteredData.map((hotel) => (
+            <div key={hotel._id}>
+              <h2>{hotel.name}</h2>
+              <p>Location: {hotel.location}</p>
+              <p>Rating: {hotel.rating}</p>
+              <p>
+                Price: ${hotel.rooms[0].price} per night
+                <br />
+                Room Type: {hotel.rooms[0].roomType}
+              </p>
+              {hotel.images.map((image, index) => (
+                <img key={index} src={image} alt={`Hotel ${index + 1}`} style={{ width: '150px', height: '100px' }} />
               ))}
+            </div>
+          ))}
+        </div>
 
-      </div>
-
-      <div>
-      <h3>Ratings</h3>
-              {ratingRanges.map((rating, index) => (
-                  <div key={rating.label}>
-                    <input
-                      type="checkbox"
-                      id={rating.label}
-                      /*checked={selectedRanges.some(
-                        (selectedRange) =>
-                          selectedRange.valueMin === range.valueMin &&
-                          selectedRange.valueMax === range.valueMax
-                      )}*/
-                      checked={isChecked.forRating[index]}
-                      onChange={() => handleRatingChange(index, rating.value)}
-                    />
-                    <label htmlFor={rating.label}>{rating.label}</label>
-                  </div>
-              ))}
-
-      </div>
     </div>
 
-
-
-
-
-
-      {/*Filter Render*/}
-      <div>
-        {filteredHotels.map((hotel) => (
-          <div key={hotel._id}>
-            <h2>{hotel.name}</h2>
-            <p>Location: {hotel.location}</p>
-            <p>Rating: {hotel.rating}</p>
-            <p>
-              Price: ${hotel.rooms[0].price} per night
-              <br />
-              Room Type: {hotel.rooms[0].roomType}
-            </p>
-            {hotel.images.map((image, index) => (
-              <img key={index} src={image} alt={`Hotel ${index + 1}`} style={{ width: '150px', height: '100px' }} />
-            ))}
-          </div>
-        ))}
-      </div>
     </div>
   );
 
