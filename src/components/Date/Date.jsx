@@ -21,11 +21,14 @@ export const DateComponent = ({ dateVal, type, setterFnc }) => {
     if(type=='departure' || type=='return'){
       return setterFnc(formattedDateFlights)
     }
-    else if(type=='shortDay'){
+    else if(type=='shortDay' && typeof setterFnc === 'function' ){
       return setterFnc(() => dayOfWeek);
     }
+    else if(type=="shortDay"){
+      return dayOfWeek;
+    }
     else{
-      return (<div>{formattedDate}</div>);
+      return formattedDate;
     }
 
 }

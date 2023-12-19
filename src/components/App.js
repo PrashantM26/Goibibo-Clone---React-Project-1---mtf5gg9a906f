@@ -3,13 +3,12 @@ import React, { useEffect } from "react";
 import { Routes, Route } from 'react-router-dom'
 import { Navbar } from "./navbar/Navbar";
 import { Flights } from "./navbar/nav-comp/Flights/Flights"
+import { FlightBooking } from "./navbar/nav-comp/Flights/FlightBooking"
 import { Hotels } from "./navbar/nav-comp/Hotels/Hotels"
+import { HotelDetails } from "./navbar/nav-comp/Hotels/HotelDetails"
+import { HotelBooking } from "./navbar/nav-comp/Hotels/HotelBooking"
 import { Trains } from "./navbar/nav-comp/Trains/Trains"
-import { Cabs } from "./navbar/nav-comp/Cabs/Cabs"
 import { Bus } from "./navbar/nav-comp/Bus/Bus"
-import { Holidays } from "./navbar/nav-comp/Holidays"
-import { Forex } from "./navbar/nav-comp/Forex"
-import { MySupportTrips } from "./navbar/nav-comp/MySupportTrips"
 import { Profile } from "./Profile"
 import { Login } from "./navbar/nav-comp/LoginSignup"
 import { Signup } from "./navbar/nav-comp/LoginSignup"
@@ -21,13 +20,12 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/flights" element={<Flights />} />
+        <Route path="/flights/:id" element={<FlightBooking />} />
         <Route path="/hotels" element={<Hotels />} />
+        <Route path="/hotels/:id" element={<HotelDetails />} />
+        <Route path="/hotels/:id/booking" element={<HotelBooking />} />
         <Route path="/trains" element={<Trains />} />
-        <Route path="/cabs" element={<Cabs />} />
         <Route path="/bus" element={<Bus />} />
-        <Route path="/holidays" element={<Holidays />} />
-        <Route path="/forex" element={<Forex />} />
-        <Route path="/mysupport/trips" element={<MySupportTrips />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />

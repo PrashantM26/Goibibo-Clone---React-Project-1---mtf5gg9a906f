@@ -78,14 +78,14 @@
     font-weight: bold;
     font-family: Quicksand;
   }
-  label {
+  .labelBus {
     font-size: 1rem;
     color: rgb(137, 139, 145);
     margin-left: 0px;
     width: 50px;
   }
   
-  .date-travel > label {
+  .date-travel > .labelBus {
     width: 100px;
   }
   

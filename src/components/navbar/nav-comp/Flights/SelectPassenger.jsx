@@ -34,7 +34,7 @@ export const SelectPassenger = ({ valSetter }) => {
         adults : adults,
         children : children,
         infants : infants,
-        ticketType : ticketType
+        tickettype : ticketType
       }
 
     });
@@ -46,35 +46,45 @@ export const SelectPassenger = ({ valSetter }) => {
   return (
     <div>
     
-        < div className="child1">  
-                <label>Passenger & class</label>
-                <div style={{height:"98%",padding:"15px",backgroundColor:"rgb(25, 88, 182)",borderRadius:"8px"}} onClick={handlePassenger}  >
-                    {selVal.adults} Adults, {selVal.children>0 ? `${selVal.children} Children, ` : null }{selVal.infants>0 ? `${selVal.infants} Infants` : null }
+        <div className="child1">
+                <label>Travellers & Class</label>
+                <div className="travellersClassSelect" onClick={handlePassenger}>
+                    {selVal.adults} Adults, {selVal.children>0 ? `${selVal.children} Children, ` : null }{selVal.infants>0 ? `${selVal.infants} Infants ` : null }
                     {selVal.ticketType}
                 </div>
         </div>
         
       {showPassenger ? (
-        <div>
-          <div>
+        <div className='passengerWindow'>
+
+          <div className='adultsNo'>
             <span>Adults (12+ yrs)</span>
-            <button onClick={() => incDec('dec', setSelVal, 'adults')}>-</button>
-            <span>{selVal.adults}</span>
-            <button onClick={() => incDec('inc', setSelVal, 'adults')}>+</button>
+            <div>
+              <button className="decBtn" onClick={() => incDec('dec', setSelVal, 'adults')}>-</button>
+              <span>{selVal.adults}</span>
+              <button className="incBtn" onClick={() => incDec('inc', setSelVal, 'adults')}>+</button>
+            </div>
           </div>
-          <div>
+
+          <div className='childrenNo'>
             <span>Children (2-12 yrs)</span>
-            <button onClick={() => incDec('dec', setSelVal, 'children')}>-</button>
-            <span>{selVal.children}</span>
-            <button onClick={() => incDec('inc', setSelVal, 'children')}>+</button>
+            <div>
+              <button className="decBtn" onClick={() => incDec('dec', setSelVal, 'children')}>-</button>
+              <span>{selVal.children}</span>
+              <button className="incBtn" onClick={() => incDec('inc', setSelVal, 'children')}>+</button>
+            </div>
           </div>
-          <div>
+
+          <div className='infantsNo'>
             <span>Infants (Below 2 yrs)</span>
-            <button onClick={() => incDec('dec', setSelVal, 'infants')}>-</button>
-            <span>{selVal.infants}</span>
-            <button onClick={() => incDec('inc', setSelVal, 'infants')}>+</button>
+            <div>
+              <button className="decBtn" onClick={() => incDec('dec', setSelVal, 'infants')}>-</button>
+              <span>{selVal.infants}</span>
+              <button className='incBtn' onClick={() => incDec('inc', setSelVal, 'infants')}>+</button>
+            </div>
           </div>
-          <div>
+
+          <div className='travelClass'>
             Travel class: <select onChange={(e)=>{
                 setSelVal((obj) => ({
                     ...obj,
@@ -87,7 +97,7 @@ export const SelectPassenger = ({ valSetter }) => {
                 <option>Premium Econmony</option>
             </select>
           </div>
-          <button className="searchBtn" onClick={handleDoneClick}>
+          <button className="closePassengerWindowButton" onClick={handleDoneClick}>
             Done
           </button>
         </div>

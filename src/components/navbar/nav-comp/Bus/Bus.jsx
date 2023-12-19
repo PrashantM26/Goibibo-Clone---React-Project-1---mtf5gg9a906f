@@ -31,7 +31,7 @@ export function Bus() {
                         
                     </div>
                     <div className="date-travel">
-                        <label htmlFor="">Travel Date</label>
+                        <label className="labelBus" htmlFor="">Travel Date</label>
                         <div className="datewrapper">
                             <input className="inp-date" value="Oct 3, 2021" type="text" name="" id=""/>
                             <div className="date-tomorrow">

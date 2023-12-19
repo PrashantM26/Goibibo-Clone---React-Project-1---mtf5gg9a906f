@@ -1,81 +1,303 @@
 /* For details*/
-.parent1{
+
+.flightsMainSection{
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  margin-right: 100px;
+  position: relative;
+}
+
+.backgroundStyle{
+  height: 250px;
+  background-color: #F37130;
+  border-radius: 0 0 100% 100%;
+}
+
+.flightInputs{
+  /*background-color: rgb(34, 116, 224);*/
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 1.0rem;
+  font-family: Quicksand;
+  font-weight: 400;
+  position: relative;
+  top: -250px;
+  /*text-align: center;*/
+  z-index: 15;
+}
+
+.flightInputs h1{
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.borderFlightInputs{
+  border: 1px solid white;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px #888888;
+  background-color: white;
+  color: #777777;
+}
+
+  .tripRadioF{
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+  }
+
+  .tripRadioF input:nth-of-type(2){
+    margin-left: 60px;
+  }
+
+.flightDataInput{
     display: flex;
     justify-content: center;
-    
-   
+    flex-wrap: nowrap;
+    position: relative;
   
   }
+
+  .calendarF{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    background-color: #fff; 
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+  }
+
+  .calendarButtonF{
+    align-self: flex-end;
+    margin-top: 30px;
+    background-color: #FF6D38;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+  }
   
+  .travellersClassSelect{
+    margin-top: 5px;
+    height: 40px;
+    width: 350px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    border: 0.5px solid grey;
+    display: inline-block;
+    border-radius: 5px;
+    padding-left: 10px;
+  }
+
+  .travellersClassSelect:hover{
+    border: 2px solid black;
+  }
+
+  .passengerWindow{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    position: absolute;
+    margin-left: 10px;
+    background-color: white;
+  }
+
+  .adultsNo, .childrenNo, .infantsNo, .travelClass{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .passengerWindow span div button{
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  .decBtn{
+    margin-right: 4px;
+  }
+
+  .incBtn{
+    margin-left: 4px;
+  }
+
+  .closePassengerWindowButton{
+    align-self: flex-end;
+    width: 40%;
+    margin-top: 10px;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 10px;
+    z-index: 100;
+  }
+
   .child1{
     display: flex;
     flex-direction: column;
     justify-content: left;
     text-align: left;
-    
     margin: 10px;
   }
   
   .child1>input{
     height: 40px;
-    background-color:rgb(25, 88, 182);
     width: 180px;
     outline: none;
     border: none;
     border-radius: 5px;
     margin-top: 5px;
+    padding-left: 20px;
+    border: 0.5px solid grey;
+  }
+
+  .child1 input:hover{
+    border: 2px solid black;
+  }
+
+  .child1 label{
+    display: inline;
+  }
+
+  .fareRadioF{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 20px 0px 40px 50px;
+  }
+
+  .fareRadioF input{
+    margin-left: 15px;
+  }
+
+  .searchF{
+    align-items: center;
+    margin-top: -20px;
+  }
+
+  .searchButtonF{
+    background-color: #FF6D38;
+    color: white;
+  }
+
+
+  /*FILTER AND RESULT*/
+  .filterResultF{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    top: -200px;
   }
   
-  .child1:nth-child(6)>input{
-    justify-content: center;
-    background-color: white;
-    color: rgb(25, 88, 182);
+  .filtersF{
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 20px;
+    width: 80%;
+    border: 0.5px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  
+  .departuresF, .stopsF{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
    
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  .departuresF>button, .stopsF>button{
+    width: 120px;
+    
+    margin: 5px;
+    border-radius: 5px;
+    color: black;
+    background-color: rgb(225, 231, 238);
+  }
+
+  .rangePriceDurationF{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .rangePriceF{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+
+  .rangePriceF>input{
+    flex: 1 0 0;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+
+  .rangeDurationF{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+
+  .rangeDurationF>input{
+    flex: 1 0 0;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
   
   
   
   
   
 
-  /*For Flights*/
+  /*For flights results*/
   .details_flight{
     display: flex;
     flex-direction: column;
    
-   background: rgb(225, 231, 238);
+    background: rgb(225, 231, 238);
+    flex: 1 0 0;
   
   }
   
   .particular_flight{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    border: 2px solid whitesmoke;
-    border-radius: 5px;
-    height: 125px;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    height: 150px;
     margin-bottom: 10px;
     background-color: white;
+    padding: 15px;
+    transition: transform 0.3s ease;
+  }
+
+  .particular_flight:hover{
+    transform: scale(1.1);
   }
   
-  .particular_flight >div{
-  margin: 10px;
-  
-  }
-  
-  .curr_flight >div{
-    margin-bottom: 5px;
+  .curr_flight {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-right: 5px;
   }
   .curr_flight_time{
     font-size: 1.5rem;
@@ -84,29 +306,39 @@
     color: rgb(51, 51, 51);
   }
   
-  .curr_flight >div>img{
-  
-    width: 15px;
+  .curr_flight_mid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
   }
-  
+
+  .curr_flight_price_book{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
   .particular_flight button{
     background-color: rgb(255, 109, 56);
     border: none;
     width: 100px;
     height: 30px;
-    justify-content: center;
-    margin: 20px;
-  
+    border-radius: 5px;
   }
   
-  .body{
+  /*.body{        //for outer div that accomodates whole filter and result
     display: flex;
     margin: 0% 0%;
     text-align: left;
     padding: 20px;
     background-color: rgb(225, 231, 238);
+    z-index: 9;
    
-  }
+  }*/
   
   
   
@@ -128,35 +360,9 @@
   
   }
   
-  .departures{
-    display: flex;
-    justify-content: space-around;
-    
-   
-  }
-  
-  .departures>div{
-    width: 100px;
-    
-    margin: 5px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: black;
-    background-color: rgb(225, 231, 238);
-  }
-  
-  .input_data{
-    background-color: rgb(34, 116, 224);
-  
-    padding: 10px;
-    font-size:1.0rem;
-    
-    font-family: Quicksand;
-    font-weight: 400;
-    color: white;
   
   
-  }
+  
   
   
   .form_input2{
@@ -297,3 +503,367 @@
   .fare>input{
     margin: 0px 8px;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*   BOOKING PAGE   */
+
+
+  .bookingMainPageF{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  .bookingLeftF{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: 1px solid black;
+    padding: 15px;
+    margin-top: 30px;
+    box-shadow: 5px 5px 10px #888888;
+  }
+
+  .bookingS1F{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .bookingS1F > p{
+    margin-top: 20px;
+  }
+
+  .bookingS2F{
+    display: flex;
+    flex-direction: column;
+    border: 1px dotted black;
+    padding: 10px;
+  }
+
+  .bookF1{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-right: 50px;
+    font-weight: 600;
+    color: blue;
+  }
+
+  .bookF2, .bookF3, .bookF4{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .bookF2{
+    border-bottom: 1px solid #000;
+  }
+
+  .bookF2 span{
+    margin-top: 10px;
+  }
+
+  .bookF2 span p{
+    display: inline;
+    border: 1px solid grey;
+    height: auto;
+    width: fit-content;
+    background-color: lightblue;
+  }
+
+  .bookF2 span h4{
+    margin-top: 10px;
+  }
+
+  .bookF3 .duration-flight-booking{
+    margin-top: 20px;
+    color: gray;
+  }
+
+  .bookF3 h5{
+    margin-top: 20px;
+  }
+
+  .bookF4{
+    margin-top: -5px;
+  }
+
+
+  .bookButtonF{
+    margin-top: 50px;
+    width: 50%;
+    margin-left: 200px;
+    height: 50px;
+    background-color: #FF6D38;
+    cursor: pointer;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+  }
+
+  .bookingRightF{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contentRightF{
+    margin-top: 30px;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 5px 10px #888888;
+  }
+
+  .basePriceF, .adultsF, .childrenF, .infantsF, .flightTaxes, .totalGrandF{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .basePriceF{
+    font-weight: 500;
+  }
+
+  .totalGrandF{
+    color: blue;
+    font-weight: 600;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Modal Styling */
+/* Modal Styling */
+/*.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}*/
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-width: 600px; /* Set a maximum width if necessary */
+  max-height: 30vh; /* Set a maximum height if necessary*/
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+.modal.open {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.5s ease-in-out; /* Apply the fade-in animation */
+}
+
+/* Modal Content Styling */
+.modal-content {
+  position: relative;
+  padding: 10px;
+}
+
+/* Close Button Styling */
+.modal.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+  transition: color 0.3s ease-in-out;
+}
+
+.close:hover {
+  color: #e74c3c; /* Change color on hover */
+}
+
+/* Fade-in Animation for Modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*For Footer*/
+
+
+.Bottom-Container {
+  margin-top: -200px;
+  background: white;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
+  z-index: 900;
+  text-align: left;
+  display: flex;
+  grid-template-columns: repeat(6, 16.5%);
+  padding: 50px;
+  border-bottom: 0.3px solid rgb(204,204,204);
+  justify-content: space-around;
+  font-size: 14px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.Bottom-Container > div > p:nth-child(1) {
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: bolder;
+  font-family: quicksand;
+  margin-left: 30px;
+}
+
+.Bottom-Container > div > a {
+  margin-left: 30px;
+
+ 
+}
+
+.bottom-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 30px;
+}
+
+a:hover {
+ cursor: pointer;
+}  
+a {
+  text-decoration: none;
+
+}
+
+.bottom-links> a {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: #777;
+  font-size: 12px;
+  font-family: Helvetica,sans-serif;
+}
+
+.bottom1 {
+  background: white;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
+  z-index: 900;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  border-bottom: 0.3px solid rgb(204,204,204);
+}
+
+.socialMedia > img {
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+}
+
+.store > img {
+  height: 35px;
+  width: 100px;
+  margin: 5px;
+}
+
+.paymentIcon > img {
+  height: 30px;
+  width: 50px;
+  margin: 5px;
+}
+
+.paymentIcon {
+  margin-top: 0px;
+}
+
+.bottom2 {
+  background: white;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
+  z-index: 900;
+  display: flex;
+  padding: 20px;
+}
+
+.bottom2 > img {
+  height: 30px;
+  width: 50px;
+  margin-left: 20px;
+}
+
+.bottom2 > p {
+  margin-left: 750px;
+  color: gray;
+  font-size: small;
+}

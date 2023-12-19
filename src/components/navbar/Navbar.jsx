@@ -73,8 +73,8 @@ export const Navbar = () => {
                     <span className="header-sprite nav-icon-bus gr-append-right5">
                     </span><NavLink className="NavLink" to="/holidays">Holidays</NavLink></li>
                 <li class="active  ">              
-                <span className="header-sprite nav-icon-bus gr-append-right5">
-                </span><NavLink className="NavLink" to="/forex">Forex</NavLink></li>
+                    <span className="header-sprite nav-icon-bus gr-append-right5">
+                    </span><NavLink className="NavLink" to="/forex">Forex</NavLink></li>
 
                     
             </ul>

@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 //import { Calendar } from './../../../../components/Calendar/Calendar';
 import Calendar from 'react-calendar';
 import { SelectGuestRoom } from './../Hotels/SelectGuestRoom';
 import { DateComponent } from '../../../Date/Date';
+import { GetToTopButton } from '../../../../GetToTopButton';
+import { Carousel } from 'react-responsive-carousel';
 import "./Hotels.css";
+import Loader from '../../../../Loader';
 
 export function Hotels() {
-
+  const navigate = useNavigate();
 
   const [location, setLocation] = useState('');
   const [hotels, setHotels] = useState([]);
@@ -82,8 +86,10 @@ export function Hotels() {
 
   const allVals = ( selectedValues ) => {
     setGuestRoomInfo(() => {
-      selectedValues
+      return {...selectedValues}
     })}
+
+    console.log("GUEST ROOM INFO    ", guestRoomInfo)
   
   const handleTravelPrefBtn = (activate, num) => {
     setIsToggled((prevToggled) => {
@@ -126,11 +132,25 @@ export function Hotels() {
         if(isToggled[0]){
           filData = filData.filter((hotel) => {
             const check = hotel.houseRules.guestProfile.unmarriedCouplesAllowed
-            console.log("CHECK !!!!!",check)
-            console.log("TOGGLE BUTTON ",isToggled)
+            //console.log("CHECK !!!!!",check)
+            //console.log("TOGGLE BUTTON ",isToggled)
             return (check == true)
           })
         }
+
+        filData.forEach((hotel) => {
+          const rooms = hotel.rooms;
+          const totalBaseCost = rooms.reduce((sum, room) => sum + room.costDetails.baseCost, 0);
+          const totalTaxes = rooms.reduce((sum, room) => sum + room.costDetails.taxesAndFees, 0);
+  
+          // Calculate averages
+          const averageBaseCost = Math.ceil(totalBaseCost / rooms.length);
+          const averageTaxes = Math.ceil(totalTaxes / rooms.length);
+  
+          // Add averages to the hotel object
+          hotel.averageBaseCost = averageBaseCost;
+          hotel.averageTaxes = averageTaxes;
+        });
         setFilteredData(filData)
         //console.log(filData);
 
@@ -139,12 +159,13 @@ export function Hotels() {
         alert('An error occurred while fetching datea.');
       }
 
-
     
     }
 
     fetchHotels();
   }, [searchOn[1]]);
+
+  console.log(filteredData)
 
   useEffect(() => {
     // Sorting the hotels based on selected sorting option
@@ -386,7 +407,6 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
       return ratingCondition && amenityCondition;
     });
 
-
     setFilteredData(filData);
   }
     //console.log(isChecked)
@@ -421,11 +441,11 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
   };
 
 
-
+  let nights;
   const handleCalculateNights = () => {
     const newstartDate = startDate.getDate();
     const newendDate = endDate.getDate();
-    const nights = newendDate - newstartDate;
+    nights = newendDate - newstartDate;
     return nights;
   }
 
@@ -447,192 +467,259 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
 
 
 
-  const filteredHotels = filterHotelsByRating();
+  //const filteredHotels = filterHotelsByRating();
+
+
+
+
 
   return (
     <div>
-      <div className="input_data">
-      <h1>Book Hotels & Homestays</h1>
-      <div style={{display:"flex",justifyContent:"left",margin:"0 55px "}}>
-        <label htmlFor="India">
-          <input
-            type="radio"
-            id="India"
-            value="India"
-            //checked={selectedOption === 'option1'}
-            //onChange={handleOptionChange}
-          />
-          India
-        </label>
-        <label htmlFor="International">
-          <input
-            type="radio"
-            id="International"
-            value="International"
-          />
-          International
-        </label>
-      </div>
+      <div className="background-hotel1" ></div>
+      <div className="background-hotel2"></div>
+      <div className='hotelsMainSection'>
+        <div className='upperInputAdSectionH'>
+          <div className="hotelInputs">
+              <h1>Book Hotels & Homestays</h1>
+              <div className='borderHotelInputs'>
 
-        <br />
-        <label htmlFor="location">Where</label>
-        <br />
-        <input
-        type="text"
-        id="location"
-        placeholder="Enter location"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        />
-        <br />
-        <label htmlFor="date" onClick={() => setShowCal((prev) => !prev)}>Check-in</label>
-        <br />
-        <DateComponent dateVal = { startDate } />
-        <br />
-        {handleCalculateNights()}
-        <br />
-        <label htmlFor="date" onClick={() => setShowCal((prev) => !prev)}>Check-out</label>
-        <br />
-        <DateComponent dateVal = { endDate } />
-        { showCal ?
-        (
-          <Calendar className="calendarOn" id="date" onChange={handleDateChange} onClickDay={handleDayClick}/>
-        )
-        : null }
-        <SelectGuestRoom passedVals={ allVals }/>
-        <label htmlFor="travelPref">Traveller Preference</label>
-        <button
-        style={{ backgroundColor: isToggled[0] ? currentColor[0] : 'initial', color: isToggled[0] ? 'white' : 'black' }}
-        onClick={() => { handleTravelPrefBtn(true, 0) }} id="travelPrefBtn"
-        >
-        Couple
-        </button>
-
-        <button
-        style={{ backgroundColor: isToggled[1] ? currentColor[1] : 'initial', color: isToggled[1] ? 'white' : 'black' }}
-        onClick={() => { handleTravelPrefBtn(false, 1) }} id="travelPrefBtn"
-        >
-        goStays
-      </button>
-      </div>
-      
-      <button onClick={() => {
-          setSearchOn((prev) => [prev[0] = true, !prev[1]])
-      }}>Search</button>
-
-
-
-
-
-
-
-      {/*Filter section*/}
-
-
-      <div className='topFilter'>
-        <label>Sort By:</label>
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-          <option value="priceLowToHigh">Price: Low to High</option>
-          <option value="priceHighToLow">Price: High to Low</option>
-        </select>
-        <label>Minimum Rating:</label>
-        <select value={ratingFilter} onChange={(e) => setRatingFilter(parseInt(e.target.value))}>
-          <option value={0}>All Ratings</option>
-          <option value={3}>3+</option>
-          <option value={4}>4+</option>
-          <option value={5}>5</option>
-        </select>
-      </div>
-
-      <div className='mainDisplay'>
-
-          <div className="filteredHotels">
-            <div>
-                  <h3>Price Range</h3>
-                  {priceRanges.map((range, index) => (
-                      <div key={range.label}>
+                  <div className='tripRadioH'>
+                      {/*<label htmlFor="India">
                         <input
-                          type="checkbox"
-                          id={range.label}
-                          /*checked={selectedRanges.some(
-                            (selectedRange) =>
-                              selectedRange.valueMin === range.valueMin &&
-                              selectedRange.valueMax === range.valueMax
-                          )}*/
-                          checked={isChecked.forPrice[index]}
-                          onChange={() => handlePriceChange(index, range.valueMin, range.valueMax)}
-                        />
-                        <label htmlFor={range.label}>{range.label}</label>
+                          type="radio" id="India" value="India" name='scope'/>
+                          {/*checked={selectedOption === 'option1'} //onChange={handleOptionChange}*}
+                        
+                        India
+                      </label>
+                      <label htmlFor="International">
+                        <input type="radio" id="International" value="International" name='scope' />
+                        International
+                      </label>*/}
+                      <input type="radio" value="India" name='trip' />India
+                      <input type="radio" value="International" name='trip' />International
+                  </div>
+
+                  <div className='whereH'>
+                      
+                      <label htmlFor="location">Where</label>
+                      <input type="text" id="location" placeholder="Enter location" value={location} onChange={(e) => setLocation(e.target.value)} />
+                      
+                  </div>
+
+                  <div className='checkDateH'>
+                      <div className='child2'>
+                      <label htmlFor="date" onClick={() => setShowCal((prev) => !prev)}>Check-in</label>
+                        <div className="displayStartDate" onClick={() => setShowCal((prev) => !prev)}>
+                          <DateComponent dateVal = { startDate } />
+                        </div>
                       </div>
-                  ))}
-            </div>
 
-            <div>
-            <h3>Ratings</h3>
-                    {ratingRanges.map((rating, index) => (
-                        <div key={rating.label}>
-                          <input
-                            type="checkbox"
-                            id={rating.label}
-                            /*checked={selectedRanges.some(
-                              (selectedRange) =>
-                                selectedRange.valueMin === range.valueMin &&
-                                selectedRange.valueMax === range.valueMax
-                            )}*/
-                            checked={isChecked.forRating[index]}
-                            //onChange={() => handleRatingChange(index, rating.value)}
-                            onChange={() => applyCheckAndFilters(index, rating, 'rating')}
-                          />
-                          <label htmlFor={rating.label}>{rating.label}</label>
+                      <div className='nightsH'>{handleCalculateNights()} Nights</div>
+
+                      <div className='child2'>
+                      <label htmlFor="date" onClick={() => setShowCal((prev) => !prev)}>Check-out</label>
+                        <div className="displayEndDate" onClick={() => setShowCal((prev) => !prev)}>
+                          <DateComponent dateVal = { endDate } />
                         </div>
-                    ))}
-            </div>
+                      </div>
+                  </div>
 
-            <div>
-            <h3>Amenities</h3>
-                    {amenities.map((amenity, index) => (
-                        <div key={amenity.label}>
-                          <input
-                            type="checkbox"
-                            id={amenity.label}
-                            checked={isChecked.forAmenities[index]}
-                            //onChange={() => handleAmenitiesChange(index, amenity.label)}
-                            onChange={() => applyCheckAndFilters(index, amenity, 'amenity')}
-                          />
-                          <label htmlFor={amenity.label}>{amenity.label}</label>
+
+                    { showCal ?
+                          (
+                            <div className='calendarH'>
+                              <Calendar id="dateFlight" onChange={handleDateChange} onClickDay={handleDayClick} />
+                              <button className="calendarButtonH" onClick={() => setShowCal(!showCal)}>Done</button>
+                            </div>
+                          )
+                    : null }
+
+
+                  <div className='guestRoomPrefH'>
+                      <SelectGuestRoom passedVals={ allVals }/>
+                      
+                      <div className='travellerPrefH'>
+                        <div className='child2'>
+                        <label htmlFor="travelPref">Traveller Preference</label>
+                          <div className='travellerPrefBtnH'>
+                            <button
+                              style={{ backgroundColor: isToggled[0] ? currentColor[0] : 'initial', color: isToggled[0] ? 'white' : 'black' }}
+                              onClick={() => { handleTravelPrefBtn(true, 0) }} id="travelPrefBtn"
+                              >
+                              Couple
+                            </button>
+                            <button
+                              style={{ backgroundColor: isToggled[1] ? currentColor[1] : 'initial', color: isToggled[1] ? 'white' : 'black' }}
+                              onClick={() => { handleTravelPrefBtn(false, 1) }} id="travelPrefBtn"
+                              >
+                              goStays
+                            </button>
+                          </div>
                         </div>
-                    ))}
+                      </div>
+                  </div>
+
             </div>
 
+                  <div className="searchH">
+                    <button onClick={() => {
+                        setSearchOn((prev) => [prev[0] = true, !prev[1]])
+                    }}>Search</button>
+                  </div>
 
         </div>
 
 
+        <div className="rightSection">
+
+            <div className="rightSection1">
+              <img src="https://gos3.ibcdn.com/gosafe1-1593079151.png" alt="" />
+            </div>
+
+
+            <div className="rightSection2">
+                <div className="r1">
+                    <img src="https://gos3.ibcdn.com/img-1625069014.jpg" alt="" />
+                </div>
+                
+                <div className="r2">
+                  <img src="https://gos3.ibcdn.com/img-1626751565.jpg" alt="" />
+                </div>
+            </div>
+
+        </div>
+        
+
+      </div>
 
 
 
 
-        {/*Filter Render*/}
-        <div className='displayFilteredCards'>
-          {filteredData.map((hotel) => (
-            <div key={hotel._id}>
-              <h2>{hotel.name}</h2>
-              <p>Location: {hotel.location}</p>
-              <p>Rating: {hotel.rating}</p>
-              <p>
-                Price: ${hotel.rooms[0].price} per night
-                <br />
-                Room Type: {hotel.rooms[0].roomType}
-              </p>
-              {hotel.images.map((image, index) => (
-                <img key={index} src={image} alt={`Hotel ${index + 1}`} style={{ width: '150px', height: '100px' }} />
+          {/*Filter section*/}
+
+
+          {/*<div className='topFilter'>
+            <label>Sort By:</label>
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+              <option value="priceLowToHigh">Price: Low to High</option>
+              <option value="priceHighToLow">Price: High to Low</option>
+            </select>
+            <label>Minimum Rating:</label>
+            <select value={ratingFilter} onChange={(e) => setRatingFilter(parseInt(e.target.value))}>
+              <option value={0}>All Ratings</option>
+              <option value={3}>3+</option>
+              <option value={4}>4+</option>
+              <option value={5}>5</option>
+            </select>
+            </div>*/}
+
+          <div className='mainDisplayFilterResult'>
+
+                <div className="filteredHotels">
+                  <div className='filteredHotelsBorder'>
+                      <div className='filterSectionPriceH'>
+                            <h3>Price Range</h3>
+                            {priceRanges.map((range, index) => (
+                                <div key={range.label}>
+                                  <input
+                                    type="checkbox"
+                                    id={range.label}
+                                    /*checked={selectedRanges.some(
+                                      (selectedRange) =>
+                                        selectedRange.valueMin === range.valueMin &&
+                                        selectedRange.valueMax === range.valueMax
+                                    )}*/
+                                    checked={isChecked.forPrice[index]}
+                                    onChange={() => handlePriceChange(index, range.valueMin, range.valueMax)}
+                                  />
+                                  <label htmlFor={range.label}>{range.label}</label>
+                                </div>
+                            ))}
+                      </div>
+                      <hr></hr>
+                      <div className='filterSectionRatingH'>
+                      <h3>Ratings</h3>
+                              {ratingRanges.map((rating, index) => (
+                                  <div key={rating.label}>
+                                    <input
+                                      type="checkbox"
+                                      id={rating.label}
+                                      /*checked={selectedRanges.some(
+                                        (selectedRange) =>
+                                          selectedRange.valueMin === range.valueMin &&
+                                          selectedRange.valueMax === range.valueMax
+                                      )}*/
+                                      checked={isChecked.forRating[index]}
+                                      //onChange={() => handleRatingChange(index, rating.value)}
+                                      onChange={() => applyCheckAndFilters(index, rating, 'rating')}
+                                    />
+                                    <label htmlFor={rating.label}>{rating.label}</label>
+                                  </div>
+                              ))}
+                      </div>
+                      <hr></hr>
+                      <div className='filterSectionAmenitiesH'>
+                              <h3>Amenities</h3>
+                              {amenities.map((amenity, index) => (
+                                  <div key={amenity.label}>
+                                    <input
+                                      type="checkbox"
+                                      id={amenity.label}
+                                      checked={isChecked.forAmenities[index]}
+                                      //onChange={() => handleAmenitiesChange(index, amenity.label)}
+                                      onChange={() => applyCheckAndFilters(index, amenity, 'amenity')}
+                                    />
+                                    <label htmlFor={amenity.label}>{amenity.label}</label>
+                                  </div>
+                              ))}
+                      </div>
+
+                  </div>
+
+                  <GetToTopButton />
+
+              </div>
+
+
+
+
+
+
+            {/*Filter Render*/}
+            {filteredData.length > 0 ? 
+            <div className='displayFilteredCards'>
+              {filteredData.map((hotel) => (
+                <div className="singleFilteredCardsH" key={hotel._id} onClick={() => 
+                  {navigate(`/hotels/${hotel._id}`, { state: {guestRoomInfo, startDate, endDate, isToggled, nights }}
+                  )}}>
+                    <div className='filterImageLeftH'>
+                      <img src={hotel.images[0]} className='imageLeftH' alt="Filtered Hotel Image" />
+                    </div>
+                    <div className='filterRightH'>
+                      <div className='fR1H'>
+                        <h4>{hotel.name}</h4>
+                        <p>Location: {hotel.location}</p>
+                        <p>{hotel.rating}</p>
+                      </div>
+                      <div className='fR2H'>
+                        <div className='fRDH'>
+                          <p>₹{hotel.averageBaseCost} per night</p>
+                          <p>+ ₹{hotel.averageTaxes} TAXES</p>
+                        </div>
+                      </div>
+                      <div className='fR3H'>
+                        {hotel.amenities.join(', ')}
+                      </div>
+                        
+                    </div>
+                </div>
               ))}
             </div>
-          ))}
+            : <Loader />}
+
         </div>
 
-    </div>
-
+        </div>
     </div>
   );
 
