@@ -9,6 +9,6 @@ export const AuthNavigator = ({ children }) => {
   return isLoggedIn ? (
     children
   ) : (
-    <Navigate to="/login" state={{ prevPath: pathname }} />
+    <Navigate to="/" state={{ prevPath: pathname }} />
   );
 };

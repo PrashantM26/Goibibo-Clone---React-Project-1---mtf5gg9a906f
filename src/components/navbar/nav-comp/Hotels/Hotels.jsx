@@ -630,7 +630,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
               <option value={5}>5</option>
             </select>
             </div>*/}
-
+      {searchOn[0]? (
           <div className='mainDisplayFilterResult'>
 
                 <div className="filteredHotels">
@@ -735,9 +735,12 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
             </div>
             : <Loader />}
 
-        </div>
+          </div>
+          
+        ): null}
 
-        </div>
+      </div>
+      
     </div>
   );
 

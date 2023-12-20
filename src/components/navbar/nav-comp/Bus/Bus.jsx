@@ -3,12 +3,134 @@ import { NavLink } from "react-router-dom";
 import "./Bus.css";
 import styles from "./Bus.css";
 export function Bus() {
+
+    const navigate = useNavigate();
+
+    const [data,setData]=useState([])
+    const [filteredData, setFilteredData] = useState([]);
+
+    const [show_ticket,setShow_ticket]=useState(false);
+    const [source,setSource]=useState("delhi");
+    const [showCal, setShowCal] = useState(false);
+    const [clickCount, setClickCount] = useState(0);
+    const [displayDepart, setDisplayDepart] = useState("");
+    const [searchOn, setSearchOn] = useState([false, false]);
+    const [clickDay, setClickDay] = useState('Wed');
+    const [isToggled, setIsToggled] = useState({depart : false, arrive : false});
+    
+
+    const [selectedDepartureTime, setSelectedDepartureTime] = useState("");
+    const [selectedArrivalTime, setSelectedArrivalTime] = useState("");
+
+
+    useEffect(()=>{
+
+        axios.get(`https://academics.newtonschool.co/api/v1/bookingportals/flight/?search={"source":"${currData.source}","destination":"${currData.destination}"}&day=${currData.day}`,
+        {
+            headers: {
+              projectID: 'zvc3foel7gfi',
+            }
+          }
+        )
+        .then((response) => {
+          let filData = response.data.data.flights;
+          setData(filData);
+
+
+            if (selectedDepartureTime && isToggled.depart) {
+                filData = filData.filter(hotel => {
+                        const departureHour = parseInt(hotel.departureTime.split(":")[0]);
+                        switch (selectedDepartureTime) {
+                            case "before6AM":
+                            return departureHour < 6;
+                            case "6AMto12PM":
+                            return departureHour >= 6 && departureHour < 12;
+                            case "12PMto6PM":
+                            return departureHour >= 12 && departureHour < 18;
+                            case "after6PM":
+                            return departureHour >= 18;
+                            default:
+                            return true;
+                        }
+                    });
+            }
+
+            if (selectedArrivalTime && isToggled.arrive) {
+                filData = filData.filter(bus => {
+                        const arrivalHour = parseInt(bus.arrivalTime.split(":")[0]);
+                        switch (selectedArrivalTime) {
+                            case "before6AM":
+                            return arrivalHour < 6;
+                            case "6AMto12PM":
+                            return arrivalHour >= 6 && arrivalHour < 12;
+                            case "12PMto6PM":
+                            return arrivalHour >= 12 && arrivalHour < 18;
+                            case "after6PM":
+                            return arrivalHour >= 18;
+                            default:
+                            return true;
+                        }
+                    });
+            }
+
+            setFilteredData(filData)
+    })
+    },[searchOn[1]])
+
+
+    const [currData,setCurrdata]=useState({
+        source:"AMD",
+        destination:"ATQ",
+        departure: new Date(),
+        arrival: new Date(),
+        tickets:"",
+        day: "Mon"
+    })
+
+    const handleDateChange = (date) => {
+        if(clickCount === 0 && date.getTime() < currData.return.getTime()) {
+            setCurrdata({
+                ...currData,
+                departure : date
+            });
+            setClickCount(1);
+        }
+        else {
+          if(currData.departure.getTime() < date.getTime()){
+            setCurrdata({
+                ...currData,
+                return : date
+            });
+            setClickCount(0);
+          }
+          else{
+            setCurrdata({
+                ...currData,
+                departure : date
+            });
+            setClickCount(1);
+          }
+        }
+      };
+
+      
+      const handleChange=(e)=>{
+
+        const {name,value,checked,type} =e.target;
+        setCurrdata({
+            ...currData,
+            [name]:type === 'checkbox' ? checked :value
+        })
+        
+    }
+
+
     return (
         <div className={styles.mainDiv}>   
             <div className="Home">
              <div className="background-col" ></div>
             <div className="background-col2"></div>
-            <div className="bus-headline">
+        <div className="bus-headline">
                 <h2 className="bus-headline-h1">Bus Ticket Booking</h2>
                 
             
@@ -80,7 +202,7 @@ export function Bus() {
 
                 </div>
             </div>
-                </div>
+        </div>
                 </div>
             <div className="popularBusRoutesHeading">
                 <h2>Popular Bus Routes</h2>

@@ -1,12 +1,13 @@
 import "../../styles/App.css";
 import React, { useState } from "react";
 import { NavLink, NavNavLink } from "react-router-dom";
-import { Login, Signup } from "./nav-comp/Authentication/LoginSignup";
+import { Login, SignUp } from "./nav-comp/Authentication/LoginSignup";
 
 export const Navbar = () => {
 
   const [show,setShow]=useState(false)
   const [userLoginName, setUserLoginName] = useState("Login Or Signup")
+  {false && <SignUp setUserName={setUserLoginName} />}
     return(
         /*<nav className="navbar-container">
         <aside >
@@ -49,7 +50,7 @@ export const Navbar = () => {
       <div>
 
             <div>
-           { show &&<Login setShow={setShow} show={show} setUserName={setUserLoginName} userName={userLoginName} />}
+           { show &&<Login setShow={setShow} show={show} setUserName={setUserLoginName} />}
             </div>
             
             <div className="class">
@@ -86,7 +87,8 @@ export const Navbar = () => {
                         </span>
                         <span>
                             <div><p className="gr-font10 gr-light gr-helvetica gr-color666">Manage Booking</p>
-                                <p className="gr-font14 gr-quicksand gr-bold gr-color333 hype">My Trips</p>
+                                <p className="gr-font14 gr-quicksand gr-bold gr-color333 hype">
+                                <NavLink className="NavLink" to="/bookinglist">My Trips</NavLink></p>
                             </div></span><div className="tooltip gr-grey-text--dark">
                             <p>Access your bookings, easy cancellation, date change and much more</p>
                         </div></div>
@@ -97,7 +99,7 @@ export const Navbar = () => {
                 <p className="gr-cap-text gr-blue-text gr-bold" onClick={()=>{
                     console.log("clicked")
                     setShow(!show);
-                }} >Login or Signup</p>
+                }} >{userLoginName}</p>
                     </div></div></div>
             
             <div id="id01" className="sign-in">

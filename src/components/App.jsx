@@ -9,9 +9,9 @@ import { HotelDetails } from "./navbar/nav-comp/Hotels/HotelDetails"
 import { HotelBooking } from "./navbar/nav-comp/Hotels/HotelBooking"
 import { Trains } from "./navbar/nav-comp/Trains/Trains"
 import { Bus } from "./navbar/nav-comp/Bus/Bus"
-import { Profile } from "./Profile"
+import { BookingList } from "./navbar/nav-comp/MyBookings/BookingList";
 import { Login } from "./navbar/nav-comp/Authentication/LoginSignup"
-import { Signup } from "./navbar/nav-comp/Authentication/LoginSignup"
+import { SignUp } from "./navbar/nav-comp/Authentication/LoginSignup"
 import { AuthProvider } from "./navbar/nav-comp/Authentication/AuthProvider";
 import { AuthNavigator } from "./navbar/nav-comp/Authentication/AuthNavigator";
 
@@ -22,16 +22,16 @@ function App() {
       <AuthProvider>
         <Navbar />
         <Routes>
-          <Route path="/flights" element={<Flights />} />
+          <Route path="/flights" element={<AuthNavigator><Flights /></AuthNavigator>} />
           <Route path="/flights/:id" element={<FlightBooking />} />
-          <Route path="/hotels" element={<Hotels />} />
+          <Route path="/hotels" element={<AuthNavigator><Hotels /></AuthNavigator>} />
           <Route path="/hotels/:id" element={<HotelDetails />} />
           <Route path="/hotels/:id/booking" element={<HotelBooking />} />
           <Route path="/trains" element={<Trains />} />
-          <Route path="/bus" element={<Bus />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/bus" element={<AuthNavigator><Bus /></AuthNavigator>} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/bookinglist" element={<AuthNavigator><BookingList /></AuthNavigator>} />
         </Routes>
       </AuthProvider>
     </div>
