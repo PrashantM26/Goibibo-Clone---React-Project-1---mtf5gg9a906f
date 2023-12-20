@@ -373,6 +373,8 @@
 
   .singleFilteredCardsH:hover{
     transform: scale(1.05);
+    border-top: 2px solid darkred;
+    border-bottom: 2px solid darkred;
   }
 
   .filterImageLeftH{

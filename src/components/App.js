@@ -10,26 +10,30 @@ import { HotelBooking } from "./navbar/nav-comp/Hotels/HotelBooking"
 import { Trains } from "./navbar/nav-comp/Trains/Trains"
 import { Bus } from "./navbar/nav-comp/Bus/Bus"
 import { Profile } from "./Profile"
-import { Login } from "./navbar/nav-comp/LoginSignup"
-import { Signup } from "./navbar/nav-comp/LoginSignup"
+import { Login } from "./navbar/nav-comp/Authentication/LoginSignup"
+import { Signup } from "./navbar/nav-comp/Authentication/LoginSignup"
+import { AuthProvider } from "./navbar/nav-comp/Authentication/AuthProvider";
+import { AuthNavigator } from "./navbar/nav-comp/Authentication/AuthNavigator";
 
 function App() {
 
   return(
     <div>
-      <Navbar />
-      <Routes>
-        <Route path="/flights" element={<Flights />} />
-        <Route path="/flights/:id" element={<FlightBooking />} />
-        <Route path="/hotels" element={<Hotels />} />
-        <Route path="/hotels/:id" element={<HotelDetails />} />
-        <Route path="/hotels/:id/booking" element={<HotelBooking />} />
-        <Route path="/trains" element={<Trains />} />
-        <Route path="/bus" element={<Bus />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/flights" element={<Flights />} />
+          <Route path="/flights/:id" element={<FlightBooking />} />
+          <Route path="/hotels" element={<Hotels />} />
+          <Route path="/hotels/:id" element={<HotelDetails />} />
+          <Route path="/hotels/:id/booking" element={<HotelBooking />} />
+          <Route path="/trains" element={<Trains />} />
+          <Route path="/bus" element={<Bus />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </AuthProvider>
     </div>
   )
 }

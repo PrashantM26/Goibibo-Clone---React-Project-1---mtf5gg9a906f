@@ -1,11 +1,12 @@
 import "../../styles/App.css";
 import React, { useState } from "react";
 import { NavLink, NavNavLink } from "react-router-dom";
-import { Signup } from "./nav-comp/LoginSignup"
+import { Login, Signup } from "./nav-comp/Authentication/LoginSignup";
 
 export const Navbar = () => {
 
   const [show,setShow]=useState(false)
+  const [userLoginName, setUserLoginName] = useState("Login Or Signup")
     return(
         /*<nav className="navbar-container">
         <aside >
@@ -48,7 +49,7 @@ export const Navbar = () => {
       <div>
 
             <div>
-           { show &&<Signup/>}
+           { show &&<Login setShow={setShow} show={show} setUserName={setUserLoginName} userName={userLoginName} />}
             </div>
             
             <div className="class">

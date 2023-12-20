@@ -27,7 +27,7 @@ export function Flights()
     const [searchOn, setSearchOn] = useState([false, false]);
     const [clickDay, setClickDay] = useState('Wed');
     const [isToggled, setIsToggled] = useState({depart : false, stop : false});
-
+    
 
 
     const [selectedDepartureTime, setSelectedDepartureTime] = useState("");

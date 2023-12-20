@@ -22,6 +22,8 @@ export function Hotels() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [showCal, setShowCal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [checkLoad, setCheckLoad] = useState(false);
   const [clickDay, setClickDay] = useState('');
   const [clickCount, setClickCount] = useState(0);
   const [isToggled, setIsToggled] = useState([false, false]);    // 0 for couples, 1 for stay
@@ -108,6 +110,7 @@ export function Hotels() {
 
 
   useEffect(() => {
+    setIsLoading(true)
     async function fetchHotels() {
       try {
         const response = await axios.get(
@@ -151,6 +154,7 @@ export function Hotels() {
           hotel.averageBaseCost = averageBaseCost;
           hotel.averageTaxes = averageTaxes;
         });
+        setIsLoading(false);
         setFilteredData(filData)
         //console.log(filData);
 
@@ -166,6 +170,21 @@ export function Hotels() {
   }, [searchOn[1]]);
 
   console.log(filteredData)
+
+
+  useEffect(() => {    
+                                                      //Ask question
+    if(checkLoad){
+      const timeoutId = setTimeout(() => {
+        setCheckLoad(false)
+      }, 2000)
+      return () => clearTimeout(timeoutId)
+    }
+  }, [checkLoad])
+
+  console.log("YAYYYYY", checkLoad)
+
+
 
   useEffect(() => {
     // Sorting the hotels based on selected sorting option
@@ -573,13 +592,12 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
         <div className="rightSection">
 
             <div className="rightSection1">
-              <img src="https://gos3.ibcdn.com/gosafe1-1593079151.png" alt="" />
+              <img src="https://gos3.ibcdn.com/meta-1-1694597822.jpg" alt="" />
             </div>
-
-
+            
             <div className="rightSection2">
                 <div className="r1">
-                    <img src="https://gos3.ibcdn.com/img-1625069014.jpg" alt="" />
+                    <img src="https://gos3.ibcdn.com/offers-640X268-1702450350.jpg" alt="" />
                 </div>
                 
                 <div className="r2">
@@ -630,7 +648,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                                         selectedRange.valueMax === range.valueMax
                                     )}*/
                                     checked={isChecked.forPrice[index]}
-                                    onChange={() => handlePriceChange(index, range.valueMin, range.valueMax)}
+                                    onChange={() => (setCheckLoad(true),handlePriceChange(index, range.valueMin, range.valueMax))}
                                   />
                                   <label htmlFor={range.label}>{range.label}</label>
                                 </div>
@@ -651,7 +669,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                                       )}*/
                                       checked={isChecked.forRating[index]}
                                       //onChange={() => handleRatingChange(index, rating.value)}
-                                      onChange={() => applyCheckAndFilters(index, rating, 'rating')}
+                                      onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, rating, 'rating'))}
                                     />
                                     <label htmlFor={rating.label}>{rating.label}</label>
                                   </div>
@@ -667,7 +685,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                                       id={amenity.label}
                                       checked={isChecked.forAmenities[index]}
                                       //onChange={() => handleAmenitiesChange(index, amenity.label)}
-                                      onChange={() => applyCheckAndFilters(index, amenity, 'amenity')}
+                                      onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, amenity, 'amenity'))}
                                     />
                                     <label htmlFor={amenity.label}>{amenity.label}</label>
                                   </div>
@@ -686,7 +704,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
 
 
             {/*Filter Render*/}
-            {filteredData.length > 0 ? 
+            {!checkLoad ? 
             <div className='displayFilteredCards'>
               {filteredData.map((hotel) => (
                 <div className="singleFilteredCardsH" key={hotel._id} onClick={() => 
