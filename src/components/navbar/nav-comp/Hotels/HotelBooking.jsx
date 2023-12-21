@@ -34,11 +34,12 @@ export const HotelBooking = () => {
         }
         priceSummary();
     }, [])
-    const token = sessionStorage.getItem("userToken")
+
+    const token = sessionStorage.getItem("user-token")
     const bookingData_config = {
         headers: {
             Authorization: `Bearer ${token}`,
-            projectId: 'zvc3foel7gfi',
+            projectID: 'zvc3foel7gfi',
         },
     }
 

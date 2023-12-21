@@ -1,7 +1,10 @@
 import React from 'react';
 
 export const DateComponent = ({ dateVal, type, setterFnc }) => {
-  const date = new Date(dateVal);
+  let date = new Date(dateVal);
+  if(type === 'today'){
+    date = new Date();
+  }
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
@@ -23,6 +26,9 @@ export const DateComponent = ({ dateVal, type, setterFnc }) => {
     }
     else if(type=='shortDay' && typeof setterFnc === 'function' ){
       return setterFnc(() => dayOfWeek);
+    }
+    else if(type=='today'){
+      return setterFnc(formattedDateFlights)
     }
     else if(type=="shortDay"){
       return dayOfWeek;

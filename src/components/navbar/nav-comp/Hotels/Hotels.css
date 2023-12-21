@@ -381,7 +381,6 @@
     display: flex;
     width: 20%;
     padding-left: 5px;
-    padding-right: 5px;
     margin-right: 30px;
     align-items: center;
     overflow: hidden;
@@ -389,7 +388,7 @@
   }
 
   .imageLeftH{
-    width: 130px;
+    width: 135px;
     height: 120px;
     object-fit: cover;
   }
@@ -434,7 +433,7 @@
   }
 
   .fR3H{
-    margin-top: 15px;
+    margin-top: -15px;
     display: flex;
     flex-direction: row;
   }

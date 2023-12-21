@@ -4,9 +4,10 @@ import "./MyBookings.css";
 
 export const BookingList = () => {
   const [bookings, setBookings] = useState([]);
+  const token = sessionStorage.getItem("user-token")
   const bookingData_config = {
     headers: {
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGI3NTI2M2UxN2I1ZjFmNmMzNTRjMCIsImlhdCI6MTcwMjg2NzQwNCwiZXhwIjoxNzM0NDAzNDA0fQ.rrkw78j0GJ3zYBQQ22qwJaeAuiQeL7Oqj5fsKFHO_XE",
+        Authorization: `Bearer ${token}`,
         projectId: 'zvc3foel7gfi',
     },
   }

@@ -131,7 +131,9 @@ export function Hotels() {
         /*} else {
           alert('Failed to fetch hotel datea');
         }*/
-
+        if(filData.length==0){
+          alert("No data fetched");
+        }
         if(isToggled[0]){
           filData = filData.filter((hotel) => {
             const check = hotel.houseRules.guestProfile.unmarriedCouplesAllowed
@@ -182,7 +184,7 @@ export function Hotels() {
     }
   }, [checkLoad])
 
-  console.log("YAYYYYY", checkLoad)
+  //console.log("YAYYYYY", checkLoad)
 
 
 
@@ -212,7 +214,7 @@ export function Hotels() {
 
 //console.log(filData)
 
-  const handlePriceChange = (index, valueMin, valueMax) => {
+  /*const handlePriceChange = (index, valueMin, valueMax) => {
     const nChecked = {...isChecked};
     nChecked.forPrice[index] = !nChecked.forPrice[index];
     setChecked((prev) => ({
@@ -229,12 +231,12 @@ export function Hotels() {
         //const rooms = hotel.rooms.costPerNight;
         /*const costNight = rooms.map((room) => {
           room.costPerNight;
-        })*/
+        })*
         const arr = filData.map((obj) => {
           return obj.rooms
           /*obj.rooms.map((roomData) => {
             return roomData.costPerNight;
-          });*/
+          });*
         });
         let data = [];
         console.log(arr);
@@ -245,13 +247,13 @@ export function Hotels() {
         })
         /*const cost = arr.map((roomData) => {
           return roomData.costPerNight;
-        })*/
+        })*
         console.log(data);
         //console.log(hotel)
         //return hotelPrice >= parseInt(valueMin) && hotelPrice <= parseInt(valueMax);
       //})
     }
-  };
+  };*/
 
   //console.log("HUHUHUSHUASHUSUSHUGY     ",filData)
   
@@ -326,7 +328,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
 
 
 
-  const applyCheckAndFilters = (index, typeObj, type) => {
+  /*const applyCheckAndFilters = (index, typeObj, type) => {
     console.log("HIIIITTTTTTTTTTTTTTTTTTTT")
     let filData = [...hotels];
     if(type === 'rating'){
@@ -364,7 +366,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
 
           return ifTrue;
         });
-      }*/
+      }*
     }
 
     if(type === 'amenity'){
@@ -404,7 +406,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
           
           return true;
         });
-      }*/
+      }*
     }
 
     const checkedRatings = ratingRanges
@@ -427,9 +429,68 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
     });
 
     setFilteredData(filData);
-  }
+  }*/
     //console.log(isChecked)
-    console.log(filteredData)
+
+
+
+    const handlePriceChange = (index) => {
+      const newChecked = { ...isChecked };
+      newChecked.forPrice[index] = !newChecked.forPrice[index];
+      setChecked(newChecked);
+    };
+  
+    const handleRatingChange = (index) => {
+      const newChecked = { ...isChecked };
+      newChecked.forRating = newChecked.forRating.map((value, i) => i === index ? !value : false);
+      setChecked(newChecked);
+    };
+  
+    const handleAmenityChange = (index) => {
+      const newChecked = { ...isChecked };
+      newChecked.forAmenities[index] = !newChecked.forAmenities[index];
+      setChecked(newChecked);
+    };
+  
+    // Apply filters to data
+    const filteredHotels = filteredData
+      .filter(item => {
+        // Apply price filter
+          if (isChecked.forPrice.some(Boolean)) {
+            const priceFilter = priceRanges
+              .filter((range, i) => isChecked.forPrice[i])
+              .some(range => item.averageBaseCost >= range.valueMin && item.averageBaseCost <= range.valueMax);
+    
+            if (!priceFilter) {
+              return false;
+            }
+          }
+    
+          // Apply rating filter
+          if (isChecked.forRating.some(Boolean)) {
+            const ratingFilter = ratingRanges
+              .filter((rating, i) => isChecked.forRating[i])
+              .some(rating => item.rating >= parseFloat(rating.value));
+    
+            if (!ratingFilter) {
+              return false;
+            }
+          }
+    
+          // Apply amenities filter
+          if (isChecked.forAmenities.some(Boolean)) {
+            const amenitiesFilter = amenities
+              .filter((amenity, i) => isChecked.forAmenities[i])
+              .some(amenity => item.amenities.includes(amenity.label));
+    
+            if (!amenitiesFilter) {
+              return false;
+            }
+          }
+  
+        return true;
+      });
+    console.log(filteredHotels)
 
 
 
@@ -648,7 +709,8 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                                         selectedRange.valueMax === range.valueMax
                                     )}*/
                                     checked={isChecked.forPrice[index]}
-                                    onChange={() => (setCheckLoad(true),handlePriceChange(index, range.valueMin, range.valueMax))}
+                                    //onChange={() => (setCheckLoad(true),handlePriceChange(index, range.valueMin, range.valueMax))}
+                                    onChange={() => (setCheckLoad(true),handlePriceChange(index))}
                                   />
                                   <label htmlFor={range.label}>{range.label}</label>
                                 </div>
@@ -669,7 +731,8 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                                       )}*/
                                       checked={isChecked.forRating[index]}
                                       //onChange={() => handleRatingChange(index, rating.value)}
-                                      onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, rating, 'rating'))}
+                                      //onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, rating, 'rating'))}
+                                      onChange={() => (setCheckLoad(true),handleRatingChange(index))}
                                     />
                                     <label htmlFor={rating.label}>{rating.label}</label>
                                   </div>
@@ -685,7 +748,8 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                                       id={amenity.label}
                                       checked={isChecked.forAmenities[index]}
                                       //onChange={() => handleAmenitiesChange(index, amenity.label)}
-                                      onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, amenity, 'amenity'))}
+                                      //onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, amenity, 'amenity'))}
+                                      onChange={() => (setCheckLoad(true),handleAmenityChange(index))}
                                     />
                                     <label htmlFor={amenity.label}>{amenity.label}</label>
                                   </div>
@@ -706,7 +770,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
             {/*Filter Render*/}
             {!checkLoad ? 
             <div className='displayFilteredCards'>
-              {filteredData.map((hotel) => (
+              {filteredHotels.map((hotel) => (
                 <div className="singleFilteredCardsH" key={hotel._id} onClick={() => 
                   {navigate(`/hotels/${hotel._id}`, { state: {guestRoomInfo, startDate, endDate, isToggled, nights }}
                   )}}>
@@ -736,7 +800,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
             : <Loader />}
 
           </div>
-          
+
         ): null}
 
       </div>

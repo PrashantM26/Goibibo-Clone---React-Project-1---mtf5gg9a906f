@@ -118,10 +118,17 @@
   .span {
     border-radius: 8px;
     background-color: rgba(34, 118, 227, 0.1);
-    padding: 1rem 1rem;
+    padding: 0.4rem 1rem;
     font-size: 1rem;
     color: rgb(34, 118, 227);
     margin-left: 10px;
+    cursor: pointer;
+  }
+  .span p{
+    font-size: 0.6rem;
+  }
+  .span:hover{
+    border: 2px solid black;
   }
   .active {
     border-bottom: 2px solid rgb(34, 118, 227);
@@ -204,6 +211,8 @@
   
   
   
+
+
   
   
   
@@ -236,7 +245,414 @@
   
   
   
+
+
+
+
+
+
+
+  /*For Bus Filter*/
+  .filterResultB{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    gap: 80px;
+    margin-top: 30px;
+  }
   
+  .filtersB{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin-left: 100px;
+  }
+
+  .filterBorderB{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    position: sticky;
+    top: 20px;
+  }
+
+
+
+  .busTypeB, .departuresB, .arrivalB{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+
+
+
+  .busTypeB>button, .departuresB>button, .arrivalB>button{
+    font-size: 0.8rem;
+    height: 40px;
+    width: 80px;
+  }
+
+
+
+  .filterSectionAmenitiesB{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .filterSectionAmenitiesB div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 20px;
+  }
+
+  .filterSectionAmenitiesB div input{
+    margin-right: 15px;
+  }
+
+
+
+  /*For BUS cards*/
+  .bus-cards-holder{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-right: 100px;
+  }
+
+  .bus-card-single{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 15px;
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .bus-card-single:hover{
+    transform: scale(1.05);
+  }
+
+  .bus-card-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .bus-arrival-card{
+    margin-left: 20px;
+  }
+
+  .bus-departure-card{
+    margin-left: -10px;
+  }
+
+  .bus-card-mid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-top: 10px;
+  }
+
+  .bus-source-card{
+    margin-left: 140px;
+  }
+
+  .bus-destination-card{
+    margin-left: 30px;
+  }
+
+
+  .bus-mid-low{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .bus-rating-card{
+    color: white;
+    background-color: #1CA54F;
+    height: 25px;
+    width: 30px;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .bus-seat-show-card{
+    color: white;
+    background-color: #1CA54F;
+    border-radius: 10px;
+  }
+
+  .seat-holder{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    border-top: 0.5px solid black;
+    padding-top: 10px;
+    justify-content: space-between;
+  }
+
+  .board-drop-point{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 50px;
+  }
+
+  .board-point, .drop-point{
+    margin-left: 30px;
+   border-right: 1px dashed black;
+    padding-right: 30px;
+  }
+
+  .seat-select{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .seat-container {
+    display: flex;
+    flex-direction: column;
+    
+    margin-bottom: 10px;
+  }
+  .seat-container p{
+    text-align: center;
+  }
+  
+  .seat-row {
+    display: flex;
+    border: 0.5px solid black;
+  }
+  
+  .seat {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    background-color: gray;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: black;
+  }
+  
+  .seat.clicked {
+    background-color: green;
+  }
+
+  .seat-select button{
+    color: white;
+    background-color: #1CA54F;
+    border-radius: 10px;
+  }
+
+
+  .show-amenities-btn-holder{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .show-amenities-btn-holder button{
+    background-color: white;
+    color: blueviolet;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+
+  .amenities-list{
+    margin-top: 15px;
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+
+
+
+
+
+
+
+
+  /*For Bus Book*/
+
+  .top-color{
+    height: 250px;
+    background-color: #166bd3;
+  }
+
+  .top-info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+  }
+
+  .top-info div h4{
+    color: white;
+  }
+
+  .top-info h4{
+    margin-top: -200px;
+  }
+
+
+  .fast{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .fast h4, .fast p{
+    display: inline;
+    flex-grow: 1;
+  }
+
+  .fast h4, .fast p{
+    color: white;
+  }
+
+  .fast p{
+    margin-top: -204px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: -560px;
+  }
+
+  .bus-body-booking{
+    display: flex;
+    flex-direction: row;
+    margin-top: -110px;
+    z-index: 10;
+    gap: 50px;
+  }
+
+  .bus-details-booking{
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    gap: 20px;
+  }
+
+  .left-upper-bus-booking{
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    padding: 20px;
+  }
+
+  .bus-name-booking{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .bus-type-cancel-booking{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .cancel-policy-bus{
+    color: #166bd3;
+  }
+
+  .bus-seat-book{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .left-lower-bus-booking{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  
+  .boarding-point-bus-booking{
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    height: 200px;
+    padding: 30px;
+    width: 50%;
+  }
+
+  .blue-date-bus{
+    color: #166bd3;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .dropping-point-bus-booking{
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    height: 200px;
+    padding: 30px;
+    width: 50%;
+  }
+
+  .boarding-point-bus-booking p, .dropping-point-bus-booking p{
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .price-summary-bus-booking{
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    padding: 20px;
+  }
+
+  .base-bus-fare, .bus-tax-fare, .bus-total-fare{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 400px;
+    margin-top: 20px;
+    border-top: 0.5px solid black;
+    padding-top: 5px;
+  }
+
+  .bus-book-btton{
+    background-color: rgb(255, 109, 56);
+    margin-top: 30px;
+    color: white;
+    width: 40%;
+    margin-left: 120px;
+    border-radius: 10px;
+  }
+
+
+
+
+
+
+
+
+
   
   
   /*Bus footer*/

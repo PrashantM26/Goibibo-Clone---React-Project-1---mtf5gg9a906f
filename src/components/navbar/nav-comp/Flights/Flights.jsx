@@ -37,10 +37,36 @@ export function Flights()
     const [durationRange, setDurationRange] = useState([]);
     const [maxSelDuration, setMaxSelDuration] = useState();
 
+    const airportAndCity = {
+        'IXJ':{city:'jammu'},
+        'CCU':{city:'kolkata'},
+        'MAA':{city:'chennai'},
+        'ATQ':{city:'punjab'},
+        'BLR':{city:'bengaluru'},
+        'BBI':{city:'bhubaneswar'},
+        'PAT':{city:'patna'},
+        'DEL':{city:'new delhi'},
+        'BOM':{city:'mumbai'},
+        'NAG':{city:'nagpur'},
+        'PNQ':{city:'pune'},
+        'DED':{city:'dehradun'},
+        'GOI':{city:'goa'},
+        'GAU':{city:'guwahati'},
+        'RPR':{city:'chhattisgarh'},
+        'IXM':{city:'madurai'},
+        'GAY':{city:'gaya'},
+        'AMD':{city:'ahmedabad'},
+        'BDQ':{city:'vadodara'},
+        'STV':{city:'surat'},
+        'IXE':{city:'mangaluru'},
+        'JAI':{city:'jaipur'},
+        'LKO':{city:'lucknow'},
+        'COK':{city:'cochin'},
+    }
 
     const [currData,setCurrdata]=useState({
-        from:"AMD",
-        destination:"ATQ",
+        from:"",
+        destination:"",
         departure: new Date(),
         return: new Date(),
         tickettype:"",
@@ -66,9 +92,11 @@ export function Flights()
         .then((response) => {
           let filData = response.data.data.flights;
           setData(filData);
-
+          setFilteredData(filData);
           //console.log(filData);
-
+          if(filData.length==0){
+            alert("No data fetched");
+          }
           const durations = filData.map(flight => flight.duration);
           const minDuration = Math.min(...durations);
           const maxDuration = Math.max(...durations);
@@ -90,58 +118,7 @@ export function Flights()
     //useEffect(() => {
         //let filData = data;
                     // Filter by departure time
-            if (selectedDepartureTime && isToggled.depart) {
-                filData = filData.filter(flight => {
-                        const departureHour = parseInt(flight.departureTime.split(":")[0]);
-                        switch (selectedDepartureTime) {
-                            case "before6AM":
-                            return departureHour < 6;
-                            case "6AMto12PM":
-                            return departureHour >= 6 && departureHour < 12;
-                            case "12PMto6PM":
-                            return departureHour >= 12 && departureHour < 18;
-                            case "after6PM":
-                            return departureHour >= 18;
-                            default:
-                            return true;
-                        }
-                    });
-            }
-
-            // Filter by stops
-            if (selectedStops  && isToggled.stop) {
-                filData = filData.filter(flight => {
-                    const stops = flight.stops;
-                    switch (selectedStops) {
-                        case "direct":
-                        return stops === 0;
-                        case "1stop":
-                        return stops === 1;
-                        case "2plusstops":
-                        return stops >= 2;
-                        default:
-                        return true;
-                    }
-                    });
-            }
-
-
-            // Filter by price range
-
-            filData = filData.filter(flight => {
-                    const ticketPrice = flight.ticketPrice;
-                    return (ticketPrice >= priceRange[0] && ticketPrice <= maxSelPrice);
-                })
             
-
-            filData = filData.filter(flight => {
-                    const duration = flight.duration;
-                    return (duration >= durationRange[0] && duration <= maxSelDuration);
-                })
-            
-            //console.log(filData)
-            //if(searchOn[1]){
-                setFilteredData(filData)
             //}
             //console.log("Filters Applied")
     })
@@ -159,23 +136,43 @@ export function Flights()
       });
     }*/
 
-
-
-
     
 
 
-    const handleChange=(e)=>{
+    /*const handleChange=(e)=>{
 
         const {name,value,checked,type} =e.target;
-        setCurrdata({
+        const inputData = value.toLowerCase();
+        const matchingCode = Object.keys(airportAndCity).find(
+            code => airportAndCity[code].city.toLowerCase() === inputData
+          );
+        console.log("Matching Code            jhghfgfgfg      ",matchingCode)
+        if (matchingCode) {
+            setCurrdata({
+                ...currData,
+                [name]:type === 'checkbox' ? checked : matchingCode ? matchingCode : value
+            })
+        }
+
+    }*/
+
+    const handleChange = (e) => {
+        const { name, value, checked, type } = e.target;
+        const inputData = value.toLowerCase();
+        // Check if the input matches a city name
+        const matchingCity = Object.keys(airportAndCity).find(
+          (code) => airportAndCity[code].city.toLowerCase() === inputData
+        );
+        // Check if the input is a known city
+        if (matchingCity) {
+          setCurrdata({
             ...currData,
-            [name]:type === 'checkbox' ? checked :value
-        })
-        
-    }
+            [name]: type === 'checkbox' ? checked : matchingCity
+          });
+        }
+      };
 
-
+    console.log(currData);
 
 
     const handleDateChange = (date) => {
@@ -224,7 +221,7 @@ export function Flights()
             day: clickDay
         }));
     }, [clickDay]);*/
-        console.log("DAY    CURR         ",currData.day)
+        //console.log("DAY    CURR         ",currData.day)
 
 
     const handlebook=async (e)=>{
@@ -246,7 +243,64 @@ export function Flights()
     }
 
 
+useEffect(() => {
+    let filtData = data;
+    if (selectedDepartureTime && isToggled.depart) {
+        filtData = filtData.filter(flight => {
+                const departureHour = parseInt(flight.departureTime.split(":")[0]);
+                switch (selectedDepartureTime) {
+                    case "before6AM":
+                    return departureHour < 6;
+                    case "6AMto12PM":
+                    return departureHour >= 6 && departureHour < 12;
+                    case "12PMto6PM":
+                    return departureHour >= 12 && departureHour < 18;
+                    case "after6PM":
+                    return departureHour >= 18;
+                    default:
+                    return true;
+                }
+            });
+    }
+
+    // Filter by stops
+    if (selectedStops  && isToggled.stop) {
+        filtData = filtData.filter(flight => {
+            const stops = flight.stops;
+            switch (selectedStops) {
+                case "direct":
+                return stops === 0;
+                case "1stop":
+                return stops === 1;
+                case "2plusstops":
+                return stops >= 2;
+                default:
+                return true;
+            }
+            });
+    }
+
+
+    // Filter by price range
+
+    filtData = filtData.filter(flight => {
+            const ticketPrice = flight.ticketPrice;
+            return (ticketPrice >= priceRange[0] && ticketPrice <= maxSelPrice);
+        })
     
+
+    filtData = filtData.filter(flight => {
+            const duration = flight.duration;
+            return (duration >= durationRange[0] && duration <= maxSelDuration);
+        })
+    
+    //console.log(filData)
+    //if(searchOn[1]){
+        setFilteredData(filtData)
+}, [selectedDepartureTime, selectedStops, maxSelDuration, maxSelPrice, isToggled])
+    
+    //console.log(filteredData)
+
     return(
         <div >
             {/*<div className="background-col" ></div>

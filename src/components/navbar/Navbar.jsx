@@ -7,7 +7,7 @@ export const Navbar = () => {
 
   const [show,setShow]=useState(false)
   const [userLoginName, setUserLoginName] = useState("Login Or Signup")
-  {false && <SignUp setUserName={setUserLoginName} />}
+  //{false && <SignUp setUserName={setUserLoginName} />}
     return(
         /*<nav className="navbar-container">
         <aside >
@@ -64,19 +64,19 @@ export const Navbar = () => {
                     </span><NavLink className="NavLink" to="/hotels">Hotels</NavLink></li>
                 <li class="  ">              
                     <span className="header-sprite nav-icon-trains gr-append-right5">
-                    </span><NavLink className="NavLink" to="/trains">Trains</NavLink></li>
+                    </span><NavLink className="NavLink" to="/">Trains</NavLink></li>
                 <li class="  ">               
                     <span className="header-sprite nav-icon-cabs gr-append-right5">
-                    </span><NavLink className="NavLink" to="/cabs">Cabs</NavLink></li>
+                    </span><NavLink className="NavLink" to="/">Cabs</NavLink></li>
                 <li class="active  ">               
                     <span className="header-sprite nav-icon-bus gr-append-right5">
                     </span><NavLink className="NavLink" to="/bus">Bus</NavLink></li>
                 <li class="active  ">
                     <span className="header-sprite nav-icon-bus gr-append-right5">
-                    </span><NavLink className="NavLink" to="/holidays">Holidays</NavLink></li>
+                    </span><NavLink className="NavLink" to="/">Holidays</NavLink></li>
                 <li class="active  ">              
                     <span className="header-sprite nav-icon-bus gr-append-right5">
-                    </span><NavLink className="NavLink" to="/forex">Forex</NavLink></li>
+                    </span><NavLink className="NavLink" to="/">Forex</NavLink></li>
 
                     
             </ul>

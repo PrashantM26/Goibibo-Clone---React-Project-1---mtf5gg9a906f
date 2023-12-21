@@ -4,7 +4,7 @@ import { useAuth } from "./AuthProvider";
 import axios from "axios";
 import { LoginSignup } from "./LoginSignup.css"
 
-export const SignUp = ({setShowSignUp, showSignUp, setUserName}) => { 
+export const SignUp = ({setShowSignUp, showSignUp, setUserName, setShow, show}) => { 
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -26,17 +26,19 @@ export const SignUp = ({setShowSignUp, showSignUp, setUserName}) => {
       console.log("res", res);
       const token = res.data.token;
       if (token) {
-        sessionStorage.setItem("userToken", token);
+        sessionStorage.removeItem("user-token");
+        sessionStorage.setItem("user-token", token);
         sessionStorage.setItem(
-          "userName",
-          JSON.stringify(res.data.data.name)
+          "user-name",
+          JSON.stringify(res.data.data.user.name)
         );
+        setShow(!show)
         setIsLoggedIn(true);
         setUserName(user.name)
         navigate("/flights");
       }
     } catch (err) {
-      console.log("Error:", err);
+      alert("Error occurred ", err);
     }
   };
   const handleFormSubmit = (e) => {
@@ -51,7 +53,6 @@ export const SignUp = ({setShowSignUp, showSignUp, setUserName}) => {
 
   return (
     <div>
-    {!showSignUp?
       <form action=""  onSubmit={handleFormSubmit}>
         <h2>SignUp</h2>
         <label htmlFor="name">Name: </label>
@@ -71,7 +72,6 @@ export const SignUp = ({setShowSignUp, showSignUp, setUserName}) => {
           <button className="login-btn" value="toLogin" onClick={() => setShowSignUp(false)}>Already Signed Up?</button>
         </div>
       </form>
-      : <Login />}
     </div>
   );
 }
@@ -120,8 +120,9 @@ export const Login = ({setShow, show, setUserName}) => {
         console.log("res", res);
         const token = res.data.token;
         if (token) {
-          sessionStorage.setItem("userToken", token);
-          sessionStorage.setItem("userName", JSON.stringify(res.data.data.name));
+          sessionStorage.removeItem("user-token");
+          sessionStorage.setItem("user-token", token);
+          sessionStorage.setItem("user-name", JSON.stringify(res.data.data.user.name));
           setIsLoggedIn(true);
           setUserName(res.data.data.name)
           setShow(!show)
@@ -132,7 +133,7 @@ export const Login = ({setShow, show, setUserName}) => {
           }
         }
       } catch (err) {
-        console.log("Error:", err);
+        alert("Error occurred, check credentials ", err);
       }
     };
     console.log(sessionStorage.getItem("userToken"))
@@ -196,14 +197,14 @@ return (
                                 </div>
                             </form>
                             )         
-                            : <SignUp setShowSignUp={setShowSignUp} /> }
+                            : <SignUp setShowSignUp={setShowSignUp} showSignUp={showSignUp} setUserName={setUserName} setShow={setShow} show={show} /> }
                             
                         </div>
                         <div>
                             <p className="privacy-policy-login">By proceeding, you agree to GoIbibo’s <a href>Privacy Policy</a>, <a href>User Agreement</a>  and <a href>Terms of Service</a></p>
                         </div>
                         <div className="close-login-btn" >
-                            <button onClick={() => {setShow(!show)}}>Close</button>
+                            { setUserName &&<button onClick={() => {setShow(!show)}}>Close</button>}
                         </div>
                     </div>
                 </div>
