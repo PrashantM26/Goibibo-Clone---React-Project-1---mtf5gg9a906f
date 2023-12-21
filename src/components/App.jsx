@@ -7,7 +7,7 @@ import { FlightBooking } from "./navbar/nav-comp/Flights/FlightBooking"
 import { Hotels } from "./navbar/nav-comp/Hotels/Hotels"
 import { HotelDetails } from "./navbar/nav-comp/Hotels/HotelDetails"
 import { HotelBooking } from "./navbar/nav-comp/Hotels/HotelBooking"
-import { Trains } from "./navbar/nav-comp/Trains/Trains"
+//import { Trains } from "./navbar/nav-comp/Trains/Trains"
 import { Bus } from "./navbar/nav-comp/Bus/Bus"
 import { BusBooking } from "./navbar/nav-comp/Bus/BusBooking"
 import { BookingList } from "./navbar/nav-comp/MyBookings/BookingList";
