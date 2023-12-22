@@ -8,7 +8,7 @@ export const BookingList = () => {
   const bookingData_config = {
     headers: {
         Authorization: `Bearer ${token}`,
-        projectId: 'zvc3foel7gfi',
+        projectID: 'zvc3foel7gfi',
     },
   }
 
