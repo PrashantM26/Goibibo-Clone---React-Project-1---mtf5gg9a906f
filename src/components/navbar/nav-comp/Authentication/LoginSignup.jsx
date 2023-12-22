@@ -14,7 +14,7 @@ export const SignUp = ({setShowSignUp, showSignUp, setUserName, setShow, show}) 
   const createUser = async (user) => {
     const config = {
             headers: {
-            projectId: "zvc3foel7gfi"
+            projectID: "zvc3foel7gfi"
             }
         }
     try {
@@ -108,7 +108,7 @@ export const Login = ({setShow, show, setUserName}) => {
     const loginUser = async (user) => {
       const config = {
           headers: {
-          projectId: "zvc3foel7gfi"
+          projectID: "zvc3foel7gfi"
           }
       }
       try {
@@ -117,26 +117,28 @@ export const Login = ({setShow, show, setUserName}) => {
           { ...user, appType: "bookingportals" },
           config
         );
-        console.log("res", res);
+        //console.log("res", res);
         const token = res.data.token;
         if (token) {
+          console.log("TOKEN FROM LOGIN", token)
           sessionStorage.removeItem("user-token");
           sessionStorage.setItem("user-token", token);
-          sessionStorage.setItem("user-name", JSON.stringify(res.data.data.user.name));
+          sessionStorage.setItem("user-name", JSON.stringify(res.data.data.name));
           setIsLoggedIn(true);
           setUserName(res.data.data.name)
-          setShow(!show)
           if(state){
             navigate(state.prevPath);
           }else{
             navigate("/flights")
           }
+          setShow(!show)
         }
       } catch (err) {
+        console.log(err)
         alert("Error occurred, check credentials ", err);
       }
     };
-    console.log(sessionStorage.getItem("userToken"))
+    
     const handleFormSubmit = (e) => {
       e.preventDefault();
       const userDetails = {

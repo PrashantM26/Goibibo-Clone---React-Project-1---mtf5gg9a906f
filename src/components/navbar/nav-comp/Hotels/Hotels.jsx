@@ -28,7 +28,7 @@ export function Hotels() {
   const [clickCount, setClickCount] = useState(0);
   const [isToggled, setIsToggled] = useState([false, false]);    // 0 for couples, 1 for stay
   const [currentColor, setCurrentColor] = useState(['', '']);
-  const [guestRoomInfo, setGuestRoomInfo] = useState('')
+  const [guestRoomInfo, setGuestRoomInfo] = useState({ adults : 1, children : 0, rooms : 1 })
   const [searchOn, setSearchOn] = useState([false, false]);  /// 0 for displaying filter list, happens first time, 1 for updating useEffect an fetching an API again
   const priceRanges = [
     { label: 'Upto ₹2000', valueMin: '0', valueMax: '2000' },
@@ -86,9 +86,12 @@ export function Hotels() {
   const [selectedRanges, setSelectedRanges] = useState([]);
 
 
-  const allVals = ( selectedValues ) => {
-    setGuestRoomInfo(() => {
-      return {...selectedValues}
+  const allVals = ( { adults, children, rooms } ) => {
+    setGuestRoomInfo({
+        ...guestRoomInfo,
+        adults : adults,
+        children : children,
+        rooms : rooms
     })}
 
     console.log("GUEST ROOM INFO    ", guestRoomInfo)
