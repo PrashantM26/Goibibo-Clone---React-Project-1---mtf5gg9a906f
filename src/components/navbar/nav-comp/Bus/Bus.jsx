@@ -303,7 +303,7 @@ export function Bus() {
 
                             <div className="filterBorderB">
 
-                                    <h4>Departure Time</h4>
+                                    <h4>Bus Type</h4>
 
                                     <div className="busTypeB">
 
