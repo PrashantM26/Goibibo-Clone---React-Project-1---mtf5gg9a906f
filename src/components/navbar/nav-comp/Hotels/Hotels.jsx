@@ -19,6 +19,7 @@ export function Hotels() {
   const [filteredData, setFilteredData] = useState([]);
   const [sortBy, setSortBy] = useState('priceLowToHigh');
   const [ratingFilter, setRatingFilter] = useState(0);
+  const [dateRange, setDateRange] = useState([new Date(), new Date()]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [showCal, setShowCal] = useState(false);
@@ -484,7 +485,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
           if (isChecked.forAmenities.some(Boolean)) {
             const amenitiesFilter = amenities
               .filter((amenity, i) => isChecked.forAmenities[i])
-              .some(amenity => item.amenities.includes(amenity.label));
+              .every(amenity => item.amenities.includes(amenity.label));
     
             if (!amenitiesFilter) {
               return false;
@@ -499,7 +500,11 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
 
 
   const handleDateChange = (date) => {
-    if(clickCount === 0 && date.getTime() < endDate.getTime()) {
+    setDateRange(date);
+    DateComponent({ dateVal : date[0], type : "shortDay", setterFnc : setClickDay });
+    setStartDate(date[0]);
+    setEndDate(date[1]);
+    /*if(clickCount === 0 && date.getTime() < endDate.getTime()) {
         setStartDate(date);
         setClickCount(1);
     }
@@ -512,16 +517,16 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
         setStartDate(date);
         setClickCount(1);
       }
-    }
+    }*/
     
   };
 
 
-  const handleDayClick = (date) => {
+  /*const handleDayClick = (date) => {
 
     DateComponent({ dateVal : date, type : "shortDay", setterFnc : setClickDay })
   
-  };
+  };*/
 
 
   let nights;
@@ -557,7 +562,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
 
 
   return (
-    <div>
+    <div className='hotels'>
       <div className="background-hotel1" ></div>
       <div className="background-hotel2"></div>
       <div className='hotelsMainSection'>
@@ -611,7 +616,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                     { showCal ?
                           (
                             <div className='calendarH'>
-                              <Calendar id="dateFlight" onChange={handleDateChange} onClickDay={handleDayClick} />
+                              <Calendar id="dateFlight" value={dateRange} minDate={new Date()} selectRange={true} onChange={handleDateChange} />
                               <button className="calendarButtonH" onClick={() => setShowCal(!showCal)}>Done</button>
                             </div>
                           )
@@ -721,7 +726,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                       </div>
                       <hr></hr>
                       <div className='filterSectionRatingH'>
-                      <h3>Ratings</h3>
+                          <h3>Ratings</h3>
                               {ratingRanges.map((rating, index) => (
                                   <div key={rating.label}>
                                     <input

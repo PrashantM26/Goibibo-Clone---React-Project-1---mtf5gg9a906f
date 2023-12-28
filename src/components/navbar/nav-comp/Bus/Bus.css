@@ -21,6 +21,11 @@
     transform: translate(64%);
     border-radius: 50%;
   }
+
+  .mainBus{
+    background-color: #EEF4FD;
+  }
+
   .bus-headline-h1 {
     font-size: 2.2rem;
     font-family: Quicksand;
@@ -42,7 +47,6 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    background-color: rgb(239, 243, 248);
     position: relative;
   }
   .destination-crousal-div {
@@ -264,16 +268,19 @@
   .filtersB{
     display: flex;
     flex-direction: column;
-    width: 25%;
-    margin-left: 100px;
+    width: 20%;
+    margin-left: 120px;
+    margin-right: -20px;
+
   }
 
   .filterBorderB{
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
-    position: sticky;
     top: 20px;
+    background-color: white;
+    border: none;
   }
 
 
@@ -285,6 +292,7 @@
     
     margin-top: 15px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
   }
 
 
@@ -292,7 +300,9 @@
   .busTypeB>button, .departuresB>button, .arrivalB>button{
     font-size: 0.8rem;
     height: 40px;
-    width: 80px;
+    width: 120px;
+    margin-top: 10px;
+    border: none;
   }
 
 
@@ -321,7 +331,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    margin-right: 100px;
+    margin-right: 120px;
   }
 
   .bus-card-single{
@@ -361,7 +371,7 @@
     flex-direction: row;
     justify-content: space-between;
     font-size: 0.8rem;
-    margin-top: 10px;
+    margin-top: 6px;
   }
 
   .bus-source-card{
@@ -377,7 +387,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 12px;
+  }
+
+  .bus-price-card{
+    margin-right: 10px;
   }
 
   .bus-rating-card{
@@ -392,7 +406,11 @@
   .bus-seat-show-card{
     color: white;
     background-color: #1CA54F;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 110px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .seat-holder{
@@ -465,14 +483,20 @@
   .show-amenities-btn-holder{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 
-  .show-amenities-btn-holder button{
+  .show-amenities-btn-holder button {
     background-color: white;
     color: blueviolet;
     margin-top: 15px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+
+  .liveTracking{
+    margin-top: 15px;
+    font-size: 14px;
   }
 
   .amenities-list{
@@ -483,6 +507,12 @@
     justify-content: flex-start;
     margin-left: 15px;
     margin-right: 15px;
+  }
+
+  .goDealApplied{
+    margin-right: 40px;
+    font-size: 12px;
+    background-color: #FFF9ED;
   }
 
 

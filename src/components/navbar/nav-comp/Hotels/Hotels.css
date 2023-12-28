@@ -22,6 +22,10 @@
   z-index: 0;
 }
 
+.hotels{
+  background-color: #EEF4FD;
+}
+
 .hotelsMainSection{
   display: flex;
   flex-direction: column;
@@ -310,12 +314,13 @@
   }
 
   .filteredHotelsBorder{
-    border: 0.5px solid gray;
+    border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     padding-top: 40px;
     padding-left: 40px;
     padding-right: 40px;
     border-radius: 20px;
+    background-color: white;
   }
   
   .filterSectionPriceH, .filterSectionRatingH, .filterSectionAmenitiesH{
@@ -334,10 +339,18 @@
     margin-right: 15px;
   }
 
+  .filterSectionRatingH div input + label:nth-child(1) {
+    text-align: center;
+    height: 40px;
+    width: 60px;
+    background-color: #11998E;
+    color: white;
+  }
+
 
 
   /*.topFilter {
-    display: flex;
+    display: flex;m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     height: 20px;
   }
   
@@ -369,6 +382,7 @@
     border-radius: 10px;
     height: 140px;
     transition: transform 0.3s ease-in;
+    background-color: white;
   }
 
   .singleFilteredCardsH:hover{
