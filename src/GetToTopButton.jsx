@@ -27,13 +27,13 @@ export const GetToTopButton = () => {
                 <button style={{
                     position: "fixed",
                     bottom: "250px",
-                    left: "50px",
+                    left: "200px",
                     height: "50px",
-                    width: "50px",
-                    fontSize: "50px"
+                    width: "150px",
+                    fontSize: "20px"
                 }}
                 onClick={scrollUp}
-                >^</button>
+                >Back to Top ^</button>
             )}
         </div>
     )

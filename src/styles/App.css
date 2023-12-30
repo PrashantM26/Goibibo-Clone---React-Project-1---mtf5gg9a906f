@@ -265,13 +265,13 @@ button:hover {
 .gr-appendTop15 {
   margin-top: 15px;
 }
-ul,
+/*ul,
 li {
   list-style: none;
   margin: 0;
   padding: 0;
   display: block;
-}
+}*/
 .items {
   display: flex;
   align-items: center;
@@ -481,10 +481,12 @@ li {
   height: 21px;
   background-position: -54px -75px;
 }
-p,
 ul {
   margin: 0;
   list-style: none;
+}
+p{
+  margin: 0;
 }
 .gocash__tab,
 .mytrip__tab {

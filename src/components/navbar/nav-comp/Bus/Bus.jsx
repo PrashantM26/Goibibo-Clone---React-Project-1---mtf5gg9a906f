@@ -5,6 +5,7 @@ import { DateComponent } from "../../../Date/Date";
 import Calendar from "react-calendar";
 import { BusFooter } from "./BusFooter";
 import { BusCard } from "./BusCard";
+import { GetToTopButton } from '../../../../GetToTopButton';
 import "./Bus.css";
 import styles from "./Bus.css";
 export function Bus() {
@@ -501,8 +502,9 @@ export function Bus() {
                                 
                             ))}
 
-
+                        <GetToTopButton />
                     </div>
+
                 </div>
                 :
                 <>

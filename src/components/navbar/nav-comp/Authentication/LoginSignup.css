@@ -143,13 +143,13 @@
   }
   
   
-  ul,
+  /*ul,
   li {
     list-style: none;
     margin: 0;
     padding: 0;
     display: block;
-  }
+  }*/
   .itemsLogin {
     display: flex;
     align-items: center;

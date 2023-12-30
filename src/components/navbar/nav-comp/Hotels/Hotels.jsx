@@ -152,11 +152,9 @@ export function Hotels() {
           const totalBaseCost = rooms.reduce((sum, room) => sum + room.costDetails.baseCost, 0);
           const totalTaxes = rooms.reduce((sum, room) => sum + room.costDetails.taxesAndFees, 0);
   
-          // Calculate averages
           const averageBaseCost = Math.ceil(totalBaseCost / rooms.length);
           const averageTaxes = Math.ceil(totalTaxes / rooms.length);
   
-          // Add averages to the hotel object
           hotel.averageBaseCost = averageBaseCost;
           hotel.averageTaxes = averageTaxes;
         });
@@ -742,7 +740,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                                       //onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, rating, 'rating'))}
                                       onChange={() => (setCheckLoad(true),handleRatingChange(index))}
                                     />
-                                    <label htmlFor={rating.label}>{rating.label}</label>
+                                    <label htmlFor={rating.label} className= {`rating-label-${index}`}>{rating.label}</label>
                                   </div>
                               ))}
                       </div>
@@ -787,9 +785,12 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                     </div>
                     <div className='filterRightH'>
                       <div className='fR1H'>
-                        <h4>{hotel.name}</h4>
-                        <p>Location: {hotel.location}</p>
-                        <p>{hotel.rating}</p>
+                        <div>
+                          <p>Hotel</p>
+                          <h4>{hotel.name}</h4>
+                          <span><img src="https://gos3.ibcdn.com/map-1626422501.png" /> {hotel.location}</span>
+                        </div>
+                        <p>{hotel.rating}/5</p>
                       </div>
                       <div className='fR2H'>
                         <div className='fRDH'>
@@ -798,7 +799,11 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
                         </div>
                       </div>
                       <div className='fR3H'>
-                        {hotel.amenities.join(', ')}
+                        <p>{hotel.amenities.join(', ')}</p>
+                        <p>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#008a93" width="1.7rem" height="1.7rem" class="ReserveNowPayLater__ReserverNowPayLaterIcon-sc-1n1mspl-0 gRtIHg"><path fill-rule="evenodd" d="M16.97 11.867a5.01 5.01 0 013.557 1.484A5.086 5.086 0 0122 16.933C22 19.732 19.748 22 16.97 22c-2.777 0-5.029-2.268-5.029-5.067 0-2.798 2.252-5.066 5.03-5.066zm2.494 2.973a.578.578 0 00-.813.117l-2.114 2.84a.192.192 0 01-.291.021l-1.006-1.013a.578.578 0 00-.972.262.588.588 0 00.15.565L15.58 18.8c.217.22.511.343.818.344h.085c.338-.023.649-.194.85-.468l2.245-3.02a.582.582 0 00-.113-.817zM17.05 9.2c.102 0 .184.082.184.183v1.28a.186.186 0 01-.19.183h-.177a6.256 6.256 0 00-6.04 4.618.183.183 0 01-.178.136H5.838A1.833 1.833 0 014 13.771V9.383c0-.101.082-.183.184-.183zm-8.27 3.291H6.574a.55.55 0 00-.552.549.55.55 0 00.552.549h2.205a.55.55 0 00.552-.549.55.55 0 00-.552-.549zM15.397 6c1.015 0 1.838.868 1.838 1.94a.19.19 0 01-.184.193H4.184a.18.18 0 01-.13-.056A.2.2 0 014 7.939C4 6.87 4.823 6 5.838 6z"></path></svg>
+                          &nbsp;Book @ ₹0
+                        </p>
                       </div>
                         
                     </div>
