@@ -85,7 +85,7 @@ export const BusBooking = () => {
       }
 
     return (
-        <div>
+        <div className="bookingBusContainer">
             <div className="top-color">
                 
             </div>

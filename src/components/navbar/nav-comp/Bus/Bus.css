@@ -525,6 +525,11 @@
 
   /*For Bus Book*/
 
+  .bookingBusContainer{
+    background-color: #EEF4FD;
+    height: 100vh;
+  }
+
   .top-color{
     height: 250px;
     background-color: #166bd3;
@@ -585,8 +590,9 @@
   .left-upper-bus-booking{
     display: flex;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: white;
     padding: 20px;
+    border-radius: 5px;
   }
 
   .bus-name-booking{
@@ -623,10 +629,11 @@
   .boarding-point-bus-booking{
     display: flex;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: white;
     height: 200px;
     padding: 30px;
     width: 50%;
+    border-radius: 5px;
   }
 
   .blue-date-bus{
@@ -638,10 +645,11 @@
   .dropping-point-bus-booking{
     display: flex;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: white;
     height: 200px;
     padding: 30px;
     width: 50%;
+    border-radius: 5px;
   }
 
   .boarding-point-bus-booking p, .dropping-point-bus-booking p{
@@ -652,8 +660,9 @@
   .price-summary-bus-booking{
     display: flex;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: white;
     padding: 20px;
+    border-radius: 5px;
   }
 
   .base-bus-fare, .bus-tax-fare, .bus-total-fare{
@@ -673,6 +682,9 @@
     width: 40%;
     margin-left: 120px;
     border-radius: 10px;
+    font-size: 16px;
+    height: 40px;
+    font-weight: 600;
   }
 
 
