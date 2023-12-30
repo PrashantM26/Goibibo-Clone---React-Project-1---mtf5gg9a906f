@@ -70,7 +70,7 @@ export function Flights()
         destination:"",
         departure: new Date(),
         return: new Date(),
-        tickettype:"",
+        tickettype:"Economy",
         adults:"",
         children:"",
         infants:"",

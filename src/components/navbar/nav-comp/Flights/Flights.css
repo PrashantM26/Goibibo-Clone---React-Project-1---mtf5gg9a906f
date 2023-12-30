@@ -584,22 +584,33 @@
 
   /*   BOOKING PAGE   */
 
+  .bookingFlightContainer{
+    background-color: #EEF4FD;
+    height: 100vh;
+  }
+
+  .bookingBgColorF{
+    z-index: 1;
+    height: 270px;
+    background-color: #2274E0;
+  }
 
   .bookingMainPageF{
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 60px;
+    z-index: 10;
+    margin-top: -240px;
   }
 
   .bookingLeftF{
     display: flex;
     flex-direction: column;
     width: 50%;
-    border: 1px solid black;
     padding: 15px;
-    margin-top: 30px;
     box-shadow: 5px 5px 10px #888888;
+    background-color: white;
   }
 
   .bookingS1F{
@@ -623,9 +634,8 @@
     display: flex;
     flex-direction: row;
     justify-content: end;
-    margin-right: 50px;
     font-weight: 600;
-    color: blue;
+    color: black;
   }
 
   .bookF2, .bookF3, .bookF4{
@@ -667,6 +677,41 @@
     margin-top: -5px;
   }
 
+  .baggageDetailsF{
+    color: rgb(34, 34, 34);
+    font: 400 1.2rem / 1.185 Rubik, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 16px;
+    border-top: 1px solid rgb(228, 228, 228);
+  }
+
+  .baggageWeightF{
+    color: rgb(34, 34, 34);
+    font: inherit;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .baggageTextF, .baggageCabinF, .baggageCheckinF{
+    font: inherit;
+    font-size: 14px;
+    color: rgb(113, 113, 113);
+  }
+
+  .baggageCabinF, .baggageCheckinF{
+    margin-left: 3px;
+  }
+
+  .baggageViewDetailsF{
+    font: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    color: rgb(34, 118, 227);
+  }
 
   .bookButtonF{
     margin-top: 50px;
@@ -686,10 +731,9 @@
   }
 
   .contentRightF{
-    margin-top: 30px;
-    border: 1px solid black;
     padding: 10px;
     box-shadow: 5px 5px 10px #888888;
+    background-color: white;
   }
 
   .basePriceF, .adultsF, .childrenF, .infantsF, .flightTaxes, .totalGrandF{
@@ -738,60 +782,91 @@
   transition: opacity 0.3s ease-in-out;
 }*/
 
+/* Modal Styling */
 .modal {
   display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 1;
-  width: auto;
-  height: auto;
-  max-width: 600px; /* Set a maximum width if necessary */
-  max-height: 30vh; /* Set a maximum height if necessary*/
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
 }
 
-
+/* Open Modal */
 .modal.open {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 1;
-  animation: fadeIn 0.5s ease-in-out; /* Apply the fade-in animation */
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Modal Content Styling */
 .modal-content {
   position: relative;
-  padding: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
 /* Close Button Styling */
-.modal.close {
+.modal .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 10px;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
   cursor: pointer;
-  font-size: 18px;
   color: #333;
   transition: color 0.3s ease-in-out;
 }
 
-.close:hover {
-  color: #e74c3c; /* Change color on hover */
+.modal .close:hover {
+  color: #e74c3c;
 }
 
-/* Fade-in Animation for Modal */
+/* Modal Title Styling */
+.modal-title {
+  color: #3498db;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Modal Message Styling */
+.modal-message {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Tick Mark Styling */
+.modal .tick-mark {
+  font-size: 48px;
+  color: #27ae60;
+  animation: fadeInTick 0.5s ease-in-out;
+}
+
+/* Fade-in Animation for Modal and Tick Mark */
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeInTick {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 

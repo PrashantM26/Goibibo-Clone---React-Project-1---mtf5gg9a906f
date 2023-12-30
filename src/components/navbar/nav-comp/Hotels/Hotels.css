@@ -1010,3 +1010,111 @@
   color: white;
   font-weight: 600;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*For modal*/
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+/* Open Modal */
+.modal.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Modal Content Styling */
+.modal-content {
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Close Button Styling */
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease-in-out;
+}
+
+.modal .close:hover {
+  color: #e74c3c;
+}
+
+/* Modal Title Styling */
+.modal-title {
+  color: #3498db;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Modal Message Styling */
+.modal-message {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Tick Mark Styling */
+.modal .tick-mark {
+  font-size: 48px;
+  color: #27ae60;
+  animation: fadeInTick 0.5s ease-in-out;
+}
+
+/* Fade-in Animation for Modal and Tick Mark */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInTick {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

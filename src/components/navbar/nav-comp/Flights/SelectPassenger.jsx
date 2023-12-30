@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 export const SelectPassenger = ({ valSetter }) => {
 
   const [showPassenger, setPassenger] = useState(false);
-  const [selVal, setSelVal] = useState({ adults : 1, children : 0, infants : 0, ticketType : "" });
+  const [selVal, setSelVal] = useState({ adults : 1, children : 0, infants : 0, ticketType : "Economy" });
 
 
   const handlePassenger = () => {
@@ -91,8 +91,8 @@ export const SelectPassenger = ({ valSetter }) => {
                     ticketType : e.target.value
                   }))
             }}>
-                <option>First Class</option>
                 <option>Econmony</option>
+                <option>First Class</option>
                 <option>Business</option>
                 <option>Premium Econmony</option>
             </select>

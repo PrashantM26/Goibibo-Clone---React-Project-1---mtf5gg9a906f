@@ -137,11 +137,13 @@ const Modal = ({ isOpen, setIsModalOpen, message }) => {
     return (
       <div className={`modal ${isOpen ? 'open' : ''}`}>
         <div className="modal-content">
-          <span className="close" onClick={() =>setIsModalOpen(false)}>
+          <span className="close" onClick={() => setIsModalOpen(false)}>
             &times;
           </span>
-          <h2>Booking Confirmation</h2>
-          <p>{message}</p>
+          <br />
+          <h2 className="modal-title">🚀 Booking Confirmed 🚀</h2>
+          <p className="modal-message">{message}</p>
+          <div className="tick-mark">&#10003;</div>
         </div>
       </div>
     );
