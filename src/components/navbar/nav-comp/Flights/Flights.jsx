@@ -72,9 +72,9 @@ export function Flights()
         departure: new Date(),
         return: new Date(),
         tickettype:"Economy",
-        adults:"",
-        children:"",
-        infants:"",
+        adults:1,
+        children:0,
+        infants:0,
         tickets:"",
         day: "Mon"
 
