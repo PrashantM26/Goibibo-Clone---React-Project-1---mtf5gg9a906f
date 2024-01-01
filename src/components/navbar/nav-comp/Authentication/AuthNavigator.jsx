@@ -6,7 +6,7 @@ export const AuthNavigator = ({ children }) => {
   const { isLoggedIn } = useAuth();
   const { pathname } = useLocation();
   
- /* return isLoggedIn ? (
+ /* return isLoggedIn ? (                           //Ask doubt, leads to abnormal behaviour
     children
   ) : (
     <>
