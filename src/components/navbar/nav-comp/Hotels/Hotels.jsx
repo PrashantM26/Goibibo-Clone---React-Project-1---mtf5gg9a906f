@@ -22,7 +22,8 @@ export function Hotels() {
   const [dateRange, setDateRange] = useState([new Date(), new Date()]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [showCal, setShowCal] = useState(false);
+  const [showCal1, setShowCal1] = useState(false);
+  const [showCal2, setShowCal2] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [checkLoad, setCheckLoad] = useState(false);
   const [clickDay, setClickDay] = useState('');
@@ -95,7 +96,7 @@ export function Hotels() {
         rooms : rooms
     })}
 
-    console.log("GUEST ROOM INFO    ", guestRoomInfo)
+    //console.log("GUEST ROOM INFO    ", guestRoomInfo)
   
   const handleTravelPrefBtn = (activate, num) => {
     setIsToggled((prevToggled) => {
@@ -173,7 +174,7 @@ export function Hotels() {
     fetchHotels();
   }, [searchOn[1]]);
 
-  console.log(filteredData)
+  //console.log(filteredData)
 
 
   useEffect(() => {    
@@ -492,16 +493,36 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
   
         return true;
       });
-    console.log(filteredHotels)
+    //console.log(filteredHotels)
 
 
 
 
-  const handleDateChange = (date) => {
-    setDateRange(date);
-    DateComponent({ dateVal : date[0], type : "shortDay", setterFnc : setClickDay });
-    setStartDate(date[0]);
-    setEndDate(date[1]);
+  const handleDateChange = (date, type) => {
+    //console.log("DATE  trytrtyrtyr                        ",date)
+    /*setDateRange(date);                                                                    //hen selectRange={true}
+    if(date.length>1){
+      DateComponent({ dateVal : date[0], type : "shortDay", setterFnc : setClickDay });
+      setStartDate(date[0]);
+      setEndDate(date[1]);
+    }
+    else if(date.length === 1 && date[1] === null ){
+      setStartDate(date[0])
+    }
+    else if(date.length === 1 && date[0] === null ){
+      setStartDate(date[1])
+    }*/
+
+
+
+    if(type === "start"){
+      DateComponent({ dateVal : date, type : "shortDay", setterFnc : setClickDay });
+      setStartDate(date)
+    }
+    else if(type === "end"){
+      setEndDate(date)
+    }
+
     /*if(clickCount === 0 && date.getTime() < endDate.getTime()) {
         setStartDate(date);
         setClickCount(1);
@@ -529,22 +550,59 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
 
   let nights;
   const handleCalculateNights = () => {
+    const newStartDate = startDate;
+    const newEndDate = endDate;
+    const daysInMilliSeconds = 24 * 60 * 60 * 1000;
+  
+    newStartDate.setHours(12, 0, 0, 0);
+    newEndDate.setHours(12, 0, 0, 0);
+  
+    const timeDiff = newEndDate - newStartDate;
+  
+    if (timeDiff >= 0) {
+      nights = Math.ceil(timeDiff / daysInMilliSeconds);
+    } else {
+      nights = 0;
+    }
+  
+    return nights;
+  };
+
+  /*let nights;                                      //Causes a glitch
+  const handleCalculateNights = () => {
     const newstartDate = startDate.getDate();
     const newendDate = endDate.getDate();
     nights = newendDate - newstartDate;
     return nights;
+  }*/
+
+
+/*let nights;
+const handleCalculateNights = () => {
+  const newStartDate = startDate.getDate();
+  const newEndDate = endDate.getDate();
+  const daysInMonth = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate();
+
+  if (newEndDate >= newStartDate) {
+    nights = newEndDate - newStartDate + 1;
+  } else {
+    nights = daysInMonth - newStartDate + newEndDate + 1;
   }
 
+  return nights;
+};*/
 
 
 
-  if(startDate.getTime() === endDate.getTime()){
+
+  if( startDate.getTime() >= endDate.getTime() || endDate > new Date(startDate.getTime() + 19 * 24 * 60 * 60 * 1000)){
   /*const eD = new date(startDate).setdate(startDate.getdate() + 1)
     setEndDate(eD);*/
     const newendDate = new Date(startDate.getTime());
     newendDate.setDate(startDate.getDate() + 1);
     setEndDate(newendDate);
-    setClickCount(0);
+    console.log("ENDDATE   ", endDate)
+    //setClickCount(0);
 }
 
 
@@ -594,31 +652,47 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
 
                   <div className='checkDateH'>
                       <div className='child2'>
-                      <label htmlFor="date" onClick={() => setShowCal((prev) => !prev)}>Check-in</label>
-                        <div className="displayStartDate" onClick={() => setShowCal((prev) => !prev)}>
+                      <label htmlFor="date" onClick={() => setShowCal1((prev) => !prev)}>Check-in</label>
+                        <div className="displayStartDate" onClick={() => setShowCal1((prev) => !prev)}>
                           <DateComponent dateVal = { startDate } />
                         </div>
+                        { showCal1 ?
+                          (
+                            <div className='calendarH'>
+                              <Calendar id="dateHotel" value={startDate} minDate={new Date()} onChange={(date) => handleDateChange(date, "start")} />
+                              <button className="calendarButtonH" onClick={() => setShowCal1(!showCal1)}>Done</button>
+                            </div>
+                          )
+                        : null }
                       </div>
 
                       <div className='nightsH'>{handleCalculateNights()} Nights</div>
 
                       <div className='child2'>
-                      <label htmlFor="date" onClick={() => setShowCal((prev) => !prev)}>Check-out</label>
-                        <div className="displayEndDate" onClick={() => setShowCal((prev) => !prev)}>
+                      <label htmlFor="date" onClick={() => setShowCal2((prev) => !prev)}>Check-out</label>
+                        <div className="displayEndDate" onClick={() => setShowCal2((prev) => !prev)}>
                           <DateComponent dateVal = { endDate } />
                         </div>
+                        { showCal2 ?
+                          (
+                            <div className='calendarH'>
+                              <Calendar id="dateHotel" value={endDate} minDate={new Date(startDate.getTime() + 24 * 60 * 60 * 1000)}  maxDate={new Date(startDate.getTime() + 19 * 24 * 60 * 60 * 1000)} onChange={(date) => handleDateChange(date, "end")} />
+                              <button className="calendarButtonH" onClick={() => setShowCal2(!showCal2)}>Done</button>
+                            </div>
+                          )
+                        : null }
                       </div>
                   </div>
 
 
-                    { showCal ?
+                    {/* showCal ?
                           (
                             <div className='calendarH'>
-                              <Calendar id="dateFlight" value={dateRange} minDate={new Date()} selectRange={true} onChange={handleDateChange} />
+                              <Calendar id="dateFlight" value={dateRange} minDate={new Date()} returnValue="range" onChange={handleDateChange} />
                               <button className="calendarButtonH" onClick={() => setShowCal(!showCal)}>Done</button>
                             </div>
                           )
-                    : null }
+                    : null */}
 
 
                   <div className='guestRoomPrefH'>

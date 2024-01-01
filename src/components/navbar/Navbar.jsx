@@ -2,11 +2,12 @@ import "../../styles/App.css";
 import React, { useState } from "react";
 import { NavLink, NavNavLink } from "react-router-dom";
 import { Login, SignUp } from "./nav-comp/Authentication/LoginSignup";
+import { useAuth } from "./nav-comp/Authentication/AuthProvider";
 
 export const Navbar = () => {
-
-  const [show,setShow]=useState(false)
-  const [userLoginName, setUserLoginName] = useState("Login Or Signup")
+  const { show, setShow, userLoginName, setUserLoginName } = useAuth();
+  /*const [show,setShow]=useState(false)
+  const [userLoginName, setUserLoginName] = useState("Login Or Signup")*/
   //{false && <SignUp setUserName={setUserLoginName} />}
     return(
         /*<nav className="navbar-container">
@@ -50,7 +51,8 @@ export const Navbar = () => {
       <div>
 
             <div>
-           { show &&<Login setShow={setShow} show={show} setUserName={setUserLoginName} />}
+           {/* show &&<Login setShow={setShow} show={show} setUserName={setUserLoginName} />*/}
+           {show && <Login />}
             </div>
             
             <div className="class">

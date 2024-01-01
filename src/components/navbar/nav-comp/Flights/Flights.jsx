@@ -21,7 +21,8 @@ export function Flights()
     //const [ticketType,setTickettype]=useState("")
     const [show_ticket,setShow_ticket]=useState(false);
     const [from,setForm]=useState("delhi");
-    const [showCal, setShowCal] = useState(false);
+    const [showCal1, setShowCal1] = useState(false);
+    const [showCal2, setShowCal2] = useState(false);
     const [clickCount, setClickCount] = useState(0);
     const [dateRange, setDateRange] = useState([new Date(), new Date()]);
     const [displayDepart, setDisplayDepart] = useState("");
@@ -176,14 +177,27 @@ export function Flights()
     //console.log(currData);
 
 
-    const handleDateChange = (date) => {
-        setDateRange(date)
+    const handleDateChange = (date, type) => {
+        if(type === "start"){
+            DateComponent({ dateVal : date, type : "shortDay", setterFnc : setClickDay })
+            setCurrdata({
+                ...currData,
+                departure : date
+            });
+          }
+          else if(type === "end"){
+            setCurrdata({
+                ...currData,
+                return : date
+            });
+          }
+        /*setDateRange(date)
         DateComponent({ dateVal : date[0], type : "shortDay", setterFnc : setClickDay })
         setCurrdata({
             ...currData,
             departure : date[0],
             return : date[1]
-        });
+        });*/
         //console.log(date)
         /*if(clickCount === 0 && date.getTime() < currData.return.getTime()) {
             setCurrdata({
@@ -240,11 +254,11 @@ export function Flights()
     }
 
 
-    if(currData.departure.getTime() === currData.return.getTime()){
+    if(currData.departure.getTime() > currData.return.getTime() || currData.return > new Date(currData.departure.getTime() + 19 * 24 * 60 * 60 * 1000)){
         /*const eD = new date(startDate).setdate(startDate.getdate() + 1)
           setEndDate(eD);*/
           const newendDate = new Date(currData.departure.getTime());
-          newendDate.setDate(currData.departure.getDate() + 1);
+          //newendDate.setDate(currData.departure.getDate() + 1);
           setCurrdata({
             ...currData,
             return: newendDate
@@ -404,24 +418,40 @@ useEffect(() => {
 
                             <div className="child1">
                                 <label>Departure</label>
-                                <input type="text" name="departure" onClick={() => setShowCal(!showCal)} value={displayDepart} />
+                                <input type="text" name="departure" onClick={() => setShowCal1(!showCal1)} value={displayDepart} />
                                 <DateComponent dateVal = { currData.departure } setterFnc={setDisplayDepart} type="departure" />
                             </div>
+                            { showCal1 ?
+                                (
+                                    <div className='calendarH'>
+                                        <Calendar id="dateFlight" value={currData.departure} minDate={new Date()} onChange={(date) => handleDateChange(date, "start")} />
+                                        <button className="calendarButtonH" onClick={() => setShowCal1(!showCal1)}>Done</button>
+                                    </div>
+                                )
+                            : null }
                             
                             <div className="child1">
                                 <label>Return</label>   
-                                <input type="text" name="return" onClick={() => setShowCal(!showCal)} value={displayReturn} />
+                                <input type="text" name="return" onClick={() => setShowCal2(!showCal2)} value={displayReturn} />
                                 <DateComponent dateVal = { currData.return } setterFnc={setDisplayReturn} type="return" />
                             </div>
+                            { showCal2 ?
+                                (
+                                    <div className='calendarH'>
+                                        <Calendar id="dateFlight" value={currData.return} minDate={new Date(currData.departure.getTime())}  maxDate={new Date(currData.return.getTime() + 19 * 24 * 60 * 60 * 1000)} onChange={(date) => handleDateChange(date, "end")} />
+                                        <button className="calendarButtonH" onClick={() => setShowCal2(!showCal2)}>Done</button>
+                                    </div>
+                                )
+                            : null }
 
-                            { showCal ?
+                            {/* showCal ?
                                 (
                                 <div className='calendarF'>
                                     <Calendar id="dateFlight" value={dateRange} minDate={new Date()} selectRange={true} onChange={handleDateChange} />
                                     <button className="calendarButtonF" onClick={() => setShowCal(!showCal)}>Done</button>
                                 </div>
                                 )
-                            : null }
+                                : null */}
 
                             {/*<div className="child1">  
                                 <label>Passenger & class</label>

@@ -4,12 +4,13 @@ import { useAuth } from "./AuthProvider";
 import axios from "axios";
 import { LoginSignup } from "./LoginSignup.css"
 
-export const SignUp = ({setShowSignUp, showSignUp, setUserName, setShow, show}) => { 
+//export const SignUp = ({setShowSignUp, showSignUp, setUserName, setShow, show}) => {
+export const SignUp = ({setShowSignUp, showSignUp}) => {
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useAuth();
+  const { setIsLoggedIn, show, setShow, setUserLoginName } = useAuth();
 
   const createUser = async (user) => {
     const config = {
@@ -34,7 +35,7 @@ export const SignUp = ({setShowSignUp, showSignUp, setUserName, setShow, show}) 
         );
         setShow(!show)
         setIsLoggedIn(true);
-        setUserName(user.name)
+        setUserLoginName(user.name)
         navigate("/flights");
       }
     } catch (err) {
@@ -97,11 +98,12 @@ export const SignUp = ({setShowSignUp, showSignUp, setUserName, setShow, show}) 
 
 
 
-export const Login = ({setShow, show, setUserName}) => { 
+//export const Login = ({setShow, show, setUserName}) => {
+  export const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const navigate = useNavigate();
-    const {setIsLoggedIn} =  useAuth();
+    const {setIsLoggedIn, show, setShow, setUserLoginName} =  useAuth();
     const {state} = useLocation();
     const [showSignUp, setShowSignUp] = useState(false);
   
@@ -125,7 +127,7 @@ export const Login = ({setShow, show, setUserName}) => {
           sessionStorage.setItem("user-token", token);
           sessionStorage.setItem("user-name", JSON.stringify(res.data.data.name));
           setIsLoggedIn(true);
-          setUserName(res.data.data.name)
+          setUserLoginName(res.data.data.name)
           if(state){
             navigate(state.prevPath);
           }else{
@@ -148,71 +150,77 @@ export const Login = ({setShow, show, setUserName}) => {
       loginUser(userDetails);
     };
 
-return (
-
-        <div className="log-in">
-                <div className="modal-content-login" action="">
-                    <div className="left-container-login">
-                        <div>
-                            <h3>
-                                <span>Smooth</span> Bus Rides
-                            </h3>
+  return (
+    <>
+      {show ?
+          <div className="log-in">
+            
+                  <div className="modal-content-login" action="">
+                      <div className="left-container-login">
+                          <div>
+                              <h3>
+                                  <span>Smooth</span> Bus Rides
+                              </h3>
+                              
+                              <ul className="benefits-container-login">
+                                  <li className="itemsLogin">
+                                      <span className="benefits-img-login"></span>
+                                      <span className="benefitsLogin">Track live bus location</span>
+                                  </li>
+                                  <li className="itemsLogin">
+                                      <span className="benefits-img-login"></span>
+                                      <span className="benefitsLogin">Exclusive bus operator deals</span>
+                                  </li>
+                                  <li className="itemsLogin">
+                                      <span className="benefits-img-login"></span>
+                                      <span className="benefitsLogin">Manage and modify bookings</span>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div className="right-container-login">
+                          <div>
+                            {!showSignUp ? 
+                              (                    
+                              <form onSubmit={handleFormSubmit}>
+                                  <h2 >Login</h2>
+                                  <label htmlFor="email">Email: </label>
+                                  <div className="login-details">
+                                      <input className="input-box-login" type="email" name="email" id="email" ref={emailRef} />                                   
+                                  </div>
+                                  <label htmlFor="password">Password: </label>
+                                  <div className="login-details">                                   
+                                      <input className="input-box-login"
+                                      type="password"
+                                      name="password"
+                                      id="password"
+                                      ref={passwordRef}
+                                      />
+                                  </div>
+                                  <div className="login-button-holder">
+                                      <button type="submit" className="login-btn" value="Login">Continue</button>
+                                      <button type="button" className="login-btn" value="toSignUp" onClick={() => {setShowSignUp(true)}}>Or SignUp</button>
+                                  </div>
+                              </form>
+                              )         
+                              :  <SignUp setShowSignUp={setShowSignUp} showSignUp={showSignUp} /> }
+                              {/*<SignUp setShowSignUp={setShowSignUp} showSignUp={showSignUp} setUserName={setUserName} setShow={setShow} show={show} />*/}
                             
-                            <ul className="benefits-container-login">
-                                <li className="itemsLogin">
-                                    <span className="benefits-img-login"></span>
-                                    <span className="benefitsLogin">Track live bus location</span>
-                                </li>
-                                <li className="itemsLogin">
-                                    <span className="benefits-img-login"></span>
-                                    <span className="benefitsLogin">Exclusive bus operator deals</span>
-                                </li>
-                                <li className="itemsLogin">
-                                    <span className="benefits-img-login"></span>
-                                    <span className="benefitsLogin">Manage and modify bookings</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="right-container-login">
-                        <div>
-                          {!showSignUp ? 
-                            (                    
-                            <form onSubmit={handleFormSubmit}>
-                                <h2 >Login</h2>
-                                <label htmlFor="email">Email: </label>
-                                <div className="login-details">
-                                    <input className="input-box-login" type="email" name="email" id="email" ref={emailRef} />                                   
-                                </div>
-                                <label htmlFor="password">Password: </label>
-                                <div className="login-details">                                   
-                                    <input className="input-box-login"
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    ref={passwordRef}
-                                    />
-                                </div>
-                                <div className="login-button-holder">
-                                    <button type="submit" className="login-btn" value="Login">Continue</button>
-                                    <button type="button" className="login-btn" value="toSignUp" onClick={() => {setShowSignUp(true)}}>Or SignUp</button>
-                                </div>
-                            </form>
-                            )         
-                            : <SignUp setShowSignUp={setShowSignUp} showSignUp={showSignUp} setUserName={setUserName} setShow={setShow} show={show} /> }
-                            
-                        </div>
-                        <div>
-                            <p className="privacy-policy-login">By proceeding, you agree to GoIbibo’s <a href>Privacy Policy</a>, <a href>User Agreement</a>  and <a href>Terms of Service</a></p>
-                        </div>
-                        <div className="close-login-btn" >
-                            { setUserName &&<button onClick={() => {setShow(!show)}}>Close</button>}
-                        </div>
-                    </div>
-                </div>
-          </div>
-
-    )
+                              
+                          </div>
+                          <div>
+                              <p className="privacy-policy-login">By proceeding, you agree to GoIbibo’s <a href>Privacy Policy</a>, <a href>User Agreement</a>  and <a href>Terms of Service</a></p>
+                          </div>
+                          <div className="close-login-btn" >
+                              <button onClick={() => {setShow(!show)}}>Close</button>
+                          </div>
+                      </div>
+                  </div>
+              
+            </div>
+        : null }
+    </>
+  )
 }
 
 

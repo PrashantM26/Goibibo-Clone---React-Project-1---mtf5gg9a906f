@@ -22,6 +22,7 @@ function App() {
     <div>
       <AuthProvider>
         <Navbar />
+        <Login />
         <Routes>
           <Route path="/flights" element={<AuthNavigator><Flights /></AuthNavigator>} />
           <Route path="/flights/:id" element={<FlightBooking />} />

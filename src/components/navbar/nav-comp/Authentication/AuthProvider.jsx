@@ -12,8 +12,11 @@ export const AuthProvider = ({children}) => {
   // }
   let isUserLoggedIn = sessionStorage.getItem("userToken") ? true : false;
   const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn);
+  
+  const [show,setShow]=useState(true)
+  const [userLoginName, setUserLoginName] = useState("Login Or Signup")
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, show, setShow, userLoginName, setUserLoginName }}>
         {children}
     </AuthContext.Provider>
   );
