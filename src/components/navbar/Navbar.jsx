@@ -61,10 +61,10 @@ export const Navbar = () => {
                 </li><li class="  ">              
                     <span className="header-sprite nav-icon-hotels gr-append-right5">
                     </span><NavLink className="NavLink" to="/hotels">Hotels</NavLink></li>
-                <li class="  " onClick={() => {alert("It's not active, coming soon")}}>              
+                <li class="  " onClick={() => {alert("It's not active, coming soon")}}>
                     <span className="header-sprite nav-icon-trains gr-append-right5">
                     </span>Trains</li>
-                <li class="  " onClick={() => {alert("It's not active, coming soon")}}>               
+                <li class="  " onClick={() => {alert("It's not active, coming soon")}}>
                     <span className="header-sprite nav-icon-cabs gr-append-right5">
                     </span>Cabs</li>
                 <li class="active  ">    
