@@ -91,14 +91,13 @@ export const Navbar = () => {
                             </div></span><div className="tooltip gr-grey-text--dark">
                             <p>Access your bookings, easy cancellation, date change and much more</p>
                         </div></div>
-                <div className="login__tab gotrible" role="presentation" style={{position: "relative"}}>
+                <div className="login__tab gotrible" role="presentation" style={{position: "relative"}} onClick={()=>{
+                    setShow(!show);
+                }}>
                     <span className="header-sprite user-icon gr-append-right5">
                     </span>
                     <div className="gr-font10" role="presentation" id="get_sign_in">
-                        <p className="gr-cap-text gr-blue-text gr-bold" onClick={()=>{
-                            console.log("clicked")
-                            setShow(!show);
-                        }} >
+                        <p className="gr-cap-text gr-blue-text gr-bold" >
                             {userLoginName}
                         </p>
                     </div>
