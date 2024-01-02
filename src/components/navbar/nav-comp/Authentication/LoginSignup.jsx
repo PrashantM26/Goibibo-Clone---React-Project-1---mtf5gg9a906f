@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthProvider";
 import axios from "axios";
-import { LoginSignup } from "./LoginSignup.css"
+import "./LoginSignup.css"
 
 //export const SignUp = ({setShowSignUp, showSignUp, setUserName, setShow, show}) => {
 export const SignUp = ({setShowSignUp, showSignUp}) => {
@@ -103,7 +103,7 @@ export const SignUp = ({setShowSignUp, showSignUp}) => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const navigate = useNavigate();
-    const {setIsLoggedIn, show, setShow, setUserLoginName} =  useAuth();
+    const {setIsLoggedIn, isLoggedIn, show, setShow, setUserLoginName} =  useAuth();
     const {state} = useLocation();
     const [showSignUp, setShowSignUp] = useState(false);
   
@@ -152,7 +152,7 @@ export const SignUp = ({setShowSignUp, showSignUp}) => {
 
   return (
     <>
-      {show ?
+      {show && !isLoggedIn ?
           <div className="log-in">
             
                   <div className="modal-content-login" action="">

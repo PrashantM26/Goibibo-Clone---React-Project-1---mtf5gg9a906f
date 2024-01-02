@@ -1,11 +1,12 @@
 import "../../styles/App.css";
 import React, { useState } from "react";
 import { NavLink, NavNavLink } from "react-router-dom";
-import { Login, SignUp } from "./nav-comp/Authentication/LoginSignup";
+import { Login } from "./nav-comp/Authentication/LoginSignup";
+import { Logout } from "./nav-comp/Authentication/Logout";
 import { useAuth } from "./nav-comp/Authentication/AuthProvider";
 
 export const Navbar = () => {
-  const { show, setShow, userLoginName, setUserLoginName } = useAuth();
+  const { show, setShow, userLoginName, isLoggedIn } = useAuth();
   /*const [show,setShow]=useState(false)
   const [userLoginName, setUserLoginName] = useState("Login Or Signup")*/
   //{false && <SignUp setUserName={setUserLoginName} />}
@@ -50,12 +51,8 @@ export const Navbar = () => {
 
       <div>
 
-            <div>
-           {/* show &&<Login setShow={setShow} show={show} setUserName={setUserLoginName} />*/}
-           {show && <Login />}
-            </div>
             
-            <div className="class">
+        <div className="class">
             <NavLink to="/"><div className="logo"></div></NavLink>
             <ul class="happy-nav">
                 <li class="  ">
@@ -79,9 +76,9 @@ export const Navbar = () => {
                 <li class="active  " onClick={() => {alert("It's not active, coming soon")}}>              
                     <span className="header-sprite nav-icon-bus gr-append-right5">
                     </span>Forex</li>
-
-                    
+                   
             </ul>
+
             <div className="gr-make-flex hrtl-center gr-push-right">
                
                     <div className="mytrip__tab gr-append-right20" role="presentation">
@@ -94,17 +91,39 @@ export const Navbar = () => {
                             </div></span><div className="tooltip gr-grey-text--dark">
                             <p>Access your bookings, easy cancellation, date change and much more</p>
                         </div></div>
-                <div className="login__tab gotrible" role="presentation">
+                <div className="login__tab gotrible" role="presentation" style={{position: "relative"}}>
                     <span className="header-sprite user-icon gr-append-right5">
                     </span>
                     <div className="gr-font10" role="presentation" id="get_sign_in">
-                <p className="gr-cap-text gr-blue-text gr-bold" onClick={()=>{
-                    console.log("clicked")
-                    setShow(!show);
-                }} >{userLoginName}</p>
-                    </div></div></div>
+                        <p className="gr-cap-text gr-blue-text gr-bold" onClick={()=>{
+                            console.log("clicked")
+                            setShow(!show);
+                        }} >
+                            {userLoginName}
+                        </p>
+                    </div>
+                    {/* show &&<Login setShow={setShow} show={show} setUserName={setUserLoginName} />*/}
+                    {show && (
+                        isLoggedIn ? <Logout /> : <Login />
+                    )}
+                </div>
+            </div>
             
-            <div id="id01" className="sign-in">
+          </div>
+
+      </div>
+    )
+}
+
+
+
+
+
+
+
+
+/*
+<div id="id01" className="sign-in">
                 <div className="modal-content" action="">
                     <div className="left-container">
                         <div>
@@ -163,19 +182,7 @@ export const Navbar = () => {
                     </div>
                 </div>
           </div>
-          </div>
-      </div>
-    )
-}
-
-
-
-
-
-
-
-
-
+*/
 
 
 

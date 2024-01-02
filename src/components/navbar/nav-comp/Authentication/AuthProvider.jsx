@@ -10,8 +10,9 @@ export const AuthProvider = ({children}) => {
   // }else{
   //   isUserLoggedIn = false
   // }
-  let isUserLoggedIn = sessionStorage.getItem("userToken") ? true : false;
-  const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn);
+  //let isUserLoggedIn = sessionStorage.getItem("userToken") ? true : false;
+  //const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   const [show,setShow]=useState(true)
   const [userLoginName, setUserLoginName] = useState("Login Or Signup")

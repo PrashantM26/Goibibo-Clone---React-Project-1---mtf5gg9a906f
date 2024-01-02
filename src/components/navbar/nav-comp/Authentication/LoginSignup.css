@@ -192,3 +192,25 @@
     justify-content: space-around;
     margin-top: 20px;
   }
+
+
+
+
+
+
+
+
+  /*For login*/
+  .logout-container button{
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    color: #0074EB;
+    background-color: white;
+    border: 0.5px solid #0074EB;
+    border-radius: 5px;
+    height: 30px;
+    width: 80px;
+    font-weight: 600;
+    z-index: 10;
+  }
