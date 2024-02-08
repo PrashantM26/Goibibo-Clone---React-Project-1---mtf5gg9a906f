@@ -329,6 +329,7 @@
 
 .filterHolderF{
   margin-right: -60px;
+  z-index: 1111;
 }
 
 .filtersF{
@@ -709,7 +710,7 @@
 }
 
 .particular_flight:hover{
-  transform: scale(1.1);
+  transform: scale(1.01);
 }
 
 .curr_flight {
@@ -1157,6 +1158,7 @@ font-size: 13px;
   font-size: 14px;
   cursor: pointer;
   color: rgb(34, 118, 227);
+  cursor: not-allowed;
 }
 
 .bookButton{
@@ -1933,6 +1935,7 @@ a {
   color: #777;
   font-size: 12px;
   font-family: Helvetica,sans-serif;
+  cursor: not-allowed;
 }
 
 .bottom1F {

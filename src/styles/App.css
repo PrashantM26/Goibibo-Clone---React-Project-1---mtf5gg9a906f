@@ -333,6 +333,9 @@ li {
   font-weight: 700;
   padding: 2% 4%;
 }
+.happy-nav li:nth-child(3), .happy-nav li:nth-child(4), .happy-nav li:nth-child(6), .happy-nav li:nth-child(7){
+  cursor: not-allowed;
+}
 .header-sprite.nav-icon-flights {
   width: 24px;
   height: 18px;
@@ -932,6 +935,7 @@ p{
 .NavLink{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 @media screen and (max-width: 450px) {

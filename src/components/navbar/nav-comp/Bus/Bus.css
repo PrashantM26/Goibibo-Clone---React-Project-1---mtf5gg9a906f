@@ -640,6 +640,7 @@
   width: 20%;
   margin-left: 120px;
   margin-right: -20px;
+  z-index: 1111;
 }
 
 .filterBorderB{

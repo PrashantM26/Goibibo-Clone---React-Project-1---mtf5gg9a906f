@@ -721,11 +721,11 @@ const handleCalculateNights = () => {
 
             </div>
 
-                  <div className="searchH">
-                    <button onClick={() => {
-                        setSearchOn((prev) => [prev[0] = true, !prev[1]])
-                    }}>Search</button>
-                  </div>
+              <div className="searchH">
+                <button onClick={() => {
+                    setSearchOn((prev) => [prev[0] = true, !prev[1]])
+                }}>Search</button>
+              </div>
 
         </div>
 
