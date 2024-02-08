@@ -424,7 +424,7 @@ useEffect(() => {
                                 </div>
                                 { showCal1 ?
                                     (
-                                        <div className='calendarH'>
+                                        <div className='calendarF'>
                                             <Calendar id="dateFlight" value={currData.departure} minDate={new Date()} onChange={(date) => handleDateChange(date, "start")} />
                                             <button className="calendarButtonH" onClick={() => setShowCal1(!showCal1)}>Done</button>
                                         </div>
@@ -438,7 +438,7 @@ useEffect(() => {
                                 </div>
                                 { showCal2 ?
                                     (
-                                        <div className='calendarH'>
+                                        <div className='calendarF'>
                                             <Calendar id="dateFlight" value={currData.return} minDate={new Date(currData.departure.getTime())}  maxDate={new Date(currData.return.getTime() + 19 * 24 * 60 * 60 * 1000)} onChange={(date) => handleDateChange(date, "end")} />
                                             <button className="calendarButtonH" onClick={() => setShowCal2(!showCal2)}>Done</button>
                                         </div>

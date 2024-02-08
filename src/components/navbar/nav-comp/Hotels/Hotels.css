@@ -215,7 +215,7 @@
 .displayStartDate, .displayEndDate{
   margin-top: 5px;
   height: 40px;
-  width: 100px;
+  width: 110px;
   padding: 5px;
   display: flex;
   flex-direction: row;
@@ -363,7 +363,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 100000;
   background-color: #fff; 
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
