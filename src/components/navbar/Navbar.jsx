@@ -56,24 +56,24 @@ export const Navbar = () => {
             <NavLink to="/"><div className="logo"></div></NavLink>
             <ul class="happy-nav">
                 <li class="  ">
-                    <span className="header-sprite nav-icon-flights gr-append-right5">
-                    </span><NavLink className="NavLink" to="/flights">Flights</NavLink>
+                <NavLink className="NavLink" to="/flights"><span className="header-sprite nav-icon-flights gr-append-right5">
+                    </span><div className="temp">Flights</div></NavLink>
                 </li><li class="  ">              
-                    <span className="header-sprite nav-icon-hotels gr-append-right5">
-                    </span><NavLink className="NavLink" to="/hotels">Hotels</NavLink></li>
+                <NavLink className="NavLink" to="/hotels"><span className="header-sprite nav-icon-hotels gr-append-right5">
+                    </span><div className="temp">Hotels</div></NavLink></li>
                 <li class="  " onClick={() => {alert("It's not active, coming soon")}}>
                     <span className="header-sprite nav-icon-trains gr-append-right5">
                     </span>Trains</li>
                 <li class="  " onClick={() => {alert("It's not active, coming soon")}}>
                     <span className="header-sprite nav-icon-cabs gr-append-right5">
                     </span>Cabs</li>
-                <li class="active  ">    
-                    <span className="header-sprite nav-icon-bus gr-append-right5">
-                    </span><NavLink className="NavLink" to="/bus">Bus</NavLink></li>
-                <li class="active  " onClick={() => {alert("It's not active, coming soon")}}>
+                <li class=" ">    
+                <NavLink className="NavLink" to="/bus"><span className="header-sprite nav-icon-bus gr-append-right5">
+                    </span><div className="temp">Bus</div></NavLink></li>
+                <li class=" " onClick={() => {alert("It's not active, coming soon")}}>
                     <span className="header-sprite nav-icon-bus gr-append-right5">
                     </span>Holidays</li>
-                <li class="active  " onClick={() => {alert("It's not active, coming soon")}}>              
+                <li class=" " onClick={() => {alert("It's not active, coming soon")}}>              
                     <span className="header-sprite nav-icon-bus gr-append-right5">
                     </span>Forex</li>
                    

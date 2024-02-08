@@ -22,6 +22,118 @@
   z-index: 0;
 }
 
+@media screen and (max-width: 1400px) {
+  .background-hotel1{
+    width: 88rem;
+    height: 92rem;
+    top: -60rem;
+    left: -78rem;
+  }
+
+  .background-hotel2{
+    width: 98rem;
+    height: 94rem;
+    top: -64rem;
+    left: -84rem;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .background-hotel1{
+    width: 76rem;
+    height: 84rem;
+    top: -52rem;
+    left: -68rem;
+  }
+
+  .background-hotel2{
+    width: 86rem;
+    height: 84rem;
+    top: -52rem;
+    left: -76rem;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .background-hotel1{
+    width: 70rem;
+    height: 78rem;
+    top: -50rem;
+    left: -72rem;
+  }
+
+  .background-hotel2{
+    width: 80rem;
+    height: 88rem;
+    top: -60rem;
+    left: -78rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .background-hotel1 {
+    width: 68rem;
+    height: 78rem;
+    top: -58rem;
+    left: -84rem;
+  }
+  
+  .background-hotel2 {
+    width: 72rem;
+    height: 88rem;
+    top: -68rem;
+    left: -80rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .background-hotel1 {
+    width: 63rem;
+    height: 78rem;
+    top: -58rem;
+    left: -84rem;
+  }
+  
+  .background-hotel2 {
+    width: 68rem;
+    height: 88rem;
+    top: -68rem;
+    left: -80rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .background-hotel1 {
+    width: 63rem;
+    height: 78rem;
+    top: -58rem;
+    left: -84rem;
+  }
+  
+  .background-hotel2 {
+    width: 65rem;
+    height: 88rem;
+    top: -68rem;
+    left: -80rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .background-hotel1 {
+    width: 60.5rem;
+    height: 78rem;
+    top: -58rem;
+    left: -84rem;
+  }
+  
+  .background-hotel2 {
+    width: 62rem;
+    height: 88rem;
+    top: -68rem;
+    left: -80rem;
+  }
+}
+
 .hotels{
   background-color: #EEF4FD;
 }
@@ -55,7 +167,7 @@
   z-index: 15;
 }
 
-.hotelInputs h1{
+.hotelInputs h2{
   color: white;
   text-align: center;
   padding: 10px;
@@ -190,9 +302,9 @@
   z-index: 100;
 }
 
-  .travellerPrefH{
-    flex: 0 0 180px;
-  }
+.travellerPrefH{
+  flex: 0 0 180px;
+}
 
 .travellerPrefBtnH{
   display: flex;
@@ -269,9 +381,7 @@
   padding: 5px;
 }
 
-.rightSection{
-  margin-top: 40px;
-}
+
 
 /*.input_data_Hote{
   background-color: rgb(34, 116, 224);
@@ -291,202 +401,726 @@
 /*For hotel filter*/
 
 
-.mainHotel{
+.mainHotel{                              /*don't know where used*/
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .mainDisplayFilterResult {
-    display: flex;
-    flex-direction: row;
-    margin-top: 40px;
-    border-top: 1px solid black;
-    padding-top: 10px;
-    gap: 80px;
-  }
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  gap: 80px;
+  position: relative;
+}
 
-  .filteredHotels{
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    margin-left: 100px
-  }
+.filteredHotels{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin-left: 100px
+}
 
-  .filteredHotelsBorder{
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    padding-top: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
-    border-radius: 10px;
-    background-color: white;
-  }
-  
-  .filterSectionPriceH, .filterSectionRatingH, .filterSectionAmenitiesH{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
+.filteredHotelsBorder{
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 10px;
+  background-color: white;
+  position: sticky;
+  top: 10px;
+}
 
-  .filterSectionPriceH div, .filterSectionRatingH div, .filterSectionAmenitiesH div{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin-bottom: 10px;
-  }
+.filterSectionPriceH, .filterSectionRatingH, .filterSectionAmenitiesH{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
 
-  .filterSectionPriceH div input, .filterSectionRatingH div input, .filterSectionAmenitiesH div input{
-    margin-right: 15px;
-  }
+.amenitiesContainerH{
+  overflow-y: auto;
+  height: 200px;
+}
 
-  .rating-label-0, .rating-label-1, .rating-label-2, .rating-label-3 {
-    text-align: center;
-    height: 20px;
-    width: 30px;
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-  }
+.filterSectionPriceH .priceContainerH div, .filterSectionRatingH .ratingContainerH div, .filterSectionAmenitiesH .amenitiesContainerH div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
-  .rating-label-0{
-    background-color: #11998E;
-  }
+.filterSectionPriceH .priceContainerH input, .filterSectionRatingH .ratingContainerH input, .filterSectionAmenitiesH .amenitiesContainerH input{
+  margin-right: 15px;
+}
 
-  .rating-label-1 {
-    background-color: #1CA54F;
-  }
+.rating-label-0, .rating-label-1, .rating-label-2, .rating-label-3 {
+  text-align: center;
+  height: 20px;
+  width: 30px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
 
-  .rating-label-2 {
-    background-color: #48B41C;
-  }
+.rating-label-0{
+  background-color: #11998E;
+}
 
-  .rating-label-3 {
-    background-color: #48B41C;
-  }
+.rating-label-1 {
+  background-color: #1CA54F;
+}
 
+.rating-label-2 {
+  background-color: #48B41C;
+}
 
-
-  /*.topFilter {
-    display: flex;m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-    height: 20px;
-  }
-  
-  .topFilter label {
-    margin-left: 30px;
-    margin-right: 10px;
-    font-size: small;
-  }*/
+.rating-label-3 {
+  background-color: #48B41C;
+}
 
 
 
+/*.topFilter {
+  display: flex;m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  height: 20px;
+}
+
+.topFilter label {
+  margin-left: 30px;
+  margin-right: 10px;
+  font-size: small;
+}*/
 
 
 
-  /*For Cards Result*/
-  .displayFilteredCards{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-right: 40px;
-    flex-grow: 1;
-  }
 
 
-  .singleFilteredCardsH{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    height: 200px;
-    transition: transform 0.3s ease-in;
-    background-color: white;
-  }
 
-  .singleFilteredCardsH:hover{
-    transform: scale(1.05);
-    border: 2px solid darkred;
-  }
+/*For Cards Result*/
+.displayFilteredCards{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-right: 40px;
+  flex-grow: 1;
+}
 
-  .filterImageLeftH{
-    display: flex;
-    width: 25%;
-    padding-left: 5px;
-    margin-right: 15px;
+.singleFilteredCardsH{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in;
+  background-color: white;
+}
+
+.singleFilteredCardsH:hover{
+  transform: scale(1.05);
+  border: 2px solid darkred;
+}
+
+.filterImageLeftH{
+  display: flex;
+  width: 25%;
+  padding-left: 5px;
+  margin-right: 15px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.imageLeftH{
+  width: 200px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.filterRightH{
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  margin-top: 5px;
+  margin-right: 20px;
+}
+
+.fR1H{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.fR1H p:nth-child(2){
+  height: 25px;
+  width: 40px;
+  padding: 1px;
+  background-color: #1CA54F;
+  border-radius: 2px;
+  text-align: center;
+  color: white;
+}
+
+.fR1H div>p{
+  color: rgb(70, 72, 77);
+  padding: 0.2rem;
+  border: 0.1rem solid rgb(239, 243, 248);
+  text-transform: uppercase;
+  border-radius: 0.2rem;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.fR1H div>span{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fR2H{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.fRDH{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  background-color: #FBE5DB;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.fR3H{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.fR3H p:last-child{
+  background-color: #E1F6F6;
+  border-radius: 5px;
+  font-size: 14px;
+  padding-right: 5px;
+  white-space: nowrap;
+  height: fit-content;
+}
+
+
+.rightSectionH {
+  width: 40%;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rightSection1H{
+  display: flex;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  z-index: 3;
+  position: absolute;
+  overflow: hidden;
+}
+
+.rightSection1H > img {
+  width: 550px;
+  height: 13rem;
+}
+
+.rightSection2H {
+  display: flex;
+  margin-top: 42%;
+}
+
+.r1H, .r2H{
+  border-radius: 10px;
+  margin: 10px;
+  z-index: 3;
+}
+
+.r1H > img, .r2H > img {
+  height: 150px;
+  width: 260px;
+}
+
+
+@media screen and (max-width: 1400px) {
+  .hotelsMainSection{
     align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .upperInputAdSectionH{
+    width: 85%;
+  }
+  
+  .hotelInputs{
+    padding: 0;
+    padding-top: 10px;
+    width: 60%;
+    z-index: 15;
+  }
+
+  .rightSectionH{
+    width: 40%;
+    gap: 10px;
+  }
+
+  .rightSection1H{
+    position: static;
     overflow: hidden;
   }
 
-  .imageLeftH{
-    width: 200px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 5px;
+  .rightSection2H {
+    margin-top: 0;
+  }
+  
+  .rightSection1H > img{
+    width: 100%;
   }
 
-  .filterRightH{
-    display: flex;
+  .r1H > img, .r2H > img{
+    width: 100%;
+  }
+
+  .mainDisplayFilterResult{
+    justify-content: center;
+  }
+
+  .filteredHotels{
+    margin-left: 0;
+  }
+
+  .displayFilteredCards{
+    margin-right: 0;
+  }
+
+}
+
+@media screen and  (max-width: 1250px){
+  .hotelInputs{
+    width: 70%;
+  }
+
+  .rightSectionH{
+    margin-top: 60px;
+    width: 30%;
+    gap: 0;
+  }
+
+  .rightSection1H > img {
+    height: 10rem;
+  }
+
+  .r1H, .r2H{
+    margin: 5px;
+  }
+
+  .r1H > img, .r2H > img{
+    height: 120px;
+  }
+
+}
+
+@media screen and (max-width: 1175px) {
+  .filteredHotels{
+    margin-left: 8px;
+  }
+
+  .displayFilteredCards{
+    margin-right: 8px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .mainDisplayFilterResult{
+    gap: 40px;
+  }
+
+  .searchH{
+    width: 24%;
+    margin-top: -12px;
+  }
+  
+  .searchH button{
+    width: 100%;
+  }
+
+  .rightSectionH{
+    margin-top: 65px;
+  }
+
+  .rightSection1H > img {
+    height: 9.5rem;
+  }
+
+  .r1H > img, .r2H > img{
+    height: 110px;
+  }
+
+}
+
+@media screen and (max-width: 1050px){
+  .filteredHotelsBorder{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .upperInputAdSectionH{
     flex-direction: column;
-    flex: 1 0 0;
-    margin-top: 5px;
-    margin-right: 20px;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
   }
 
-  .fR1H{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  .hotelInputs{
+    width: 80%;
   }
 
-  .fR1H p:nth-child(2){
-    height: 25px;
-    width: 40px;
-    padding: 1px;
-    background-color: #1CA54F;
-    border-radius: 2px;
-    text-align: center;
-    color: white;
+  .rightSectionH{
+    margin-top: 0;
+    width: 60%;
   }
 
-  .fR1H div>p{
-    color: rgb(70, 72, 77);
-    padding: 0.2rem;
-    border: 0.1rem solid rgb(239, 243, 248);
-    text-transform: uppercase;
-    border-radius: 0.2rem;
+  .rightSection1H > img {
+    height: 9rem;
+  }
+
+  .rightSection2H{
+    display: none;
+  }
+
+  .searchH{
+    width: 22%;
+    margin-top: -15px;
+  }
+  
+  .filteredHotelsBorder h3{
+    font-size: 22px;
+  }
+
+  .amenitiesContainerH label{
     font-size: 14px;
-    display: inline-block;
   }
 
-  .fR2H{
+  .fR3H p:first-child{
+    line-height: 1.1;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .hotelInputs{
+    width: 90%;
+  }
+
+  .hotelInputs h2{
+    text-align: left;
+  }
+
+  .rightSectionH{
+    width: 50%;
+  }
+
+  .rightSection1H > img{
+    height: 8rem;
+  }
+
+  .mainDisplayFilterResult{
+    gap: 12px;
+  }
+
+  .filteredHotels{
+    margin-left: 5px;
+  }
+
+  .filteredHotelsBorder{
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .displayFilteredCards{
+    margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 805px) {
+  .rightSectionH{
+    display: none;
+  }
+
+  .filterSectionPriceH .priceContainerH input, .filterSectionRatingH .ratingContainerH input, .filterSectionAmenitiesH .amenitiesContainerH input{
+    margin-right: 8px;
+  }
+
+  .filterImageLeftH{
+    width: 26%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .mainDisplayFilterResult{
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hotelInputs{
+    width: 95%;
+  }
+
+  .filteredHotels{
+    width: 100%;
+    margin-right: 5px;
+    margin-left: 5px;
+    position: sticky;
+    top: 0;
+  }
+
+  .filteredHotelsBorder{
+    overflow: hidden;
+  }
+  
+  .priceContainerH, .ratingContainerH {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
-  .fRDH{
+  .amenitiesContainerH{
     display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-    background-color: #FBE5DB;
-    border-radius: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
+    flex-direction: row;
+    gap: 15px;
+    height: 40px;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .amenitiesContainerH label{
+    white-space: nowrap;
+  }
+
+  .filterSectionPriceH .priceContainerH div, .filterSectionRatingH .ratingContainerH div, .filterSectionAmenitiesH .amenitiesContainerH div{
+    margin-bottom: 0;
+  }
+
+  .filterSectionPriceH .priceContainerH input, .filterSectionRatingH .ratingContainerH input, .filterSectionAmenitiesH .amenitiesContainerH input{
+    margin-right: 4px;
+  }
+
+  .filterSectionAmenitiesH h3{
+    margin-bottom: 0.2rem;
+  }
+
+  .fR3H p:first-child{
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hotelInputs{
+    width: 100%;
+  }
+
+  .hotelInputs h2{
+    font-size: 22px;
+  }
+
+  .searchH{
+    margin-top: -10px;
+  }
+
+  .searchH button{
+    height: 35px;
+  }
+
+  .filterImageLeftH{
+    width: 28%;
+  }
+
+  .fR1H h4{
+    font-size: 20px;
+  }
+
+  .fR1H div span{
+    font-size: 14px;
   }
 
   .fR3H{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .fRDH{
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .tripRadioH{
+    margin-left: 20px;
+  }
+  
+  .whereH{
+    margin-left: 20px;
+  }
+
+  .checkDateH{
+    margin: 20px;
+  }
+
+  .nightsH{
+    font-size: 14px;
+  }
+
+  .guestRoomPrefH .child2{
+    margin-top: 0;
+  }
+
+  .travellerPrefH{
+    flex: 0 0 160px;
+  }
+
+  /*.travellerPrefH label{
+    text-align: end;
+  }
+
+  .travellerPrefBtnH{
+    justify-content: flex-end;
+    gap: 15px;
+  }*/
+
+  .filteredHotelsBorder{
+    padding: 5px;
+  }
+
+  .filteredHotelsBorder h3{
+    font-size: 20px;
+  }
+
+  .filterSectionPriceH, .filterSectionRatingH, .filterSectionAmenitiesH{
+    margin-bottom: 5px;
+  }
+
+  .filterImageLeftH{
+    width: 34%;
+    margin-right: 8px;
+  }
+
+  .fR1H p:first-child{
+    font-size: 14px;
+  }
+
+  .fR1H h4{
+    margin-bottom: 0.2rem;
+  }
+
+  .fR1H div span{
+    gap: 4px;
+    line-height: 1.1;
+  }
+
+  .fR3H{
+    margin-top: 8px;
+  }
+
+  .fR3H p:first-child{
+    font-size: 12px;
+    font-weight: 500;
   }
 
   .fR3H p:last-child{
-    background-color: #E1F6F6;
-    border-radius: 5px;
-    font-size: 14px;
-    padding-right: 5px;
+    font-size: 12px;
+    font-weight: 500;
   }
+
+  .fRDH{
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+
+@media screen and (max-width: 430px) {
+  .tripRadioH{
+    margin-left: 10px;
+  }
+  
+  .whereH{
+    margin-left: 10px;
+  }
+
+  .checkDateH{
+    margin: 15px 10px;
+  }
+
+  .guestRoomPrefH{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .travellerPrefH{
+    flex: 0 0 150px;
+  }
+
+  .travellerPrefH label{
+    font-size: 14px;
+  }
+
+  .grNonEditable{
+    font-size: 14px;
+  }
+
+  .searchH{
+    margin-top: -8px;
+  }
+
+  .searchH button{
+    height: 32px;
+  }
+
+  .filterImageLeftH{
+    width: 40%;
+  }
+
+  .fR3H{
+    margin-top: 10px;
+  }
+
+  .fR3H p:last-child{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hotelInputs h2{
+    width: 50%;
+  }
+
+  .passengerWindowH{
+    width: 320px;
+  }
+
+  .fR1H div span{
+    font-size: 12px;
+  }
+
+  .imageLeftH{
+    height: 160px;
+  }
+}
+
 
 
 
@@ -738,7 +1372,7 @@
   }
 
   .roomCardSingle:hover{
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 
 
@@ -837,6 +1471,8 @@
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
   }
   
   .stickyButton {
@@ -847,9 +1483,268 @@
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    align-self: center;
   }
 
 
+
+  @media screen and (max-width: 1400px) {
+    .nameLocationRatingCarouselH{
+      width: 90%;
+    }
+
+    .cardsAndBooking{
+      width: 90%;
+      gap: 40px;
+    }
+  }
+
+  @media screen and (max-width: 1250px) {
+    .nameLocationRatingCarouselH{
+      width: 95%;
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    .carouselOfferContainer{
+      width: 34%;
+    }
+
+    .carouCancellation{
+      padding: 1rem 0.5rem;
+    }
+
+    .carouOfferImageDiv{
+      margin-right: 0.3rem;
+    }
+
+    .carouOfferText{
+      width: 60%;
+    }
+
+    .carouOfferLink{
+      width: 25%;
+    }
+
+    .carouOfferCode, .carouOfferoff, .carouOfferLink{
+      font-size: 10px;
+    }
+  }
+
+@media screen and (max-width: 1000px) {
+  .nameLocationRatingCarouselH{
+    align-items: center;
+  }
+
+  .nameLocationRatingH{
+    width: 100%;
+  }
+
+  .carouselCheckinContainer{
+    flex-direction: column;
+    width: 85%;
+    justify-content: center;
+  }
+
+  .carouselContainer{
+    width: 100%;
+  }
+
+  .carouselOfferContainer{
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .carouCancelBeside{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .besideCarouselCheck{
+    padding: 0.5rem;
+  }
+
+  .carouOfferCode, .carouOfferoff, .carouOfferLink{
+    font-size: 14px;
+  }
+
+  .cardsAndBooking{
+    width: 95%;
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cardsAndBooking{
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .validateRoomNo{
+    align-self: center;
+    width: 30%;
+  }
+
+  .stickyContainer{
+    position: static;
+    top: 0;
+    margin-top: 0;
+    
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .carouselCheckinContainer{
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .carouselCheckinContainer{
+    width: 100%;
+  }
+
+  .validateRoomNo{
+    align-self: center;
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nameLocationRatingCarouselH{
+    width: 98%;
+  }
+
+  .carouOfferContainer{
+    display: none;
+  }
+
+  .carouCancelBeside{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .besideCarouselCheck{
+    align-self: center;
+  }
+
+  .roomCardSingle{
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px;
+  }
+
+  .cardsAndBooking{
+    width: 98%;
+  }
+
+  .validateRoomNo{
+    align-self: center;
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .ratingOne{
+    height: 40px;
+    padding: 8px;
+  }
+
+  .roomCards h2{
+    font-size: 20px;
+  }
+
+  .imageCarouselH{
+    max-height: 450px;
+  }
+
+  .roomCardSingle{
+    padding: 6px;
+  }
+
+  .leftSideRoomCard h5{
+    font-size: 18px;
+  }
+
+  .leftSideRoomCard p{
+    font-size: 12px;
+  }
+
+  .rightSideRoomCard{
+    padding-left: 4px;
+  }
+
+  .rightSidePriceRoomCard{
+    width: 25%;
+  }
+
+  .rightSideRoomCard p span, .rightSideRoomCard p div, .rightSideRoomCard ul li, .roomCancellationText{
+    font-size: 12px;
+  }
+
+  .rightSidePriceRoomCard h4{
+    font-size: 14px;
+  }
+
+  .rightSidePriceRoomCard h4 + p, .strongBoi{
+    font-size: 12px;
+  }
+
+  .roomCardButton{
+    font-size: 12px;
+  }
+
+  .stickyRoomNo p{
+    font-size: 14px;
+  }
+
+  .stickyButton{
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .imageCarouselH{
+    max-height: 400px;
+  }
+
+  .leftSideRoomCard h5{
+    font-size: 16px;
+  }
+
+  .leftSideRoomCard p{
+    font-size: 10px;
+  }
+
+  .rightSideRoomCard p span, .rightSideRoomCard p div, .rightSideRoomCard ul li, .roomCancellationText{
+    font-size: 10px;
+  }
+
+  .rightSidePriceRoomCard h4{
+    font-size: 12px;
+  }
+
+  .rightSidePriceRoomCard h4 + p, .strongBoi{
+    font-size: 10px;
+  }
+
+  .roomCardButton{
+    font-size: 10px;
+  }
+
+  .validateRoomNo{
+    width: 50%;
+  }
+
+  .stickyRoomNo p{
+    font-size: 12px;
+  }
+
+  .stickyButton{
+    font-size: 12px;
+  }
+}
 
 
 
@@ -874,7 +1769,7 @@
 
   .bookingHotelContainer{
     background-color: #EEF4FD;
-    height: 100vh;
+    height: 100%;
   }
 
   .bookingBgColorH{
@@ -899,7 +1794,7 @@
   padding: 10px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #888888;
-  flex-basis: 800px;
+  flex-basis: 100%;
   background-color: white;
 }
 
@@ -1013,6 +1908,191 @@
 
 
 
+@media screen and (max-width: 1400px) {
+  .bookingMainPage{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .bookingRightH{
+    margin-left: 20px;
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .bookingRightH{
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .bookingS2H h3{
+    font-size: 20px;
+  }
+
+  .bookingRightH{
+    width: 35%;
+    margin-left: 10px;
+  }
+
+  .contentRightH{
+    padding: 10px;
+    font-weight: 500;
+  }
+
+  .contentRightH>h2{
+    font-size: 20px;
+  }
+
+  .contentRightH p{
+    font-size: 14px;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .bookH1{
+    margin-left: 10px;
+  }
+
+  .bookingLeftH{
+    padding: 0;
+  }
+
+  .bookingS2H h3{
+    font-size: 18px;
+  }
+}
+
+
+@media screen and (max-width: 850px) {
+  .bookingRightH{
+    width: 38%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .bookingS1H{
+    margin: 10px;
+  }
+
+  .bookingS2H{
+    margin: 10px;
+  }
+
+  .bookingRightH{
+    width: 30%;
+  }
+}
+
+
+@media screen and (max-width: 685px){
+  .bookingMainPage{
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+
+  .bookingS1H{
+    margin: 20px;
+  }
+
+  .bookingS2H{
+    margin: 20px;
+  }
+
+  .contentRightH{
+    padding: 20px;
+  }
+
+  .contentRightH p{
+    font-size: 16px;
+  }
+
+  .bookingS2H h3{
+    font-size: 20px;
+  }
+
+  .acitFullH{
+    width: 100%;
+  }
+
+  .bookingRightH{
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .bookingS1H{
+    margin: 10px;
+  }
+
+  .bookingS2H{
+    margin: 10px;
+  }
+
+  .contentRightH{
+    padding: 10px;
+  }
+
+
+  .bookingS2H h3{
+    font-size: 18px;
+  }
+
+  .acitFullH{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .bookingMainPage{
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .bookingS2H{
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .bookingS2H h3{
+    font-size: 15px;
+  }
+
+  .bookingS2H p{
+    font-size: 12px;
+  }
+
+  .bookingImage1>img{
+    height: 180px;
+    width: 180px;
+  }
+
+  .bookingHotelNameRating{
+    margin-left: 8px;
+  }
+
+  .bookingHotelNameRating h3{
+    font-size: 20px;
+  }
+
+  .bookingLocationH{
+    font-size: 14px;
+  }
+
+  .bookH2, .bookH3{
+    margin-left: 10px;
+  }
+}
+
+
+@media screen and (max-width: 376px) {
+  .bookingS2H h3{
+    font-size: 14px;
+  }
+}
 
 
 

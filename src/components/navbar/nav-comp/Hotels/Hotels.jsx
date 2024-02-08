@@ -624,7 +624,7 @@ const handleCalculateNights = () => {
       <div className='hotelsMainSection'>
         <div className='upperInputAdSectionH'>
           <div className="hotelInputs">
-              <h1>Book Hotels & Homestays</h1>
+              <h2>Book Hotels & Homestays</h2>
               <div className='borderHotelInputs'>
 
                   <div className='tripRadioH'>
@@ -730,18 +730,18 @@ const handleCalculateNights = () => {
         </div>
 
 
-        <div className="rightSection">
+        <div className="rightSectionH">
 
-            <div className="rightSection1">
+            <div className="rightSection1H">
               <img src="https://gos3.ibcdn.com/meta-1-1694597822.jpg" alt="" />
             </div>
             
-            <div className="rightSection2">
-                <div className="r1">
+            <div className="rightSection2H">
+                <div className="r1H">
                     <img src="https://gos3.ibcdn.com/offers-640X268-1702450350.jpg" alt="" />
                 </div>
                 
-                <div className="r2">
+                <div className="r2H">
                   <img src="https://gos3.ibcdn.com/img-1626751565.jpg" alt="" />
                 </div>
             </div>
@@ -778,62 +778,68 @@ const handleCalculateNights = () => {
                   <div className='filteredHotelsBorder'>
                       <div className='filterSectionPriceH'>
                             <h3>Price Range</h3>
-                            {priceRanges.map((range, index) => (
-                                <div key={range.label}>
-                                  <input
-                                    type="checkbox"
-                                    id={range.label}
-                                    /*checked={selectedRanges.some(
-                                      (selectedRange) =>
-                                        selectedRange.valueMin === range.valueMin &&
-                                        selectedRange.valueMax === range.valueMax
-                                    )}*/
-                                    checked={isChecked.forPrice[index]}
-                                    //onChange={() => (setCheckLoad(true),handlePriceChange(index, range.valueMin, range.valueMax))}
-                                    onChange={() => (setCheckLoad(true),handlePriceChange(index))}
-                                  />
-                                  <label htmlFor={range.label}>{range.label}</label>
-                                </div>
-                            ))}
-                      </div>
-                      <hr></hr>
-                      <div className='filterSectionRatingH'>
-                          <h3>Ratings</h3>
-                              {ratingRanges.map((rating, index) => (
-                                  <div key={rating.label}>
+                            <div className='priceContainerH'>
+                              {priceRanges.map((range, index) => (
+                                  <div key={range.label}>
                                     <input
                                       type="checkbox"
-                                      id={rating.label}
+                                      id={range.label}
                                       /*checked={selectedRanges.some(
                                         (selectedRange) =>
                                           selectedRange.valueMin === range.valueMin &&
                                           selectedRange.valueMax === range.valueMax
                                       )}*/
-                                      checked={isChecked.forRating[index]}
-                                      //onChange={() => handleRatingChange(index, rating.value)}
-                                      //onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, rating, 'rating'))}
-                                      onChange={() => (setCheckLoad(true),handleRatingChange(index))}
+                                      checked={isChecked.forPrice[index]}
+                                      //onChange={() => (setCheckLoad(true),handlePriceChange(index, range.valueMin, range.valueMax))}
+                                      onChange={() => (setCheckLoad(true),handlePriceChange(index))}
                                     />
-                                    <label htmlFor={rating.label} className= {`rating-label-${index}`}>{rating.label}</label>
+                                    <label htmlFor={range.label}>{range.label}</label>
                                   </div>
                               ))}
+                            </div>
+                      </div>
+                      <hr></hr>
+                      <div className='filterSectionRatingH'>
+                          <h3>Ratings</h3>
+                          <div className='ratingContainerH'>
+                            {ratingRanges.map((rating, index) => (
+                                <div key={rating.label}>
+                                  <input
+                                    type="checkbox"
+                                    id={rating.label}
+                                    /*checked={selectedRanges.some(
+                                      (selectedRange) =>
+                                        selectedRange.valueMin === range.valueMin &&
+                                        selectedRange.valueMax === range.valueMax
+                                    )}*/
+                                    checked={isChecked.forRating[index]}
+                                    //onChange={() => handleRatingChange(index, rating.value)}
+                                    //onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, rating, 'rating'))}
+                                    onChange={() => (setCheckLoad(true),handleRatingChange(index))}
+                                  />
+                                  <label htmlFor={rating.label} className= {`rating-label-${index}`}>{rating.label}</label>
+                                </div>
+                            ))}
+                        </div>
                       </div>
                       <hr></hr>
                       <div className='filterSectionAmenitiesH'>
                               <h3>Amenities</h3>
-                              {amenities.map((amenity, index) => (
-                                  <div key={amenity.label}>
-                                    <input
-                                      type="checkbox"
-                                      id={amenity.label}
-                                      checked={isChecked.forAmenities[index]}
-                                      //onChange={() => handleAmenitiesChange(index, amenity.label)}
-                                      //onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, amenity, 'amenity'))}
-                                      onChange={() => (setCheckLoad(true),handleAmenityChange(index))}
-                                    />
-                                    <label htmlFor={amenity.label}>{amenity.label}</label>
-                                  </div>
-                              ))}
+                              <div className='amenitiesContainerH'>
+                                {amenities.map((amenity, index) => (
+                                    <div key={amenity.label}>
+                                      <input
+                                        type="checkbox"
+                                        id={amenity.label}
+                                        checked={isChecked.forAmenities[index]}
+                                        //onChange={() => handleAmenitiesChange(index, amenity.label)}
+                                        //onChange={() => (setCheckLoad(true), applyCheckAndFilters(index, amenity, 'amenity'))}
+                                        onChange={() => (setCheckLoad(true),handleAmenityChange(index))}
+                                      />
+                                      <label htmlFor={amenity.label}>{amenity.label}</label>
+                                    </div>
+                                ))}
+                              </div>
                       </div>
 
                   </div>
@@ -862,7 +868,7 @@ const handleCalculateNights = () => {
                         <div>
                           <p>Hotel</p>
                           <h4>{hotel.name}</h4>
-                          <span><img src="https://gos3.ibcdn.com/map-1626422501.png" /> {hotel.location}</span>
+                          <span><img src="https://gos3.ibcdn.com/map-1626422501.png" /> <span>{hotel.location}</span></span>
                         </div>
                         <p>{hotel.rating}/5</p>
                       </div>

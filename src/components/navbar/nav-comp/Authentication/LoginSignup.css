@@ -214,3 +214,157 @@
     font-weight: 600;
     z-index: 10;
   }
+
+
+
+@media screen and (max-width: 1400px) {
+  .modal-content-login{
+    width: 70%;
+  }
+
+  .left-container-login{
+    width: 40%;
+  }
+
+  .right-container-login{
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .left-container-login{
+    width: 40%;
+  }
+
+  .right-container-login{
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .modal-content-login{
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .left-container-login{
+    width: 45%;
+  }
+
+  .right-container-login{
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .modal-content-login{
+    width: 80%;
+  }
+
+  .left-container-login{
+    width: 50%;
+  }
+
+  .right-container-login{
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .modal-content-login{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .modal-content-login{
+    width: 95%;
+  }
+
+  .privacy-policy-login{
+    margin-top: 12px;
+  }
+
+  .left-container-login{
+    padding: 20px 30px;
+    width: 45%;
+  }
+
+  .left-container-login div h3, .left-container-login div h3 span{
+    font-size: 22px;
+  }
+
+  .right-container-login{
+    padding: 20px 30px;
+    width: 55%;
+  }
+
+  .log-in{
+    margin-top: 15%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .modal-content-login{
+    width: 98%;
+  }
+
+  .left-container-login{
+    padding: 20px 20px;
+    width: 50%;
+  }
+
+  .right-container-login{
+    padding: 20px 20px;
+    width: 50%;
+  }
+
+  .benefitsLogin{
+    font-size: 12px;
+  }
+
+  .log-in{
+    margin-top: 20%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .left-container-login{
+    padding: 20px 10px;
+  }
+
+  .right-container-login{
+    padding: 20px 10px;
+  }
+
+  .log-in{
+    margin-top: 25%;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .left-container-login{
+    display: none;
+  }
+
+  .right-container-login{
+    padding: 20px 20px;
+    width: 90%;
+    height: auto;
+  }
+
+  .log-in{
+    margin-top: 30%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .right-container-login{
+    width: 98%;
+  }
+
+  .right-container-login .privacy-policy-login{
+    font-size: 12px;
+  }
+}

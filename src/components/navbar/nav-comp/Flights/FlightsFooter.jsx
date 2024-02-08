@@ -70,15 +70,15 @@ export const FlightsFooter = () => {
               
             </div> 
 
-            <div className="bottom1">
+            <div className="bottom1F">
                 
                 <div>
 
-                <div>
-                   <h4>Follow Us</h4> 
+                    <div>
+                        <h4>Follow Us</h4> 
                     </div>
 
-                    <div className="socialMedia">
+                    <div className="socialMediaF">
                         <img src="data:image/png;base64,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" alt="" />
                         
                         <img src="data:image/png;base64,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" />
@@ -86,14 +86,14 @@ export const FlightsFooter = () => {
                         <img src="https://www.seekpng.com/png/detail/429-4296854_youtube-icon-gray-youtube-play-button-grey.png" alt="" />
                     </div>
 
-                    </div>
+                </div>
                 
                 <div>
                     <div>
-                   <h4>Book Tickets faster. Download our mobile Apps</h4> 
+                        <h4>Book Tickets faster. Download our mobile Apps</h4> 
                     </div>
 
-                    <div className="store">
+                    <div className="storeF">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaqFW7-tDuj8VPfxQKfMBbtD6iyxIqss12FQ&usqp=CAU"  />
                         
                         <img src="https://cdn.cultofmac.com/wp-content/uploads/2011/07/Available-on-the-App-Store-e1311024223942.png" />
@@ -102,11 +102,11 @@ export const FlightsFooter = () => {
 
                 </div>
                 
-                <div className="paymentIcon">
+                <div className="paymentIconF">
 
                     <img src="https://seeklogo.com/images/V/VeriSign__Inc_-logo-4CE3D0451F-seeklogo.com.png"/>
 
-                    <img src="https://s1.q4cdn.com/692158879/files/images/brand_imagery/AXP_BlueBoxLogo_EXTRALARGEscale_RGB_DIGITAL_1600x1600.png" alt="" />
+                    {/*<img src="https://s1.q4cdn.com/692158879/files/images/brand_imagery/AXP_BlueBoxLogo_EXTRALARGEscale_RGB_DIGITAL_1600x1600.png" alt="" />*/}
 
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png" alt="" />
 
@@ -120,14 +120,16 @@ export const FlightsFooter = () => {
 
             </div>
 
-            <div className="bottom2">
-                <img src="https://www.consumercomplaints.in/thumb.php?bname=1&src=ibibo-group.jpg&wmax=900&hmax=900&quality=90&nocrop=1"/>
-                
-                <img src="https://st1.bgr.in/wp-content/uploads/2018/08/goibibo-logo.jpg"/>
+            <div className="bottom2F">
+                <div>
+                    <img src="https://www.consumercomplaints.in/thumb.php?bname=1&src=ibibo-group.jpg&wmax=900&hmax=900&quality=90&nocrop=1"/>
+                    
+                    {/*<img src="https://st1.bgr.in/wp-content/uploads/2018/08/goibibo-logo.jpg"/>*/}
 
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Redbus_logo.jpg"/>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Redbus_logo.jpg"/>
+                </div>
                
-                    <p>© 2021 ibibogroup All rights reserved</p>
+                <p>© 2021 ibibogroup All rights reserved</p>
 
             </div>
 

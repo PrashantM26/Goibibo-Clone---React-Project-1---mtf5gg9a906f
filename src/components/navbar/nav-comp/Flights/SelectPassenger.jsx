@@ -44,15 +44,15 @@ export const SelectPassenger = ({ valSetter }) => {
 
 
   return (
-    <div>
+    <div className='fdi'>
     
-        <div className="child1">
-                <label>Travellers & Class</label>
-                <div className="travellersClassSelect" onClick={handlePassenger}>
-                    {selVal.adults} Adults, {selVal.children>0 ? `${selVal.children} Children, ` : null }{selVal.infants>0 ? `${selVal.infants} Infants ` : null }
-                    {selVal.ticketType}
-                </div>
-        </div>
+      <div className="child1">
+              <label>Travellers & Class</label>
+              <div className="travellersClassSelect" onClick={handlePassenger}>
+                  {selVal.adults} Adults, {selVal.children>0 ? `${selVal.children} Children, ` : null }{selVal.infants>0 ? `${selVal.infants} Infants ` : null }
+                  {selVal.ticketType}
+              </div>
+      </div>
         
       {showPassenger ? (
         <div className='passengerWindow'>

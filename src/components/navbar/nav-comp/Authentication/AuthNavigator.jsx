@@ -23,4 +23,6 @@ useEffect(() => {
 }, [isLoggedIn, pathname]);
 
   return isLoggedIn ? children : null;
+
+  //return children;
 };

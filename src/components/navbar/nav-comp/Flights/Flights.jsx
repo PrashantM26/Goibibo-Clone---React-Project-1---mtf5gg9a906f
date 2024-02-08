@@ -392,57 +392,59 @@ useEffect(() => {
                     <h1>Book Domestic and International Flight Tickets</h1>
                     <div className='borderFlightInputs'>
                         <div className='tripRadioF'>
-                            <input type="radio" value="one-way" name='trip' />One way
-                            <input type="radio" value="round-trip" name='trip' />Round trip
+                            <input type="radio" value="one-way" name='trip' />&nbsp;One way
+                            <input type="radio" value="round-trip" name='trip' />&nbsp;Round trip
                         </div>
-                
-                
                     
             
                         <div className="flightDataInput">
 
-                            <div className="child1">
-                                <label>From</label>   
-                                <input name="from" onChange={handleChange}></input>
-                            </div>
-                            {/*<div className="swapbutton">
-                            <button ><img src="https://cdn-icons-png.flaticon.com/512/61/61165.png"></img></button>
-                            </div>*/}
-                            <div className="child1">
-                                <label>Destination</label>   
-                                <input name="destination" onChange={handleChange}></input>
+                            <div className='fdi'>
+                                <div className="child1">
+                                    <label>From</label>   
+                                    <input name="from" onChange={handleChange}></input>
+                                </div>
+                                {/*<div className="swapbutton">
+                                <button ><img src="https://cdn-icons-png.flaticon.com/512/61/61165.png"></img></button>
+                                </div>*/}
+                                <div className="child1">
+                                    <label>Destination</label>   
+                                    <input name="destination" onChange={handleChange}></input>
+                                </div>
                             </div>
 
                         
 
-
-                            <div className="child1">
-                                <label>Departure</label>
-                                <input type="text" name="departure" onClick={() => setShowCal1(!showCal1)} value={displayDepart} />
-                                <DateComponent dateVal = { currData.departure } setterFnc={setDisplayDepart} type="departure" />
-                            </div>
-                            { showCal1 ?
-                                (
-                                    <div className='calendarH'>
-                                        <Calendar id="dateFlight" value={currData.departure} minDate={new Date()} onChange={(date) => handleDateChange(date, "start")} />
-                                        <button className="calendarButtonH" onClick={() => setShowCal1(!showCal1)}>Done</button>
-                                    </div>
-                                )
-                            : null }
                             
-                            <div className="child1">
-                                <label>Return</label>   
-                                <input type="text" name="return" onClick={() => setShowCal2(!showCal2)} value={displayReturn} />
-                                <DateComponent dateVal = { currData.return } setterFnc={setDisplayReturn} type="return" />
+                            <div className='fdi'>
+                                <div className="child1">
+                                    <label>Departure</label>
+                                    <input type="text" name="departure" onClick={() => setShowCal1(!showCal1)} value={displayDepart} />
+                                    <DateComponent dateVal = { currData.departure } setterFnc={setDisplayDepart} type="departure" />
+                                </div>
+                                { showCal1 ?
+                                    (
+                                        <div className='calendarH'>
+                                            <Calendar id="dateFlight" value={currData.departure} minDate={new Date()} onChange={(date) => handleDateChange(date, "start")} />
+                                            <button className="calendarButtonH" onClick={() => setShowCal1(!showCal1)}>Done</button>
+                                        </div>
+                                    )
+                                : null }
+                                
+                                <div className="child1">
+                                    <label>Return</label>   
+                                    <input type="text" name="return" onClick={() => setShowCal2(!showCal2)} value={displayReturn} />
+                                    <DateComponent dateVal = { currData.return } setterFnc={setDisplayReturn} type="return" />
+                                </div>
+                                { showCal2 ?
+                                    (
+                                        <div className='calendarH'>
+                                            <Calendar id="dateFlight" value={currData.return} minDate={new Date(currData.departure.getTime())}  maxDate={new Date(currData.return.getTime() + 19 * 24 * 60 * 60 * 1000)} onChange={(date) => handleDateChange(date, "end")} />
+                                            <button className="calendarButtonH" onClick={() => setShowCal2(!showCal2)}>Done</button>
+                                        </div>
+                                    )
+                                : null }
                             </div>
-                            { showCal2 ?
-                                (
-                                    <div className='calendarH'>
-                                        <Calendar id="dateFlight" value={currData.return} minDate={new Date(currData.departure.getTime())}  maxDate={new Date(currData.return.getTime() + 19 * 24 * 60 * 60 * 1000)} onChange={(date) => handleDateChange(date, "end")} />
-                                        <button className="calendarButtonH" onClick={() => setShowCal2(!showCal2)}>Done</button>
-                                    </div>
-                                )
-                            : null }
 
                             {/* showCal ?
                                 (
@@ -464,22 +466,24 @@ useEffect(() => {
 
 
                         <div className='fareRadioF'>
-                            Select A Fare Type:
+                            <span className='fareRadioFText'>Select A Fare Type:</span>
                         {/*</div>
 
                         <div className="fare" >*/}
-                            <input type="radio" name='fare'></input>Regular
-                            <input type="radio" name='fare'></input>Armed Forces
-                            <input type="radio" name='fare'></input>Senior Citizen
-                            <input type="radio" name='fare'></input>Student
-                            <input type="radio" name='fare'></input>Doctors & Nurses
+                            <div className='fareRadioFInput'>
+                                <div className='fri'><input type="radio" name='fare'></input>Regular</div>
+                                <div className='fri'><input type="radio" name='fare'></input>Armed Forces</div>
+                                <div className='fri'><input type="radio" name='fare'></input>Senior Citizen</div>
+                                <div className='fri'><input type="radio" name='fare'></input>Student</div>
+                                <div className='fri'><input type="radio" name='fare'></input>Doctors & Nurses</div>
+                            </div>
                         </div>
                     </div>
-                        <div className="child1 searchF">
-                            <input type="submit" value="UPDATE SEARCH" className="searchButtonF" onClick={() => {
-                                setSearchOn((prev) => [prev[0] = true, !prev[1]])
-                            }} />
-                        </div>
+                    <div className="child1 searchF">
+                        <input type="submit" value="UPDATE SEARCH" className="searchButtonF" onClick={() => {
+                            setSearchOn((prev) => [prev[0] = true, !prev[1]])
+                        }} />
+                    </div>
 
                 </div>
 
@@ -493,10 +497,14 @@ useEffect(() => {
                 <div className="filterResultF">
                     <div className='filterHolderF'>
                         <div className="filtersF" >
+                            <div>
                             <h3>Filters</h3>
-                            <hr></hr>
+                            </div>
+                            <hr className='troubleMaker'></hr>
 
-                            <div >
+                            <div className='filterDepartStopF'>
+
+                                <div className='filterDepartF'>
                                     <h4>Departures</h4>
 
                                     {/*<div className="departures">
@@ -509,122 +517,129 @@ useEffect(() => {
                                         <div>After 6PM</div>
                                     </div>*/}
                                     <div className="departuresF">
-                                    
-                                        <button
-                                            style={{
-                                                //backgroundColor: selectedDepartureTime.includes("before6AM") && isToggled.depart ? 'blue' : 'inherit',
-                                                backgroundColor: selectedDepartureTime.includes("before6AM") ? 'blue' : '#F3F6F8',
-                                                color: selectedDepartureTime.includes("before6AM") ? 'white' : 'black'
-                                            }}
-                                            onClick={() => {
-                                                /*setSelectedDepartureTime((prev) => [...prev,"before6AM"])
-                                                setIsToggled((prev) => ({ ...prev, depart: true }));*/
-                                                handleDepartureTime("before6AM")
-                                            }}
-                                            /*onDoubleClick={() => //setIsToggled((prev) => ({ ...prev, depart: !prev.depart }))
-                                                handleDepartureTime("before6AM", "doubleClick")
-                                            }*/
-                                            >
-                                            Before 6AM
-                                        </button>
-                                        <button
-                                            style={{
-                                                backgroundColor: selectedDepartureTime.includes("6AMto12PM") ? 'blue' : '#F3F6F8',
-                                                color: selectedDepartureTime.includes("6AMto12PM") ? 'white' : 'black'
-                                            }}
-                                            onClick={() => {
-                                                    /*setSelectedDepartureTime("6AMto12PM"),
+                                        <div className='depBtnF'>
+                                            <button
+                                                style={{
+                                                    //backgroundColor: selectedDepartureTime.includes("before6AM") && isToggled.depart ? 'blue' : 'inherit',
+                                                    backgroundColor: selectedDepartureTime.includes("before6AM") ? 'blue' : '#F3F6F8',
+                                                    color: selectedDepartureTime.includes("before6AM") ? 'white' : 'black'
+                                                }}
+                                                onClick={() => {
+                                                    /*setSelectedDepartureTime((prev) => [...prev,"before6AM"])
                                                     setIsToggled((prev) => ({ ...prev, depart: true }));*/
-                                                    handleDepartureTime("6AMto12PM")
-                                            }}
-                                            /*onDoubleClick={() => //setIsToggled((prev) => ({ ...prev, depart: !prev.depart }))
-                                                handleDepartureTime("6AMto12PM", "doubleClick")
-                                            }*/
-                                            >
-                                            6AM - 12PM
-                                        </button>
-                                        <button
-                                            style={{
-                                                backgroundColor: selectedDepartureTime.includes("12PMto6PM") ? 'blue' : '#F3F6F8',
-                                                color: selectedDepartureTime.includes("12PMto6PM") ? 'white' : 'black'
-                                            }}
-                                            onClick={() => {
-                                                /*setSelectedDepartureTime("12PMto6PM")
-                                                setIsToggled((prev) => ({ ...prev, depart: true }));*/
-                                                handleDepartureTime("12PMto6PM")
-                                            }}
-                                            /*onDoubleClick={() => //setIsToggled((prev) => ({ ...prev, depart: !prev.depart }))
-                                                handleDepartureTime("12PMto6PM", "doubleClick")
-                                            }*/
-                                            >
-                                            12PM - 6PM
-                                        </button>
-                                        <button
-                                            style={{
-                                                backgroundColor: selectedDepartureTime.includes("after6PM") ? 'blue' : '#F3F6F8',
-                                                color: selectedDepartureTime.includes("after6PM") ? 'white' : 'black'
-                                            }}
-                                            onClick={() => {
-                                                /*setSelectedDepartureTime("after6PM")
-                                                setIsToggled((prev) => ({ ...prev, depart: true }));*/
-                                                handleDepartureTime("after6PM")
-                                            }}
-                                            /*onDoubleClick={() => //setIsToggled((prev) => ({ ...prev, depart: !prev.depart }))
-                                                handleDepartureTime("after6PM", "doubleClick")
-                                            }*/
-                                            >
-                                            After 6PM
-                                        </button>
-
+                                                    handleDepartureTime("before6AM")
+                                                }}
+                                                /*onDoubleClick={() => //setIsToggled((prev) => ({ ...prev, depart: !prev.depart }))
+                                                    handleDepartureTime("before6AM", "doubleClick")
+                                                }*/
+                                                >
+                                                Before 6AM
+                                            </button>
+                                            <button
+                                                style={{
+                                                    backgroundColor: selectedDepartureTime.includes("6AMto12PM") ? 'blue' : '#F3F6F8',
+                                                    color: selectedDepartureTime.includes("6AMto12PM") ? 'white' : 'black'
+                                                }}
+                                                onClick={() => {
+                                                        /*setSelectedDepartureTime("6AMto12PM"),
+                                                        setIsToggled((prev) => ({ ...prev, depart: true }));*/
+                                                        handleDepartureTime("6AMto12PM")
+                                                }}
+                                                /*onDoubleClick={() => //setIsToggled((prev) => ({ ...prev, depart: !prev.depart }))
+                                                    handleDepartureTime("6AMto12PM", "doubleClick")
+                                                }*/
+                                                >
+                                                6AM - 12PM
+                                            </button>
+                                        </div>
+                                        <div className='depBtnF'>
+                                            <button
+                                                style={{
+                                                    backgroundColor: selectedDepartureTime.includes("12PMto6PM") ? 'blue' : '#F3F6F8',
+                                                    color: selectedDepartureTime.includes("12PMto6PM") ? 'white' : 'black'
+                                                }}
+                                                onClick={() => {
+                                                    /*setSelectedDepartureTime("12PMto6PM")
+                                                    setIsToggled((prev) => ({ ...prev, depart: true }));*/
+                                                    handleDepartureTime("12PMto6PM")
+                                                }}
+                                                /*onDoubleClick={() => //setIsToggled((prev) => ({ ...prev, depart: !prev.depart }))
+                                                    handleDepartureTime("12PMto6PM", "doubleClick")
+                                                }*/
+                                                >
+                                                12PM - 6PM
+                                            </button>
+                                            <button
+                                                style={{
+                                                    backgroundColor: selectedDepartureTime.includes("after6PM") ? 'blue' : '#F3F6F8',
+                                                    color: selectedDepartureTime.includes("after6PM") ? 'white' : 'black'
+                                                }}
+                                                onClick={() => {
+                                                    /*setSelectedDepartureTime("after6PM")
+                                                    setIsToggled((prev) => ({ ...prev, depart: true }));*/
+                                                    handleDepartureTime("after6PM")
+                                                }}
+                                                /*onDoubleClick={() => //setIsToggled((prev) => ({ ...prev, depart: !prev.depart }))
+                                                    handleDepartureTime("after6PM", "doubleClick")
+                                                }*/
+                                                >
+                                                After 6PM
+                                            </button>
+                                        </div>
                                     </div>
                             
-                            </div>
-                            <hr></hr>
+                                </div>
+                                <hr></hr>
 
+                                <div className="filterStopF">
+                                    <h4>Stops</h4>
+                                    <div className="stopsF">
+                                        <div className='depBtnF'>
+                                            <button
+                                                style={{
+                                                    backgroundColor: selectedStops.includes("direct") ? 'blue' : '#F3F6F8',
+                                                    color: selectedStops.includes("direct") ? 'white' : 'black'
+                                                }}
+                                                onClick={() => {
+                                                    handleStops("direct")
+                                                    //setIsToggled((prev) => ({ ...prev, stop: true }));
+                                                }}
+                                                //onDoubleClick={() => setIsToggled((prev) => ({ ...prev, stop: !prev.stop }))}
+                                                >
+                                                Direct
+                                            </button>
+                                            <button
+                                                style={{
+                                                    backgroundColor: selectedStops.includes("1stop") ? 'blue' : '#F3F6F8',
+                                                    color: selectedStops.includes("1stop") ? 'white' : 'black'
+                                                }}
+                                                onClick={() => {
+                                                    handleStops("1stop")
+                                                    //setIsToggled((prev) => ({ ...prev, stop: true }));
+                                                }}
+                                                //onDoubleClick={() => setIsToggled((prev) => ({ ...prev, stop: !prev.stop }))}
+                                                >
+                                                1 Stop
+                                            </button>
+                                        </div>
+                                        <div className='depBtnF'>
+                                            <button
+                                                style={{
+                                                    //backgroundColor: selectedStops === "2plusstops" && isToggled.stop ? 'blue' : 'initial',
+                                                    backgroundColor: selectedStops.includes("2plusstops") ? 'blue' : '#F3F6F8',
+                                                    color: selectedStops.includes("2plusstops") ? 'white' : 'black'
+                                                }}
+                                                onClick={() => {
+                                                    handleStops("2plusstops")
+                                                    //setIsToggled((prev) => ({ ...prev, stop: true }));
+                                                }}
+                                                //onDoubleClick={() => setIsToggled((prev) => ({ ...prev, stop: !prev.stop }))}
+                                                >
+                                                2+ Stops
+                                            </button>
+                                        </div>
+                                    </div>
 
-                            <div>
-                                <h4>Stops</h4>
-                                <div className="stopsF">
-                                    <button
-                                        style={{
-                                            backgroundColor: selectedStops.includes("direct") ? 'blue' : '#F3F6F8',
-                                            color: selectedStops.includes("direct") ? 'white' : 'black'
-                                        }}
-                                        onClick={() => {
-                                            handleStops("direct")
-                                            //setIsToggled((prev) => ({ ...prev, stop: true }));
-                                        }}
-                                        //onDoubleClick={() => setIsToggled((prev) => ({ ...prev, stop: !prev.stop }))}
-                                        >
-                                        Direct
-                                    </button>
-                                    <button
-                                        style={{
-                                            backgroundColor: selectedStops.includes("1stop") ? 'blue' : '#F3F6F8',
-                                            color: selectedStops.includes("1stop") ? 'white' : 'black'
-                                        }}
-                                        onClick={() => {
-                                            handleStops("1stop")
-                                            //setIsToggled((prev) => ({ ...prev, stop: true }));
-                                        }}
-                                        //onDoubleClick={() => setIsToggled((prev) => ({ ...prev, stop: !prev.stop }))}
-                                        >
-                                        1 Stop
-                                    </button>
-                                    <button
-                                        style={{
-                                            //backgroundColor: selectedStops === "2plusstops" && isToggled.stop ? 'blue' : 'initial',
-                                            backgroundColor: selectedStops.includes("2plusstops") ? 'blue' : '#F3F6F8',
-                                            color: selectedStops.includes("2plusstops") ? 'white' : 'black'
-                                        }}
-                                        onClick={() => {
-                                            handleStops("2plusstops")
-                                            //setIsToggled((prev) => ({ ...prev, stop: true }));
-                                        }}
-                                        //onDoubleClick={() => setIsToggled((prev) => ({ ...prev, stop: !prev.stop }))}
-                                        >
-                                        2+ Stops
-                                    </button>
                                 </div>
 
                             </div>
@@ -633,71 +648,75 @@ useEffect(() => {
 
 
                             <div className='rangePriceDurationF'>
-                                <h5>Price</h5>
-                                <div className='rangePriceF'>
-                                    <p>₹ {priceRange[0]}</p>
-                                    <div style={{ position: 'relative' }}>
-                                        <div
-                                            style={{
-                                            position: 'absolute',
-                                            top: '-40px',
-                                            left: `${((maxSelPrice - priceRange[0]) / (priceRange[1] - priceRange[0])) * 100}%`,
-                                            transform: 'translateX(-50%)',
-                                            backgroundColor: '#f0f0f0',
-                                            padding: '5px',
-                                            borderRadius: '5px',
-                                            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                                            }}
-                                        >
-                                            ₹{maxSelPrice}
+                                <div>
+                                    <h5>Price</h5>
+                                    <div className='rangePriceF'>
+                                        <p>₹ {priceRange[0]}</p>
+                                        <div style={{ position: 'relative' }}>
+                                            <div
+                                                style={{
+                                                position: 'absolute',
+                                                top: '-40px',
+                                                left: `${((maxSelPrice - priceRange[0]) / (priceRange[1] - priceRange[0])) * 100}%`,
+                                                transform: 'translateX(-50%)',
+                                                backgroundColor: '#f0f0f0',
+                                                padding: '5px',
+                                                borderRadius: '5px',
+                                                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                                                }}
+                                            >
+                                                ₹{maxSelPrice}
+                                            </div>
+                                            <input
+                                                type="range"
+                                                min={priceRange[0]}
+                                                max={priceRange[1]}
+                                                value={maxSelPrice}
+                                                onChange={(e) => setMaxSelPrice(e.target.value)}
+                                            />
                                         </div>
-                                        <input
-                                            type="range"
-                                            min={priceRange[0]}
-                                            max={priceRange[1]}
-                                            value={maxSelPrice}
-                                            onChange={(e) => setMaxSelPrice(e.target.value)}
-                                        />
+                                        <p>₹ {priceRange[1]}</p>
+                                    {/*<input
+                                        type="range"
+                                        min={minPrice}
+                                        max={maxPrice}
+                                        value={priceRange[1]}
+                                        onChange={(e) => setPriceRange([priceRange[0], e.target.value])}
+                                        />*/}
                                     </div>
-                                    <p>₹ {priceRange[1]}</p>
-                                {/*<input
-                                    type="range"
-                                    min={minPrice}
-                                    max={maxPrice}
-                                    value={priceRange[1]}
-                                    onChange={(e) => setPriceRange([priceRange[0], e.target.value])}
-                                    />*/}
                                 </div>
                                 <hr></hr>
-                                <h5>Duration</h5>
-                                <div className='rangeDurationF'>
-                                    <p>{durationRange[0]} h</p>
-                                    <div style={{ position: 'relative' }}>
-                                        <div
-                                            style={{
-                                            position: 'absolute',
-                                            top: '-40px',
-                                            //left: `${(maxSelDuration*(100/durationRange[1])/100) * 100}%`,
-                                            //left: `${Math.min((maxSelDuration / durationRange[1]) * 100, 100)}%`,
-                                            left: `${((maxSelDuration - durationRange[0]) / (durationRange[1] - durationRange[0])) * 100}%`,
-                                            transform: 'translateX(-50%)',
-                                            backgroundColor: '#f0f0f0',
-                                            padding: '5px',
-                                            borderRadius: '5px',
-                                            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                                            }}
-                                        >
-                                            {maxSelDuration}h
+                                <div>
+                                    <h5>Duration</h5>
+                                    <div className='rangeDurationF'>
+                                        <p>{durationRange[0]} h</p>
+                                        <div style={{ position: 'relative' }}>
+                                            <div
+                                                style={{
+                                                position: 'absolute',
+                                                top: '-40px',
+                                                //left: `${(maxSelDuration*(100/durationRange[1])/100) * 100}%`,
+                                                //left: `${Math.min((maxSelDuration / durationRange[1]) * 100, 100)}%`,
+                                                left: `${((maxSelDuration - durationRange[0]) / (durationRange[1] - durationRange[0])) * 100}%`,
+                                                transform: 'translateX(-50%)',
+                                                backgroundColor: '#f0f0f0',
+                                                padding: '5px',
+                                                borderRadius: '5px',
+                                                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                                                }}
+                                            >
+                                                {maxSelDuration}h
+                                            </div>
+                                            <input
+                                                type="range"
+                                                min={durationRange[0]}
+                                                max={durationRange[1]}
+                                                value={maxSelDuration}
+                                                onChange={(e) => setMaxSelDuration(e.target.value)}
+                                            />
                                         </div>
-                                        <input
-                                            type="range"
-                                            min={durationRange[0]}
-                                            max={durationRange[1]}
-                                            value={maxSelDuration}
-                                            onChange={(e) => setMaxSelDuration(e.target.value)}
-                                        />
+                                        <p>{durationRange[1]} h</p>
                                     </div>
-                                    <p>{durationRange[1]} h</p>
                                 </div>
                             </div>
                             {/*<hr></hr>
@@ -747,17 +766,25 @@ useEffect(() => {
                                             
                                             <div className='topCardRF'>
                                                     <button onClick={()=>{
-                                                                {navigate(`/flights/${data._id}`, { state: { currData }}
-                                                                )}
-                                                            }}>BOOK  
+                                                            {navigate(`/flights/${data._id}`, { state: { currData }}
+                                                            )}
+                                                        }}>BOOK  
                                                     </button>
                                             </div>
                                             
                                         </div>
 
                                         <div className='offTextContainer'>
-                                            <span className='offerText'>Get Rs.149 OFF on GISUPER; Extra 25 OFF on UPI</span>&nbsp;
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" class="Discount__DiscountIcon-sc-i3dl3s-0 kPMYzm"><defs><linearGradient id="discount_svg__a" x1="0%" x2="100%" y1="3.217%" y2="100%"><stop offset="0%" stop-color="#1B9564"></stop><stop offset="100%" stop-color="#39D546"></stop></linearGradient></defs><path fill="url(#discount_svg__a)" fill-rule="evenodd" d="M12 6a2.179 2.179 0 00-1.136-1.93.126.126 0 01-.06-.145 2.21 2.21 0 00-2.73-2.73.123.123 0 01-.144-.06 2.21 2.21 0 00-3.86 0 .124.124 0 01-.145.06 2.209 2.209 0 00-2.729 2.73.124.124 0 01-.06.145 2.209 2.209 0 000 3.86.127.127 0 01.06.145 2.21 2.21 0 002.729 2.73.124.124 0 01.145.06 2.21 2.21 0 003.86 0 .123.123 0 01.144-.06 2.206 2.206 0 002.729-2.73.13.13 0 01.06-.145A2.172 2.172 0 0012 6zM7.847 8.77a.925.925 0 01-.654-1.577.925.925 0 011.577.654.923.923 0 01-.923.922zm-3.77-.127a.51.51 0 01-.72-.72l4.979-4.98a.512.512 0 11.72.721l-4.979 4.98zm.077-5.412a.924.924 0 110 1.848.924.924 0 010-1.848z"></path></svg> 
+                                            <span className='offerText'>Get Rs.149 OFF on GISUPER; Extra 25 OFF on UPI&nbsp;
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" class="Discount__DiscountIcon-sc-i3dl3s-0 kPMYzm">
+                                                    <defs><linearGradient id="discount_svg__a" x1="0%" x2="100%" y1="3.217%" y2="100%">
+                                                        <stop offset="0%" stop-color="#1B9564"></stop><stop offset="100%" stop-color="#39D546">
+                                                        </stop></linearGradient>
+                                                    </defs>
+                                                    <path fill="url(#discount_svg__a)" fill-rule="evenodd" d="M12 6a2.179 2.179 0 00-1.136-1.93.126.126 0 01-.06-.145 2.21 2.21 0 00-2.73-2.73.123.123 0 01-.144-.06 2.21 2.21 0 00-3.86 0 .124.124 0 01-.145.06 2.209 2.209 0 00-2.729 2.73.124.124 0 01-.06.145 2.209 2.209 0 000 3.86.127.127 0 01.06.145 2.21 2.21 0 002.729 2.73.124.124 0 01.145.06 2.21 2.21 0 003.86 0 .123.123 0 01.144-.06 2.206 2.206 0 002.729-2.73.13.13 0 01.06-.145A2.172 2.172 0 0012 6zM7.847 8.77a.925.925 0 01-.654-1.577.925.925 0 011.577.654.923.923 0 01-.923.922zm-3.77-.127a.51.51 0 01-.72-.72l4.979-4.98a.512.512 0 11.72.721l-4.979 4.98zm.077-5.412a.924.924 0 110 1.848.924.924 0 010-1.848z">
+                                                    </path>
+                                                </svg>
+                                            </span>
                                         </div>
 
                                     </div>

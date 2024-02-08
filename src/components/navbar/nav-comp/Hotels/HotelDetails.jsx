@@ -182,18 +182,20 @@ export const HotelDetails = () => {
                 </div>*/}
                 </div>
                 <div className='carouselOfferContainer'>
-                  <div color="#77ca7e" className='carouCancellation'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="1.4rem" width="1.4rem" fill="#77ca7e" margin="" class="ShieldIcon-sc-k4m8fy-0 dyWNxG"><path d="M29.333 5.033a2.052 2.052 0 00-1.187-1.875A29.52 29.52 0 0015.999.666 29.52 29.52 0 003.852 3.158a2.05 2.05 0 00-1.187 1.875v10.183a16.38 16.38 0 0010.437 15.291l1.423.552a4.082 4.082 0 002.947 0l1.423-.552a16.38 16.38 0 0010.437-15.291zm-4.656 5.952L16.63 21.961a1.667 1.667 0 01-1.216.676h-.133c-.442 0-.866-.176-1.179-.489l-6.103-6.1a1.667 1.667 0 012.358-2.356l4.455 4.456a.333.333 0 00.505-.039l6.667-9.095a1.667 1.667 0 012.716 1.932l-.028.038z"></path></svg>
-                    <span className='carouCancellationText'>&nbsp;Free Cancellation till 24 hrs before check in</span>
-                  </div>
-                  <div className="besideCarouselCheck">
-                    <div className="carouCheckin">
-                      <p className="carouCheckinText">Check-in</p>
-                      <span className="carouCheckinTime">12 PM</span>
+                  <div className='carouCancelBeside'>
+                    <div color="#77ca7e" className='carouCancellation'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="1.4rem" width="1.4rem" fill="#77ca7e" margin="" class="ShieldIcon-sc-k4m8fy-0 dyWNxG"><path d="M29.333 5.033a2.052 2.052 0 00-1.187-1.875A29.52 29.52 0 0015.999.666 29.52 29.52 0 003.852 3.158a2.05 2.05 0 00-1.187 1.875v10.183a16.38 16.38 0 0010.437 15.291l1.423.552a4.082 4.082 0 002.947 0l1.423-.552a16.38 16.38 0 0010.437-15.291zm-4.656 5.952L16.63 21.961a1.667 1.667 0 01-1.216.676h-.133c-.442 0-.866-.176-1.179-.489l-6.103-6.1a1.667 1.667 0 012.358-2.356l4.455 4.456a.333.333 0 00.505-.039l6.667-9.095a1.667 1.667 0 012.716 1.932l-.028.038z"></path></svg>
+                      <span className='carouCancellationText'>&nbsp;Free Cancellation till 24 hrs before check in</span>
                     </div>
-                    <div className="carouCheckout">
-                      <p className="carouCheckoutText">Check-out</p>
-                      <span className="carouCheckoutTime">12 PM</span>
+                    <div className="besideCarouselCheck">
+                      <div className="carouCheckin">
+                        <p className="carouCheckinText">Check-in</p>
+                        <span className="carouCheckinTime">12 PM</span>
+                      </div>
+                      <div className="carouCheckout">
+                        <p className="carouCheckoutText">Check-out</p>
+                        <span className="carouCheckoutTime">12 PM</span>
+                      </div>
                     </div>
                   </div>
                   <div class="carouOfferContainer">

@@ -107,16 +107,16 @@ export const SignUp = ({setShowSignUp, showSignUp}) => {
     const {state} = useLocation();
     const [showSignUp, setShowSignUp] = useState(false);
   
-    const loginUser = async (user) => {
+    const loginUser = async (userDetails) => {
       const config = {
           headers: {
-          projectID: "zvc3foel7gfi"
+            projectID: "zvc3foel7gfi"
           }
       }
       try {
         const res = await axios.post(
           "https://academics.newtonschool.co/api/v1/bookingportals/login",
-          { ...user, appType: "bookingportals" },
+          { ...userDetails, appType: "bookingportals" },
           config
         );
         //console.log("res", res);
