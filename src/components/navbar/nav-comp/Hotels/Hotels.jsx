@@ -844,7 +844,7 @@ const handleCalculateNights = () => {
 
                   </div>
 
-                  <GetToTopButton />
+                  
 
               </div>
 
