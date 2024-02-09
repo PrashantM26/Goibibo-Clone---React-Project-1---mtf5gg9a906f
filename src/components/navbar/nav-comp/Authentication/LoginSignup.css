@@ -203,8 +203,8 @@
   /*For login*/
   .logout-container button{
     position: absolute;
-    top: 50px;
-    right: 5px;
+    top: 65px;
+    right: 50px;
     color: #0074EB;
     background-color: white;
     border: 0.5px solid #0074EB;
@@ -215,6 +215,11 @@
     z-index: 10;
   }
 
+@media screen and (max-width: 1450px) {
+  .logout-container button{
+    right: 30px;
+  }
+}
 
 
 @media screen and (max-width: 1400px) {
@@ -228,6 +233,10 @@
 
   .right-container-login{
     width: 40%;
+  }
+
+  .logout-container button{
+    right: 32px;
   }
 }
 
@@ -244,6 +253,12 @@
 @media screen and (max-width: 1200px) {
   .modal-content-login{
     width: 75%;
+  }
+}
+
+@media screen and (max-width: 1130px) {
+  .logout-container button{
+    right: 15px;
   }
 }
 
