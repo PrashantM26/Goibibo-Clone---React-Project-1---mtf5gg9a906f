@@ -225,7 +225,7 @@ export const SelectGuestRoom = ({ passedVals }) => {
       {showGuestroom ? (
         <div className='passengerWindowH'>
           <div className='roomsNoH'>
-            <span>Rooms (Max 4)</span>
+            <span>Rooms (Max 2)</span>
             <div>
               <button className="decBtnH" onClick={() => incDec('dec', setRooms, adults, setAdults)}>-</button>
               <span>{rooms}</span>
