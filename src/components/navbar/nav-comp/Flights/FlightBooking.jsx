@@ -92,8 +92,9 @@ export const FlightBooking = () => {
       }
 
       const handleACITOpen = (index) => {
-        console.log("candlewax", index);
+        //console.log("candlewax", index);
         setACITOpen((prev) => {
+          console.log("ACIT prev", prev);
           /*return Object.fromEntries(
             Object.entries(prev).map(([key]) => [key, key === index ? !prev[key] : false])
           );*/
