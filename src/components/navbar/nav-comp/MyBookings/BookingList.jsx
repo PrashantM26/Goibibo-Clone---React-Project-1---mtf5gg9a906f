@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { DateComponent } from '../../../Date/Date';
 import "./MyBookings.css";
 
 export const BookingList = () => {
@@ -105,8 +106,8 @@ export const BookingList = () => {
           <React.Fragment key={booking._id}>
             <tr>
                 <td>{booking.user.name}</td>
-                <td>{booking.start_date}</td>
-                <td>{booking.end_date}</td>
+                <td><DateComponent dateVal = { booking.start_date } /></td>
+                <td><DateComponent dateVal = { booking.end_date } /></td>
                 <td>{booking.status}</td>
                 <td>
                     {booking.booking_type}
