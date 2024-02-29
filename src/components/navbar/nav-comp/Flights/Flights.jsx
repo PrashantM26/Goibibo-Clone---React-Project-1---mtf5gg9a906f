@@ -393,7 +393,7 @@ useEffect(() => {
                     <div className='borderFlightInputs'>
                         <div className='tripRadioF'>
                             <input type="radio" value="one-way" name='trip' />&nbsp;One way
-                            <input type="radio" value="round-trip" name='trip' />&nbsp;Round trip
+                            <input type="radio" value="round-trip" name='trip' disabled style={{cursor: "not-allowed"}}/>&nbsp;Round trip
                         </div>
                     
             
@@ -433,8 +433,8 @@ useEffect(() => {
                                 
                                 <div className="child1">
                                     <label>Return</label>   
-                                    <input type="text" name="return" onClick={() => setShowCal2(!showCal2)} value={displayReturn} />
-                                    <DateComponent dateVal = { currData.return } setterFnc={setDisplayReturn} type="return" />
+                                    <input type="text" name="return" disabled style={{cursor: "not-allowed"}}/>{/*onClick={() => setShowCal2(!showCal2)} value={displayReturn} />
+                                    <DateComponent dateVal = { currData.return } setterFnc={setDisplayReturn} type="return" />*/}
                                 </div>
                                 { showCal2 ?
                                     (

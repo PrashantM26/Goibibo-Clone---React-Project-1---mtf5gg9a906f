@@ -463,7 +463,7 @@ console.log("FILTERED DATA   ",filteredData)*/       //AND THIS FOR RETRIEVING B
             const priceFilter = priceRanges
               .filter((range, i) => isChecked.forPrice[i])
               .some(range => item.averageBaseCost >= range.valueMin && item.averageBaseCost <= range.valueMax);
-    
+
             if (!priceFilter) {
               return false;
             }
@@ -732,19 +732,19 @@ const handleCalculateNights = () => {
 
         <div className="rightSectionH">
 
-            <div className="rightSection1H">
-              <img src="https://gos3.ibcdn.com/meta-1-1694597822.jpg" alt="" />
-            </div>
+          <div className="rightSection1H">
+            <img src="https://gos3.ibcdn.com/meta-1-1694597822.jpg" alt="" />
+          </div>
             
-            <div className="rightSection2H">
-                <div className="r1H">
-                    <img src="https://gos3.ibcdn.com/offers-640X268-1702450350.jpg" alt="" />
-                </div>
-                
-                <div className="r2H">
-                  <img src="https://gos3.ibcdn.com/img-1626751565.jpg" alt="" />
-                </div>
-            </div>
+          <div className="rightSection2H">
+              <div className="r1H">
+                  <img src="https://gos3.ibcdn.com/offers-640X268-1702450350.jpg" alt="" />
+              </div>
+              
+              <div className="r2H">
+                <img src="https://gos3.ibcdn.com/img-1626751565.jpg" alt="" />
+              </div>
+          </div>
 
         </div>
         

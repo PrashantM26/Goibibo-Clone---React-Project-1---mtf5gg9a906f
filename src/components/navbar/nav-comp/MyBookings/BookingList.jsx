@@ -4,6 +4,11 @@ import "./MyBookings.css";
 
 export const BookingList = () => {
   const [bookings, setBookings] = useState([]);
+  //const [flight, setFlight] = useState(false)
+  //const [hotel, setHotel] = useState(false);
+  //const [bus, setBus] = useState(false);
+  //const [filData, setFilData] = useState([]);
+  //const [checked, setChecked] = useState([]);
   const token = sessionStorage.getItem("user-token")
   const bookingData_config = {
     headers: {
@@ -22,13 +27,66 @@ export const BookingList = () => {
   
         const bookingData = response.data.data;
         setBookings(bookingData);
+        //setFilData(bookingData);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
         fetchBookings();
   }, []);
-  console.log(bookings)
+
+
+
+  /*useEffect(() => {                                           //Didn't work for that additional checkbox filter demand
+      //let filData = bookings;
+      if(flight){
+        let fliData = bookings.filter((book) => (
+          book.booking_type === "flight"
+        ))
+        setFilData((prev) => [...prev, fliData])
+      }
+      if(hotel){
+        let holData = bookings.filter((book) => (
+          book.booking_type === "hotel"
+        ))
+        setFilData((prev) => [...prev, holData])
+      }
+      if(bus){
+        let busData = bookings.filter((book) => (
+          book.booking_type === "bus"
+        ))
+        setFilData((prev) => [...prev, busData])
+      }
+
+  }, [flight, hotel, bus])*/
+
+  {/*const handleCheckbox = (type) => {                  //Was told o implement addidtional checkbox filters
+    setChecked((prev) => {
+      if(prev.includes(type)) {
+        return prev.filter((selectedType) => selectedType !== type);
+      }
+      else{
+        return [...prev, type];
+      }
+    })
+  }
+
+  useEffect(() => {
+    let filtData = bookings;
+    if(checked.length>0){
+      filtData = filtData.filter((item) => {
+        return checked.includes(item.booking_type);
+      })
+      setFilData(filtData);
+    }
+    else{
+      setFilData(bookings);
+    }
+  }, [checked])*/}
+
+  
+
+  //console.log(bookings)
   return (
     <div>
     <h2 className="table-heading">Booking Details</h2>
@@ -64,6 +122,11 @@ export const BookingList = () => {
         ))}
       </tbody>
     </table>
+    {/*<div>
+      <label for="c1"> Flights<input className="c1" type='checkbox' onClick={() => handleCheckbox("flight")}/></label>&nbsp;
+      <label for="c2"> Hotels<input className="c2" type='checkbox' onClick={() => handleCheckbox("hotel")}/></label>&nbsp;
+      <label for="c3"> Bus<input className="c3" type='checkbox' onClick={() => handleCheckbox("bus")}/></label>&nbsp;
+    </div>*/}
   </div>
   );
 };
